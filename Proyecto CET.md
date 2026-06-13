@@ -1,10 +1,3 @@
-  
-Edición del Archivo README incluyendo:
-
-Definición de la problemática que eligieron abordar  
-Relación con los Objetivos de Desarrollo Sostenible (ODS)  
-Explicación de la solución tecnológica que están desarrollando
-
 # **Stop the Loop**
 
 ## **Definición de la Problemática**
