@@ -1,0 +1,182 @@
+/* =============================================
+   Stop the Loop — styles.css
+   Tipografías: Poppins + Courier Prime
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Courier+Prime&display=swap');
+
+/* ── VARIABLES (colores del moodboard) ──────── */
+:root {
+  --lila:    #E7A8F8;
+  --azul:    #87BBFF;
+  --amarillo:#FFB33F;
+  --gris-claro: #D9D9D9;
+  --gris-oscuro:#545654;
+  --fondo:   #F2F2F2;
+  --blanco:  #FFFFFF;
+}
+
+/* ── RESET BÁSICO ───────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  background-color: var(--fondo);
+  color: var(--gris-oscuro);
+}
+
+/* ── HEADER ─────────────────────────────────── */
+header {
+  background-color: var(--gris-oscuro);
+  color: var(--blanco);
+  text-align: center;
+  padding: 48px 24px;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+header p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--gris-claro);
+}
+
+/* ── MAIN ───────────────────────────────────── */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+/* ── TÍTULOS DE SECCIÓN ─────────────────────── */
+section h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--gris-oscuro);
+}
+
+#tecnicas h2        { border-color: var(--azul); }
+#tips-de-profesionales h2 { border-color: var(--lila); }
+#diario h2          { border-color: var(--amarillo); }
+
+/* ── GRILLA DE TARJETAS ─────────────────────── */
+.grilla {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* ── TARJETAS ───────────────────────────────── */
+.tarjeta {
+  background-color: var(--blanco);
+  border-radius: 12px;
+  padding: 24px;
+  border-left: 5px solid var(--gris-claro);
+  transition: transform 0.2s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-4px);
+}
+
+#tecnicas .tarjeta {
+  border-left-color: var(--azul);
+}
+
+#tips-de-profesionales .tarjeta {
+  border-left-color: var(--lila);
+}
+
+.tarjeta h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--gris-oscuro);
+}
+
+.tarjeta p {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #777;
+  line-height: 1.6;
+}
+
+/* ── DIARIO PERSONAL ────────────────────────── */
+#diario p {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: var(--gris-oscuro);
+}
+
+#entrada-diario {
+  width: 100%;
+  height: 180px;
+  padding: 16px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.95rem;
+  color: var(--gris-oscuro);
+  background-color: var(--blanco);
+  border: 2px solid var(--gris-claro);
+  border-radius: 12px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+#entrada-diario:focus {
+  border-color: var(--amarillo);
+}
+
+#btn-guardar {
+  margin-top: 14px;
+  padding: 12px 32px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background-color: var(--amarillo);
+  color: var(--gris-oscuro);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#btn-guardar:hover {
+  background-color: #e09e30;
+}
+
+/* ── MENSAJE DE GUARDADO ────────────────────── */
+#mensaje-guardado {
+  margin-top: 10px;
+  font-size: 0.88rem;
+  color: var(--gris-oscuro);
+  font-family: 'Courier Prime', monospace;
+  min-height: 20px;
+}
+
+/* ── FOOTER ─────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 0.85rem;
+  color: var(--blanco);
+  background-color: var(--gris-oscuro);
+}
