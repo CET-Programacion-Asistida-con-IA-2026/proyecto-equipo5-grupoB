@@ -50,5 +50,5 @@ La plataforma no se limita al rendimiento académico: incluye tips sobre salud m
 * **Escalable:** La estructura permite agregar nuevas secciones (planificador, mood tracker, exámenes) en el futuro.
 
 ---
-**Moodboard** 
-file:///Users/belu/Library/Group%20Containers/group.net.whatsapp.WhatsApp.shared/Message/Media/120363427230055311@g.us/7/4/74f5f297-90a6-4efb-ad60-f698552598d1.jpg 
+🎨 **Moodboard** 
+https://www.canva.com/design/DAHMOp--lZM/3wRsR5TcVlFvl6-BUB_ucg/edit
