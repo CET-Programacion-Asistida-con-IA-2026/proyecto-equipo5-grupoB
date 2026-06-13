@@ -50,6 +50,5 @@ La plataforma no se limita al rendimiento académico: incluye tips sobre salud m
 * **Escalable:** La estructura permite agregar nuevas secciones (planificador, mood tracker, exámenes) en el futuro.
 
 ---
-
-*Proyecto desarrollado en el marco del programa Chicas en Tecnología (CET) — 2026\.*
-
+**Moodboard** 
+file:///Users/belu/Library/Group%20Containers/group.net.whatsapp.WhatsApp.shared/Message/Media/120363427230055311@g.us/7/4/74f5f297-90a6-4efb-ad60-f698552598d1.jpg 
