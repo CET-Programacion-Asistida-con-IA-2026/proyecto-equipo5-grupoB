@@ -2,14 +2,30 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Stop the Loop</title>
+  <title>Rompé con el ciclo de la procrastinación.</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <header>
-    <h1>Stop the Loop</h1>
-    <p>Tu espacio para organizarte, estudiar mejor y no procrastinar.</p>
+  <header class="hero">
+    <nav class="navbar">
+      <h2 class="logo">Stop the Loop</h2>
+<!--Agregue un menu simple para tener como guia-->
+      <ul class="nav-links">
+        <li><a href="#tecnicas">Organizate</a></li>
+        <li><a href="#tips-de-profesionales">Aprende</a></li>
+        <li><a href="#diario">Bienestar</a></li>
+        <li><a href="#foro">Comunidad</a></li>
+        <li><a href="#registro">Registrate</a></li>
+  
+      </ul>
+    </nav>
+
+    <div class="hero-contenido">
+      <h1>Rompé con el ciclo de la procrastinación</h1>
+      <p class="hero-texto">Un espacio para organizarte mejor, encontrar métodos de estudio y cuidar tu bienestar mientras avanzás con tus objetivos.</p>
+      <a href="#tecnicas" class="boton-principal">Empezar</a>
+    </div>
   </header>
 
   <main>
@@ -64,6 +80,14 @@
       <textarea id="entrada-diario" placeholder="¿Cómo te sentiste hoy?"></textarea>
       <button id="btn-guardar">Guardar</button>
       <p id="mensaje-guardado"></p>
+    </section>
+<!--Acá agregue estas dos secciones para despues desarrollarlas más y poder redirigir al usuario-->
+    <section id="foro">
+      <h2>"Foro"</h2>
+    </section>
+
+    <section id="registro">
+      <h2>"Inicia Sesión/Registrate"</h2>
     </section>
 
   </main>
