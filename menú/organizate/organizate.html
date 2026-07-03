@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizate</title>
+    <link rel="stylesheet" href="organizate.css">
+</head>
+<body>
+
+    <!-- Header Section  -->
+    <header class="header">
+        <img src="../../Imagenes/Exam%20Season%20Study%20Essentials%20📚.jpeg" alt="Header Image" class="header-image">
+        <h1>Organizate</h1>
+
+        <div class="section">
+            <h2>Sección </h2>
+            <p>Contenido de la sección </p>
+        </div>
+
+    </header>
+
+<!-- Main Content Section  -->
+    <div class="container">
+
+
+
+         <!-- Jerarquía propuesta en base a la utilidad-->
+
+        <!-- Calendario es el protagonista -->
+        <div class="section">
+            <h2>Calendario academico</h2>
+            <p>cargar todas las materias, actividades y sus horarios. </p>
+        </div>
+
+        <!-- Base de la organización -->
+        <div class="section">
+            <h2>Preparador de exámenes</h2>
+            <p>“ matterial leído” o “estudiado” </p>
+        </div>
+        <div class="section">
+            <h2>Planificador de tareas</h2>
+            <p>Organiza y programa tus tareas diarias de manera eficiente.</p>
+        </div>
+
+
+        <!-- Complementos de la organización -->
+        <div class="section">
+            <h2> Matrix de Eisenhower </h2>
+            <p>Poner estructura de matriz y descripción además, opción de actividades por hacer y el sistema organiza según el criterio adecuado </p>
+        </div>
+        <div class="section">
+            <h2>Planificadores</h2>
+            <p>planificadores gratuitos para subir y dejar a disposición.</p>
+        </div>
+
+        <!-- Reforzadores de la organización - Tus resultados te recuerdan hacia donde vas -->
+        <div class="section">
+            <h2>Informe de tu desempeño</h2>
+            <p>Estudiaste 40min de Materia 1 Hoy</p>
+        </div>
+        <div class="section">
+            <h2>Semaforo de actividades</h2>
+            <p>Rojo (urgente) Amarillo (importante) Verde (normal)  </p>
+        </div>
+        <div class="section">
+            <h2>Tu ranking de materias</h2>
+            <p>Materias en el ranking</p>
+        </div>
+        
+        <!-- Mantenedores de la motivación. La linea de flujo temina acá y el estudiante finalmente decide qué estudiar y lo motivamos -->
+        <div class="section", class="study-selector">
+            <label for="subject-select">¿Qué vas a estudiar hoy?</label>
+            <select id="subject-select" onchange="handleSubjectSelection()">
+                <option value="">Selecciona una opción</option>
+                <option value="opcion1">Materia 1</option>
+                <option value="opcion2">Materia 2</option>
+                <option value="opcion3">Materia 3</option>
+                <option value="opcion4">Materia 4</option>
+            </select>
+        </div>
+        <div class="section", class="motivational-message">
+        
+            <p id="motivational-text">**Texto de Mensaje Motivador**</p>
+        </div>
+        
+    </div>
+
+<!-- Footer Section  -->
+    <footer class="footer">
+        <p>&copy; 2024 Organizate. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="organizate.js"></script>
+
+
+</body>
+</html>
