@@ -419,20 +419,39 @@ function renderizarCalendario() {
         const fechaCompleta =
             `${año}-${String(mes + 1).padStart(2, "0")}-${String(dia).padStart(2, "0")}`;
 
-        const tieneEvento = fechasGuardadas.some(item => item.fecha === fechaCompleta);
+        //const tieneEvento = fechasGuardadas.some(item => item.fecha === fechaCompleta);
+
+        const eventosDelDia = fechasGuardadas.filter(item => item.fecha === fechaCompleta);
+    
+
+        const tieneEvento = eventosDelDia.length > 0;
+   
+        const nombreEvento = eventosDelDia.map(item => item.evento).join(", ");
+
         const esHoy = fechaCompleta === fechaHoyStr;
+
         const seleccionado = fechaCompleta === fechaSeleccionada;
 
         calendarioGrid.innerHTML += `
-            <div class="dia-calendario" data-fecha="${fechaCompleta}" data-actual="${esHoy}" data-seleccionado="${seleccionado}">
+          
+            <div class="dia-calendario" data-fecha="${fechaCompleta}"  title="${nombreEvento}">
                 ${dia}
                 ${
-                    tieneEvento
-                        ? '<div class="punto-evento"></div>'
-                        : ''
+                    eventosDelDia.length > 0
+                    ? `<div class="contenedor-puntos">
+                            ${
+                                eventosDelDia
+                                    .map(item =>
+                                        `<div class="punto-evento ${item.categoria}"></div>`
+                                    )
+                                    .join("")
+                            }
+                        </div>`
+                    : ""
                 }
             </div>
         `;
+        
     }
 }
 

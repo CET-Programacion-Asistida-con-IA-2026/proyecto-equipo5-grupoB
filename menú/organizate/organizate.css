@@ -117,6 +117,14 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
     justify-content:center;
     align-items:center;
 }
+
+@media (max-width: 1200px){
+
+    .calendario-layout{
+        grid-template-columns: 1fr;
+    }
+
+}
 /*------------------------------------------------------*/
 
 /* Estilos para el horario semanal como grid*/
@@ -248,6 +256,52 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
 /*------------------------------------------------------*/
 
 /* Estilos para el calendario mensual como grid*/
+
+/* Estilos para los inputs del formulario de eventos del calendario mensual */
+#fechaInput,
+#eventoInput,
+#categoriaInput{
+    padding:8px 10px;
+    border:1px solid #d5dbe8;
+    border-radius:8px;
+    font-size:14px;
+    outline:none;
+}
+
+#fechaInput:focus,
+#eventoInput:focus,
+#categoriaInput:focus{
+    border-color:#7eaef7;
+}
+
+/* Estilos para el botón de guardar evento del calendario mensual */
+#agregarFecha,
+.btn-actividad{
+    background:#7eaef7;
+    color:white;
+    border:none;
+    border-radius:8px;
+    padding:8px 14px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+#agregarFecha:hover,
+.btn-actividad:hover{
+    transform:translateY(-1px);
+    opacity:.9;
+}
+.eliminar-fecha{
+    background:#ff6b6b;
+    color:white;
+    border:none;
+    border-radius:6px;
+    padding:4px 8px;
+    cursor:pointer;
+}
+
+
+/* Estilos para el encabezado del calendario mensual */
 .cabecera-calendario{
     display:flex;
     justify-content:space-between;
@@ -275,6 +329,13 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
     border-radius:8px;
     padding:5px;
     text-align:center;
+}
+.dia-calendario[data-seleccionado="true"]{
+    border:2px solid #7eaef7;
+    background:#eef5ff;
+}
+.dia-calendario[data-actual="true"]{
+    box-shadow:0 0 0 2px #7ed957 inset;
 }
 
 .dia-vacio{
@@ -343,4 +404,84 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
     border-radius:6px;
     background: var(--gris-claro);
     font-size:0.8rem;
+}
+
+/* Estilos para los puntos de evento en el calendario mensual */
+.punto-evento{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    margin:5px auto 0;
+}
+
+.contenedor-puntos{
+    display:flex;
+    justify-content:center;
+    gap:3px;
+    margin-top:4px;
+}
+
+.punto-evento.Examen{
+    background:#5DA9FF;
+}
+
+.punto-evento.Final{
+    background:#FF6B6B;
+}
+
+.punto-evento.Seminario{
+    background:#C78CF2;
+}
+
+.punto-evento.Entrega{
+    background:#FFB33F;
+}
+
+.punto-evento.Actividad{
+    background:#7ED957;
+}
+
+.punto-evento.Proyecto{
+    background:#00C2A8;
+}
+
+
+/* Estilos para la leyenda de categorías del calendario mensual */
+.leyenda-categorias{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:15px;
+}
+
+.color-leyenda{
+    display:inline-block;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    margin-right:5px;
+}
+
+.color-leyenda.Examen{
+    background:#5DA9FF;
+}
+
+.color-leyenda.Final{
+    background:#FF6B6B;
+}
+
+.color-leyenda.Seminario{
+    background:#C78CF2;
+}
+
+.color-leyenda.Entrega{
+    background:#FFB33F;
+}
+
+.color-leyenda.Actividad{
+    background:#7ED957;
+}
+
+.color-leyenda.Proyecto{
+    background:#00C2A8;
 }
