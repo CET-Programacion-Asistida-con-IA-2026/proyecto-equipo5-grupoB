@@ -12,26 +12,56 @@
     <header class="header">
         <img src="../../Imagenes/Exam%20Season%20Study%20Essentials%20📚.jpeg" alt="Header Image" class="header-image">
         <h1>Organizate</h1>
-
-        <div class="section">
-            <h2>Sección </h2>
-            <p>Contenido de la sección </p>
-        </div>
-
     </header>
 
-<!-- Main Content Section  -->
-    <div class="container">
-
-
+    <!-- Main Content Section  -->
+    <main class="container">
 
          <!-- Jerarquía propuesta en base a la utilidad-->
 
-        <!-- Calendario es el protagonista -->
-        <div class="section">
-            <h2>Calendario academico</h2>
-            <p>cargar todas las materias, actividades y sus horarios. </p>
+        <!-- Horario y Calendario como protagonistas -->
+        <div class="section calendario-academico">
+            <h2 class="encabezado-calendario">📅 Calendario Académico</h2>
+            <p >Organiza tus materias, sesiones de estudio, descansos y fechas importantes.</p>
+              
+            <div class="calendario-layout">
+                <!-- Horario semanal -->
+                <div class="horario-semanal">
+                    <h3>Horario semanal</h3>
+
+                    <div class="horario">
+                        <div class="hora"></div>
+                        <div class="dia">Lun</div>
+                        <div class="dia">Mar</div>
+                        <div class="dia">Mié</div>
+                        <div class="dia">Jue</div>
+                        <div class="dia">Vie</div>
+                        <div class="dia">Sáb</div>
+                        <div class="dia">Dom</div>
+
+                        <div class="hora">08:00</div>
+                        <div class="clase">Matemática</div>
+                        <div class="libre"></div>
+                        <div class="estudio">Estudio</div>
+                        <div class="clase">Física</div>
+                        <div class="libre"></div>
+                        <div class="libre"></div>
+                        <div class="libre"></div>
+                    </div>
+                </div>
+
+                <!-- Calendario mensual -->
+                <div class="calendario-mensual">
+                    <h3>Próximas fechas</h3>
+
+                    <div class="placeholder-calendario">
+                        Aquí irá el calendario mensual
+                    </div>
+                </div>
+
+            </div>
         </div>
+
 
         <!-- Base de la organización -->
         <div class="section">
@@ -68,8 +98,8 @@
             <p>Materias en el ranking</p>
         </div>
         
-        <!-- Mantenedores de la motivación. La linea de flujo temina acá y el estudiante finalmente decide qué estudiar y lo motivamos -->
-        <div class="section", class="study-selector">
+        <!-- La linea de flujo temina acá y el estudiante finalmente decide qué estudiar y lo motivamos -->
+        <div class="section ">
             <label for="subject-select">¿Qué vas a estudiar hoy?</label>
             <select id="subject-select" onchange="handleSubjectSelection()">
                 <option value="">Selecciona una opción</option>
@@ -79,12 +109,12 @@
                 <option value="opcion4">Materia 4</option>
             </select>
         </div>
-        <div class="section", class="motivational-message">
-        
+        <div class="section ">
+        <h2>¡Motívate!</h2>
             <p id="motivational-text">**Texto de Mensaje Motivador**</p>
         </div>
         
-    </div>
+    </main>
 
 <!-- Footer Section  -->
     <footer class="footer">
