@@ -147,11 +147,30 @@ gap: 32px;
 /* ── MAIN ───────────────────────────────────── */
 main {
   max-width: 1000px;
-  margin: 0 auto;
-  padding: 48px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 64px;
+}
+
+main section{
+  padding-left: 56px;
+  padding-right: 56px;
+}
+
+.section-border {
+  border-bottom: var(--borde-suave);
+}
+
+/*--- ETIQUETAS --------------------------------*/
+.mini-pill {
+  display: inline-block;
+  background-color: var(--amarillo);
+  color: var(--gris-oscuro);
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: var(--sombra-suave)
+}
+
+.mini-pill{
+  padding: 8px 22px;
+  font-size: 0.82rem;
 }
 
 /* ── TÍTULOS DE SECCIÓN ─────────────────────── */
