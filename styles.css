@@ -53,7 +53,7 @@ button {
   font-family: inherit;
 }
 
-/* ── HEADER ─────────────────────────────────── */
+/* ── HEADER / NAVBAR (MENÚ PRINCIPAL) ─────────────────────────────────── */
 .site-header {
   background-color: var(--fondo);
   border-bottom: var(--borde-suave);
