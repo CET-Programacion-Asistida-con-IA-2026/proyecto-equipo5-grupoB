@@ -10,28 +10,128 @@
 
     <!-- Header Section  -->
     <header class="header">
-        <img src="../../Imagenes/Exam%20Season%20Study%20Essentials%20📚.jpeg" alt="Header Image" class="header-image">
+        <img src="../../Imagenes/Carousel 3.jpeg" alt="Header Image" class="header-image">
         <h1>Organizate</h1>
-
-        <div class="section">
-            <h2>Sección </h2>
-            <p>Contenido de la sección </p>
-        </div>
-
     </header>
 
-<!-- Main Content Section  -->
-    <div class="container">
-
-
+    <!-- Main Content Section  -->
+    <main class="container">
 
          <!-- Jerarquía propuesta en base a la utilidad-->
 
-        <!-- Calendario es el protagonista -->
-        <div class="section">
-            <h2>Calendario academico</h2>
-            <p>cargar todas las materias, actividades y sus horarios. </p>
+        <!-- Horario y Calendario como protagonistas -->
+        <div class="section calendario-academico">
+            <h2 class="encabezado-calendario">📅 Calendario Académico</h2>
+            <p >Organiza tus materias, sesiones de estudio, descansos y fechas importantes.</p>
+            
+            <!-- Contenedor para el horario semanal y el calendario mensual -->
+            <div class="calendario-layout">
+
+                <!-- Horario semanal -->
+                <div class="horario-semanal">
+                    <h3>Horario semanal</h3>
+
+                   <!-- Editor de horario -->
+                        <section class="editor-horario">
+                            <h4>Agregar actividad</h4>
+
+                            <div class="editor-formulario">
+
+                                <input
+                                    type="text"
+                                    id="actividadInput"
+                                    placeholder="Nombre de la actividad"
+                                >
+
+                                <select id="tipoInput">
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="1">Clase</option>
+                                    <option value="2">Estudio</option>
+                                    <option value="3">Descanso</option>
+                                </select>
+
+                                <button id="guardarActividad" type="button">Guardar actividad</button>
+                                <button id="eliminarActividad" type="button">Eliminar actividad</button>
+
+                            </div>
+
+                            <p class="info-seleccion">Haz clic en una celda del horario para seleccionarla. Puedes seleccionar varias celdas y luego guardar o eliminar la actividad en todas ellas.</p>
+
+                        </section>
+
+                        
+                        <div class="horario" id="horario"></div>
+             
+                        <div class="leyenda-horario">
+                            <div><span class="color clase"></span> Clase</div>
+                            <div><span class="color estudio"></span> Estudio</div>
+                            <div><span class="color descanso"></span> Descanso</div>
+                            <div><span class="color libre"></span> Tiempo libre</div>
+                        </div>
+
+                </div>
+
+                <!-- Calendario mensual -->
+                <div class="calendario-mensual">
+                    <h3>Próximas fechas</h3>
+
+
+                    <div class="editor-fechas">
+
+                        <input
+                            type="date"
+                            id="fechaInput"
+                        >
+
+                        <input
+                            type="text"
+                            id="eventoInput"
+                            placeholder="Ej: Parcial de Matemática"
+                        >
+
+                        <select id="categoriaInput">
+                            <option value="">Selecciona una opción</option>
+                            <option value="Examen">Examen</option>
+                            <option value="Final">Final</option>
+                            <option value="Seminario">Seminario</option>
+                            <optgroup label="Tareas">
+                                <option value="Entrega">Entrega</option>
+                                <option value="Actividad">Actividad</option>
+                                <option value="Proyecto">Proyecto</option>
+                            </optgroup>
+                            
+                        </select>
+
+                        <button id="agregarFecha">
+                            Agregar
+                        </button>
+
+                    </div>
+
+                    <div class="cabecera-calendario">
+                        <button id="mesAnterior">◀</button>
+                        <h4 id="tituloMes"></h4>
+                        <button id="mesSiguiente">▶</button>
+                    </div>
+
+                    <div id="calendarioGrid"></div>
+
+                    <div id="listaFechas"></div>
+
+                    <div class="leyenda-categorias">
+                        <div><span class="color-leyenda Examen"></span> Examen</div>
+                        <div><span class="color-leyenda Final"></span> Final</div>
+                        <div><span class="color-leyenda Seminario"></span> Seminario</div>
+                        <div><span class="color-leyenda Entrega"></span> Entrega</div>
+                        <div><span class="color-leyenda Actividad"></span> Actividad</div>
+                        <div><span class="color-leyenda Proyecto"></span> Proyecto</div>
+                    </div>             
+
+                </div>
+
+            </div>
         </div>
+
 
         <!-- Base de la organización -->
         <div class="section">
@@ -68,8 +168,8 @@
             <p>Materias en el ranking</p>
         </div>
         
-        <!-- Mantenedores de la motivación. La linea de flujo temina acá y el estudiante finalmente decide qué estudiar y lo motivamos -->
-        <div class="section", class="study-selector">
+        <!-- La linea de flujo temina acá y el estudiante finalmente decide qué estudiar y lo motivamos -->
+        <div class="section ">
             <label for="subject-select">¿Qué vas a estudiar hoy?</label>
             <select id="subject-select" onchange="handleSubjectSelection()">
                 <option value="">Selecciona una opción</option>
@@ -79,16 +179,16 @@
                 <option value="opcion4">Materia 4</option>
             </select>
         </div>
-        <div class="section", class="motivational-message">
-        
+        <div class="section ">
+        <h2>¡Motívate!</h2>
             <p id="motivational-text">**Texto de Mensaje Motivador**</p>
         </div>
         
-    </div>
+    </main>
 
 <!-- Footer Section  -->
     <footer class="footer">
-        <p>&copy; 2024 Organizate. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Organizate. Todos los derechos reservados.</p>
     </footer>
 
     <script src="organizate.js"></script>
