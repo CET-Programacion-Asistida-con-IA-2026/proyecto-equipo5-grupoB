@@ -105,6 +105,45 @@ gap: 32px;
   color:#87BBFF
 }
 
+/*--- BOTONES GENERALES ------------------------ */ 
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  cursor: pointer;
+
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover,
+.loop-option:hover,
+.category-card:hover {
+  transform: translateY(-3px);
+}
+
+.btn-nav {
+  background-color: var(--blanco);
+  color: var(--negro);
+  border: var(--borde-suave);
+  border-radius: 999px;
+  padding: 12px 26px;
+  box-shadow: var(--sombra-suave);
+}
+
+.btn-large {
+  background-color: var(--lila);
+  color: var(--gris-oscuro);
+  border-radius: 999px;
+  padding: 18px 52px;
+  font-size: 1.1rem;
+  box-shadow: var(--sombra-fuerte);
+}
+
 /* ── MAIN ───────────────────────────────────── */
 main {
   max-width: 1000px;
