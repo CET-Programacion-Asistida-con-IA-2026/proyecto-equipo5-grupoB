@@ -10,7 +10,7 @@
 
     <!-- Header Section  -->
     <header class="header">
-        <img src="../../Imagenes/Exam%20Season%20Study%20Essentials%20📚.jpeg" alt="Header Image" class="header-image">
+        <img src="../../Imagenes/Carousel 3.jpeg" alt="Header Image" class="header-image">
         <h1>Organizate</h1>
     </header>
 
@@ -23,31 +23,28 @@
         <div class="section calendario-academico">
             <h2 class="encabezado-calendario">📅 Calendario Académico</h2>
             <p >Organiza tus materias, sesiones de estudio, descansos y fechas importantes.</p>
-              
+            
+            <!-- Contenedor para el horario semanal y el calendario mensual -->
             <div class="calendario-layout">
+
                 <!-- Horario semanal -->
                 <div class="horario-semanal">
                     <h3>Horario semanal</h3>
 
-                    <div class="horario">
-                        <div class="hora"></div>
-                        <div class="dia">Lun</div>
-                        <div class="dia">Mar</div>
-                        <div class="dia">Mié</div>
-                        <div class="dia">Jue</div>
-                        <div class="dia">Vie</div>
-                        <div class="dia">Sáb</div>
-                        <div class="dia">Dom</div>
+                   <!-- Editor de horario -->
+                        <section class="editor-horario">
+                            <h4>Agregar actividad</h4>
+                        </section>
 
-                        <div class="hora">08:00</div>
-                        <div class="clase">Matemática</div>
-                        <div class="libre"></div>
-                        <div class="estudio">Estudio</div>
-                        <div class="clase">Física</div>
-                        <div class="libre"></div>
-                        <div class="libre"></div>
-                        <div class="libre"></div>
-                    </div>
+                        <div class="horario" id="horario"></div>
+             
+                        <div class="leyenda-horario">
+                            <div><span class="color clase"></span> Clase</div>
+                            <div><span class="color estudio"></span> Estudio</div>
+                            <div><span class="color descanso"></span> Descanso</div>
+                            <div><span class="color libre"></span> Tiempo libre</div>
+                        </div>
+
                 </div>
 
                 <!-- Calendario mensual -->
@@ -118,7 +115,7 @@
 
 <!-- Footer Section  -->
     <footer class="footer">
-        <p>&copy; 2024 Organizate. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Organizate. Todos los derechos reservados.</p>
     </footer>
 
     <script src="organizate.js"></script>
