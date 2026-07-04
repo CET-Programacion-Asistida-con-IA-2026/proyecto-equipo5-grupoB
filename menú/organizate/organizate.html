@@ -34,8 +34,32 @@
                    <!-- Editor de horario -->
                         <section class="editor-horario">
                             <h4>Agregar actividad</h4>
+
+                            <div class="editor-formulario">
+
+                                <input
+                                    type="text"
+                                    id="actividadInput"
+                                    placeholder="Nombre de la actividad"
+                                >
+
+                                <select id="tipoInput">
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="1">Clase</option>
+                                    <option value="2">Estudio</option>
+                                    <option value="3">Descanso</option>
+                                </select>
+
+                                <button id="guardarActividad" type="button">Guardar actividad</button>
+                                <button id="eliminarActividad" type="button">Eliminar actividad</button>
+
+                            </div>
+
+                            <p class="info-seleccion">Haz clic en una celda del horario para seleccionarla. Puedes seleccionar varias celdas y luego guardar o eliminar la actividad en todas ellas.</p>
+
                         </section>
 
+                        
                         <div class="horario" id="horario"></div>
              
                         <div class="leyenda-horario">
@@ -51,9 +75,49 @@
                 <div class="calendario-mensual">
                     <h3>Próximas fechas</h3>
 
-                    <div class="placeholder-calendario">
-                        Aquí irá el calendario mensual
+
+                    <div class="editor-fechas">
+
+                        <input
+                            type="date"
+                            id="fechaInput"
+                        >
+
+                        <input
+                            type="text"
+                            id="eventoInput"
+                            placeholder="Ej: Parcial de Matemática"
+                        >
+
+                        <select id="categoriaInput">
+                            <option value="">Selecciona una opción</option>
+                            <option value="Examen">Examen</option>
+                            <option value="Final">Final</option>
+                            <option value="Seminario">Seminario</option>
+                            <optgroup label="Tareas">
+                                <option value="Entrega">Entrega</option>
+                                <option value="Actividad">Actividad</option>
+                                <option value="Proyecto">Proyecto</option>
+                            </optgroup>
+                            
+                        </select>
+
+                        <button id="agregarFecha">
+                            Agregar
+                        </button>
+
                     </div>
+
+                    <div class="cabecera-calendario">
+                        <button id="mesAnterior">◀</button>
+                        <h4 id="tituloMes"></h4>
+                        <button id="mesSiguiente">▶</button>
+                    </div>
+
+                    <div id="calendarioGrid"></div>
+
+                    <div id="listaFechas"></div>
+
                 </div>
 
             </div>

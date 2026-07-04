@@ -66,11 +66,17 @@ body {
   margin-bottom: 10px;
 }
 
-.footer{}
+.footer{
+  text-align: center;
+  padding: 20px;
+  background-color: var(--gris-oscuro);
+  color: var(--blanco);
+  border-radius: 0 0 18px 18px;
+}
 
 
 /* =========================
-   CALENDARIO ACADÉMICO
+   DATOS ACADÉMICOS
 ========================= */
 
 /* Estilos para el encabezado del horario y calendario académico */
@@ -123,6 +129,45 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
     
 }
 
+
+/* Estilos para el formulario de edición de celdas del horario semanal */
+.editor-formulario{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+.editor-formulario input,
+.editor-formulario select,
+.editor-formulario button{
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-family:'Poppins', sans-serif;
+}
+
+.editor-formulario button {
+    background: var(--azul);
+    color: white;
+    cursor: pointer;
+}
+
+.editor-formulario button:hover {
+    background: #6aa7e6;
+}
+
+.info-seleccion {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #545654;
+}
+
+.celda-seleccionada {
+    outline: 2px solid var(--azul);
+}
+
+/* Estilos en común para todas las celdas del horario semanal */
 .hora,
 .dia,
 .clase,
@@ -138,6 +183,7 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
     border-radius:6px;
 }
 
+/* Estilos específicos para cada tipo de celda del horario semanal */
 .dia{
     background:var(--azul);
     font-weight:bold;
@@ -200,3 +246,101 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
 }
 
 /*------------------------------------------------------*/
+
+/* Estilos para el calendario mensual como grid*/
+.cabecera-calendario{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:20px 0;
+}
+
+.encabezado-dia{
+    background: var(--azul);
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+#calendarioGrid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:5px;
+}
+
+.dia-calendario{
+    min-height:50px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    padding:5px;
+    text-align:center;
+}
+
+.dia-vacio{
+    min-height:50px;
+}
+
+.dia-calendario{
+    min-height:50px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    padding:5px;
+    text-align:center;
+    position:relative;
+    cursor:pointer;
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.dia-calendario:hover{
+    background:rgba(135,187,255,0.12);
+}
+
+.dia-calendario[data-actual="true"] {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 2px rgba(135,187,255,0.18);
+}
+
+.dia-calendario[data-actual="true"]::after {
+    content: "Hoy";
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    font-size: 0.7rem;
+    color: var(--azul);
+}
+
+.dia-calendario[data-seleccionado="true"] {
+    background: rgba(231, 168, 248, 0.22);
+    border-color: var(--lila);
+}
+
+.punto-evento{
+    width:10px;
+    height:10px;
+    background:var(--lila);
+    border-radius:50%;
+    margin:5px auto 0;
+}
+
+.evento-fecha{
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:10px;
+    margin-bottom:10px;
+    background:#fff;
+}
+
+.evento-fecha strong{
+    display:block;
+    margin-bottom:4px;
+}
+
+.evento-fecha .categoria{
+    display:inline-block;
+    margin-left:8px;
+    padding:2px 6px;
+    border-radius:6px;
+    background: var(--gris-claro);
+    font-size:0.8rem;
+}
