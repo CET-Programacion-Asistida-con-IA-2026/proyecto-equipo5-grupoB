@@ -14,6 +14,9 @@
   --gris-oscuro:#545654;
   --fondo:   #F2F2F2;
   --blanco:  #FFFFFF;
+  --negro:  #111111;
+  --sombra-suave: 0 6px 18px #0000002e;
+  --borde-suave: 1px solid #54565459;
 }
 
 /* ── RESET BÁSICO ───────────────────────────── */
@@ -21,6 +24,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+html{
+  scroll-behavior: smooth;
 }
 
 body {
