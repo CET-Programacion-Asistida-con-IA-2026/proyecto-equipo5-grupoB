@@ -15,7 +15,9 @@
   --fondo:   #F2F2F2;
   --blanco:  #FFFFFF;
   --negro:  #111111;
+
   --sombra-suave: 0 6px 18px #0000002e;
+   --sombra-fuerte: 0 8px 22px #00000035;
   --borde-suave: 1px solid #54565459;
 }
 
@@ -25,7 +27,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-html{
+
+html {
   scroll-behavior: smooth;
 }
 
@@ -34,6 +37,20 @@ body {
   font-weight: 400;
   background-color: var(--fondo);
   color: var(--gris-oscuro);
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display:block;
+}
+
+button {
+  font-family: inherit;
 }
 
 /* ── HEADER ─────────────────────────────────── */
