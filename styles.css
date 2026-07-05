@@ -232,6 +232,40 @@ color: var(--gris-oscuro);
   color: var(--negro)
 }
 
+.loop-option {
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 15px 20px;
+
+  background-color: var(--lila);
+  color: var(--negro);
+  border: none;
+  border-radius: 999px;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.loop-option:hover {
+  filter: brightness(0.97);
+}
+
+.loop-message {
+  min-height: 36px;
+  margin: 10px 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111111;
+}
+
+.login-text a {
+  color: #5e6cff;
+  text-decoration: underline;
+  font-style: italic;
+}
 
 /* ── TÍTULOS DE SECCIÓN ─────────────────────── */
 section h2 {
