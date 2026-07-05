@@ -285,19 +285,32 @@ color: var(--gris-oscuro);
 }
 
 /* ── TÍTULOS DE SECCIÓN ─────────────────────── */
-section h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 28px;
-  padding-bottom: 10px;
-  border-bottom: 3px solid var(--gris-oscuro);
+.section-heading {
+  max-width: 1280px;
+  margin: 18px auto 56px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
 }
 
-#tecnicas h2        { border-color: var(--azul); }
-#tips-de-profesionales h2 { border-color: var(--lila); }
-#diario h2          { border-color: var(--amarillo); }
+.section-heading h2 {
+  max-width: 900px;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.05;
+  font-weight: 800;
+  color: var(--gris-oscuro);
+}
+
+.section-heading p {
+  max-width: 920px;
+  margin-top: 14px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: var(--gris-oscuro);
+}
 
 /* ── GRILLA DE TARJETAS ─────────────────────── */
 .grilla {
