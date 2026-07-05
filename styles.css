@@ -312,6 +312,61 @@ color: var(--gris-oscuro);
   color: var(--gris-oscuro);
 }
 
+/* --- SECCIÓN DE CATEGORÍAS -------------------- */
+.categories {
+  padding-top: 76px;
+  padding-bottom: 78px;
+}
+
+.category-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+}
+
+.category-card {
+  background-color: var(--blanco);
+  border: var(--borde-suave);
+  border-radius: 18px;
+  padding: 42px 24px 30px;
+  min-height: 300px;
+
+  text-align: center;
+  box-shadow: var(--sombra-suave);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-card:hover {
+  box-shadow: var(--sombra-fuerte)
+}
+
+.icon {
+  font-size: 2.3rem;
+  margin-bottom: 16px;
+}
+
+.category-card h3 {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--gris-oscuro);
+  margin-bottom: 12px;
+}
+
+.category-card p {
+  font-size: 0.95rem;
+  line-height: 1.28;
+  margin-bottom: 26px;
+}
+
+.category-card a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-style: italic;
+}
+
 /* ── GRILLA DE TARJETAS ─────────────────────── */
 .grilla {
   display: grid;
