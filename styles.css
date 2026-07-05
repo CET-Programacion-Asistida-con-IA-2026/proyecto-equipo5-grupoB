@@ -267,6 +267,23 @@ color: var(--gris-oscuro);
   font-style: italic;
 }
 
+/* --- CAROUSEL ------------------------------ */
+.carousel {
+  max-width: 1280px;
+  height: 500px;
+  margin: 42px auto 0;
+  overflow: hidden;
+}
+
+.carousel-inner, .carousel-item {
+  height: 100%;
+}
+
+.carousel img {
+  height: 500px;
+  object-fit: cover;
+}
+
 /* ── TÍTULOS DE SECCIÓN ─────────────────────── */
 section h2 {
   font-size: 1.5rem;
