@@ -102,6 +102,13 @@ gap: 32px;
   color:#87BBFF
 }
 
+.imagen-principal-bienestar {
+  width: min(34vw, 360px);
+  min-width: 220px;
+  height: auto;
+  object-fit: contain;
+}
+
 /*---- SECCIÓN DEL MOOD TRACKER ---------------------------*/
 .seccion-mood-tracker {
   padding: 80px 56px;
