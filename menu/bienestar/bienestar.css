@@ -184,3 +184,45 @@ gap: 32px;
   line-height: 1.35;
   margin-bottom: 26px;
 }
+
+/* ------ BOTONES DE MOOD -----------------*/
+.selector-moods {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.icono-mood {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.boton-mood {
+  border: none;
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  padding: 14px 8px 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px #00000018;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.boton-mood:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-suave);
+}
+
+.boton-mood.activo {
+  outline: 3px solid var(--gris-oscuro);
+}
+
+.boton-mood strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.75rem;
+  color: var(--gris-oscuro);
+}
