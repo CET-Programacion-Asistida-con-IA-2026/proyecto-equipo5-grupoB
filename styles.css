@@ -159,7 +159,7 @@ main section{
 }
 
 /*--- ETIQUETAS --------------------------------*/
-.mini-pill {
+.etiqueta {
   display: inline-block;
   background-color: var(--amarillo);
   color: var(--gris-oscuro);
@@ -168,20 +168,20 @@ main section{
   box-shadow: var(--sombra-suave)
 }
 
-.mini-pill{
+.etiqueta {
   padding: 8px 22px;
   font-size: 0.82rem;
 }
 
 /*--- SECCIÓN DEL HERO --------------------------*/
-.hero {
+.seccion-principal {
   position: relative;
   padding-top: 60px;
   padding-bottom: 48px;
   overflow: hidden;
 }
 
-.hero-content {
+.contenido-principal {
   max-width: relative;
   margin: 0 auto;
 
@@ -191,12 +191,12 @@ main section{
   gap: 56px;
 }
 
-.hero-text {
+.texto-principal {
   position: relative;
   z-index: 1;
 }
 
-.hero-text h1 {
+.texto principal h1 {
   max-width: 760px;
   font-size: clamp(3rem,5.5vw,5rem);
   line-height: 0.98;
@@ -205,7 +205,7 @@ main section{
   color: var(--negro);
 }
 
-.hero-text p {
+.texto principal p {
 max-width: 700px;
 margin-top: 18px;
 
@@ -217,14 +217,14 @@ color: var(--gris-oscuro);
 }
 
 /* -- Card del hero -----------------------------*/
-.hero-card {
+.tarjeta-principal {
   background-color: var(--blanco);
   padding: 40px 38px 28px;
   box-shadow: var(--sombra-fuerte);
   text-align: center;
 }
 
-.hero-card h2 {
+.tarjeta-principal h2 {
   font-size: 2rem;
   line-height: 1.05;
   margin-bottom: 24px;
@@ -313,7 +313,7 @@ color: var(--gris-oscuro);
 }
 
 /* --- SECCIÓN DE CATEGORÍAS -------------------- */
-.categories {
+.seccion-categorias {
   padding-top: 76px;
   padding-bottom: 78px;
 }
