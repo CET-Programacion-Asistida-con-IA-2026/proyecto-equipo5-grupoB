@@ -174,7 +174,7 @@ main section{
 }
 
 /*--- SECCIÓN DEL HERO --------------------------*/
-.seccion-principal {
+.seccion-principal seccion-con-borde {
   position: relative;
   padding-top: 60px;
   padding-bottom: 48px;
@@ -196,7 +196,7 @@ main section{
   z-index: 1;
 }
 
-.texto principal h1 {
+.texto-principal h1 {
   max-width: 760px;
   font-size: clamp(3rem,5.5vw,5rem);
   line-height: 0.98;
@@ -205,7 +205,7 @@ main section{
   color: var(--negro);
 }
 
-.texto principal p {
+.texto-principal p {
 max-width: 700px;
 margin-top: 18px;
 
@@ -366,6 +366,100 @@ color: var(--gris-oscuro);
   font-weight: 600;
   font-style: italic;
 }
+
+/* --- SECCIÓN DE EXPERIENCIAS -------------------*/
+.seccion-experiencias {
+  padding-top: 72px;
+  padding-bottom: 84px;
+}
+
+.section-top {
+  max-width: 1280px;
+  margin: 0 auto 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.boton-compartir {
+  min-width: 360px;
+  background-color: #87BBFF;
+  border-radius: 999px;
+  padding: 16px 22px 16px 38px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1.15rem;
+  box-shadow: var(--sombra-suave);
+}
+
+.boton-compartir span {
+  width: 56px;
+  height: 56px;
+  margin-right: -18px;
+  background-color: var(--gris-claro);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  box-shadow: var(--sombra-fuerte);
+}
+
+.grilla-resenas {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.tarjeta-resena {
+background-color: var(--blanco);
+border: var(--borde-suave);
+border-radius: 22px;
+padding: 18px;
+box-shadow: var(--sombra-suave);
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-resena:hover {
+  box-shadow: var(--sombra-fuerte);
+}
+
+.avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  background:  radial-gradient(circle at 50% 38%, #8E8E86 0 12px, transparent 13px),
+    radial-gradient(circle at 50% 88%, #8E8E86 0 22px, transparent 23px),
+    #F8F8F8;
+  border: 2px solid #AAAAAA;
+}
+
+.tarjeta-resena h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.rol {
+  font-size: 0.75rem;
+  margin-bottom: 4px;
+}
+
+.estrellas {
+  color: var(--amarillo);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.tarjeta-resena p:last-child {
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
 
 
 
