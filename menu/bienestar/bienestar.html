@@ -34,13 +34,78 @@
       <img src="Imagenes/Cerebro Salud Mental.jpeg" alt="Cerebro meditando">
     </section>
 
-    <!---- BLOQUE PRINCIPAL: MOOD TRACKER Y MEDITACIÓN DE RESPIRACIÓN ---------------->
-    <section class="grilla-principal">
-      <!--- Moodtracker ------>
-      <article class="tarjeta tarjeta-animo" id="mood-tracker">
-        <span class="etiqueta etiqueta-secundaria">MOOD TRACKER</span>
+    <!---- SECCIÓN MOOD TRACKER ---------------->
+    <section class="seccion-mood-tracker" id="mood-tracker">
+      <div class="encabezado-mood">
+        <span class="etiqueta">MOOD TRACKER</span>
         <h2>¿Cómo te sentís hoy?</h2>
-      </article>
+      </div>
+      <div class="contenedor-mood">
+        <article class="tarjeta-mood tarjeta-puntaje">
+          <h3>Tu bienestar emocional</h3>
+
+          <div class="circulo-puntaje">
+            <span id="porcentaje-bienestar">0%</span>
+          </div>
+          <p id="mensaje-puntaje" class="mensaje-puntaje">
+            Todavía no hay registros. Elegí cómo te sentís hoy para empezar.
+          </p>
+
+          <div class="selector-moods">
+            <button class="botton-mood mood-tranquilo" data-mood="tranquilo" aria-label="Tranquilo/a">
+              <span class="carita carita-tranquilo"></span>
+              <strong>Tranquilo/a</strong>
+            </button>
+
+            <button class="botton-mood mood-motivado" data-mood="motivado" aria-label="Motivado/a">
+              <span class="carita carita-motivado"></span>
+              <strong>Motivado/a</strong>
+            </button>
+
+            <button class="botton-mood mood-cansado" data-mood="cansado" aria-label="Cansado/a">
+              <span class="carita carita-cansado"></span>
+              <strong>Cansado/a</strong>
+            </button>
+
+            <button class="botton-mood mood-nerviosos" data-mood="nervioso" aria-label="Nervioso/a">
+              <span class="carita carita-nervioso"></span>
+              <strong>Nervioso/a</strong>
+            </button>
+
+            <button class="botton-mood mood-saturado" data-mood="saturado" aria-label="Saturado/a">
+              <span class="carita carita-saturado"></span>
+              <strong>Saturado/a</strong>
+            </button>
+          </div>
+
+          <div class="caja-consejo">
+            <h4>"Consejo para hoy"</h4>
+          </div>
+        </article>
+
+        <article class="tarjeta-mood tarjeta-calendario">
+          <div class="calendario-header">
+            <button id="mes-anterior" class="boton-mes">‹</button>
+            <h3 id="titulo-calendario">Mes actual</h3>
+            <button id="mes-siguiente" class="boton-mes">›</button>
+          </div>
+
+          <div class="dias-semana">
+            <span>Dom</span>
+            <span>Lun</span>
+            <span>Mar</span>
+            <span>Mié</span>
+            <span>Jue</span>
+            <span>Vie</span>
+            <span>Sáb</span>
+          </div>
+
+          <div id="calendario-moods" class="calendario-moods">
+            <!-- El calendario se genera con JavaScript -->
+          </div>
+        </article>
+
+      </div>
     </section>
 
 
