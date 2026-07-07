@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="bienestar.css">
 </head>
 <body>
-    <!-- HEADER / MENÚ --------------->
+    <!-- HEADER / MENÚ --->
     <header class="site-header" id="inicio">
     <nav class="navbar">
       <a class="logo" href="index.html" aria-label="Volver al inicio">
-        <img src="Imagenes/stoptheloop.svg" alt="Logo de Stop the Loop">
+        <img src="menu/bienestar/logo-para-bienestar.svg" alt="Logo de Stop the Loop">
       </a>
   
       <ul class="nav-links">
@@ -24,17 +24,17 @@
     </nav>
   </header>
   <main>
-    <!----- SECCIÓN PRINCIPAL BIENESTAR --------------------------->
+    <!----- SECCIÓN PRINCIPAL BIENESTAR -->
     <section class="seccion-bienestar" id="bienestar">
       <div class="bienestar-contenido">
         <span class="etiqueta">BIENESTAR</span>
         <h1>Cuidarte también es parte de estudiar.</h1>
         <p>Un espacio para registrar cómo te sentís, calmar los nervios antes de un examen y construir pequeños hábitos que te ayudarán a sostener tu rutina.</p>
       </div> 
-      <img src="Imagenes/Cerebro Salud Mental.jpeg" alt="Cerebro meditando">
+      <img src="cerebro-salud-mental.jpeg" alt="Cerebro meditando">
     </section>
 
-    <!---- SECCIÓN MOOD TRACKER ---------------->
+    <!---- SECCIÓN MOOD TRACKER -->
     <section class="seccion-mood-tracker" id="mood-tracker">
       <div class="encabezado-mood">
         <span class="etiqueta">MOOD TRACKER</span>
@@ -108,7 +108,18 @@
       </div>
     </section>
 
-
+    <!---- SECCIÓN MEDITACIÓN (RESPIRACIÓN GUIADA)-->
+    <article class="tarjeta tarjeta-respiración" id="respiracion">
+      <span class="etiqueta etiqueta-secundaria">RESPIRACIÓN GUIADA</span>
+      <h2>Respirá conmigo</h2>
+      <p>Usa este espacio antes de rendir o cuando sientas que te estás bloqueando.</p>
+      <div class="zona-respiracion">
+        <div class="circulo-respiracion" id="circulo-respiracion" aria-hidden="true"></div>
+        <p id="texto-respiracion" class="texto-respiracion">¿Preparado/a?</p>
+      </div>
+      <button class="btn btn-secundario" id="btn-respiracion">Empezar respiración</button>
+      <p class="nota-chica">Ciclo sugerido: inhalar, sostener y exhalar. Repetilo 3 veces o hasta calmarte.</p>
+    </article>
 
   </main>
 
