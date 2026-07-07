@@ -226,3 +226,24 @@ gap: 32px;
   font-size: 0.75rem;
   color: var(--gris-oscuro);
 }
+
+/* ------- CONSEJO --------------------------*/
+
+.caja-consejo {
+  background-color: #f7f7f7;
+  border-radius: 22px;
+  padding: 20px;
+  border: var(--borde-suave);
+}
+
+.caja-consejo h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--gris-oscuro);
+}
+
+.caja-consejo p {
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
