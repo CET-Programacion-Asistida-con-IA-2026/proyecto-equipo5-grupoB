@@ -512,11 +512,46 @@ transition: transform 0.2s ease, box-shadow 0.2s ease;
   line-height: 1.35;
 }
 
+/* --- SECCIÓN FINAL ---------------------------- */
+.seccion-final {
+  text-align: center;
+  padding-top: 88px;
+  padding-bottom: 82px;
+  border-bottom: var(--borde-suave);
+}
+
+.seccion-final h2 {
+  max-width: 1050px;
+  margin: 0 auto;
+  font-size: clamp(2.7rem, 5.5vw, 5.4rem);
+  line-height: 1.05;
+  font-weight: 800;
+  color: var(--gris-oscuro);
+}
+
+.seccion-final strong {
+  color: var(--lila);
+}
+
+.seccion-final p {
+  max-width: 760px;
+  margin: 22px auto 32px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
 /* ── FOOTER ─────────────────────────────────── */
-footer {
+.footer {
   text-align: center;
   padding: 24px;
   font-size: 0.85rem;
   color: var(--blanco);
   background-color: var(--gris-oscuro);
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
 }
