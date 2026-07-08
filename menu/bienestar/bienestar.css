@@ -103,22 +103,21 @@ gap: 32px;
 }
 
 /*--- BOTONES GENERALES ------------------------ */ 
+/* BOTONES */
 .btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-
   border: none;
   cursor: pointer;
-
-  font-family: 'Poppins', sans-serif;
   font-weight: 700;
-
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .btn:hover,
-.loop-option:hover:hover {
+.boton-animo:hover,
+.boton-consejo:hover,
+.idea-habito:hover {
   transform: translateY(-3px);
 }
 
@@ -131,13 +130,22 @@ gap: 32px;
   box-shadow: var(--sombra-suave);
 }
 
-.btn-large {
+.btn-principal {
   background-color: var(--lila);
   color: var(--gris-oscuro);
   border-radius: 999px;
-  padding: 18px 52px;
-  font-size: 1.1rem;
+  padding: 16px 34px;
+  font-size: 1rem;
   box-shadow: var(--sombra-fuerte);
+}
+
+.btn-secundario {
+  background-color: var(--azul);
+  color: var(--negro);
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-size: 1rem;
+  box-shadow: var(--sombra-suave);
 }
 
 /* ── MAIN ───────────────────────────────────── */
@@ -152,6 +160,23 @@ main section{
 
 .section-border {
   border-bottom: var(--borde-suave);
+}
+
+/* ----- TARJETAS -----------------------------------*/
+.etiqueta {
+  display: inline-block;
+  background-color: var(--amarillo);
+  color: var(--gris-oscuro);
+  border-radius: 999px;
+  padding: 8px 22px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  box-shadow: var(--sombra-suave);
+}
+
+.etiqueta-secundaria {
+  background-color: var(--lila);
+  margin-bottom: 16px;
 }
 
 /* ---- SECCION PRINCIPAL BIENESTAR --------------------*/
@@ -213,6 +238,7 @@ color: var(--gris-oscuro);
     transform: translateY(-20px);
   }
 }
+
 /*---- SECCIÓN DEL MOOD TRACKER ---------------------------*/
 .seccion-mood-tracker {
   padding: 80px 56px;
