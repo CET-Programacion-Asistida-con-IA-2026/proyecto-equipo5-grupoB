@@ -102,13 +102,117 @@ gap: 32px;
   color:#87BBFF
 }
 
-.imagen-principal-bienestar {
-  width: min(34vw, 360px);
-  min-width: 220px;
-  height: auto;
-  object-fit: contain;
+/*--- BOTONES GENERALES ------------------------ */ 
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  cursor: pointer;
+
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.btn:hover,
+.loop-option:hover:hover {
+  transform: translateY(-3px);
+}
+
+.btn-nav {
+  background-color: var(--blanco);
+  color: var(--negro);
+  border: var(--borde-suave);
+  border-radius: 999px;
+  padding: 12px 26px;
+  box-shadow: var(--sombra-suave);
+}
+
+.btn-large {
+  background-color: var(--lila);
+  color: var(--gris-oscuro);
+  border-radius: 999px;
+  padding: 18px 52px;
+  font-size: 1.1rem;
+  box-shadow: var(--sombra-fuerte);
+}
+
+/* ── MAIN ───────────────────────────────────── */
+main {
+  width: 100%;
+}
+
+main section{
+  padding-left: 56px;
+  padding-right: 56px;
+}
+
+.section-border {
+  border-bottom: var(--borde-suave);
+}
+
+/* ---- SECCION PRINCIPAL BIENESTAR --------------------*/
+.seccion-bienestar {
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 48px;
+  overflow: hidden;
+}
+
+.bienestar-contenido {
+  max-width: relative;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  align-items: center;
+  gap: 56px;
+}
+
+.bienestar-texto {
+  position: relative;
+  z-index: 1;
+}
+
+.bienestar-texto h1 {
+  max-width: 760px;
+  font-size: clamp(3rem,5.5vw,5rem);
+  line-height: 0.98;
+  letter-spacing: -1px;
+  font-weight: 800;
+  color: var(--negro);
+}
+
+.bienestar-texto p {
+max-width: 700px;
+margin-top: 18px;
+
+font-family: 'Courier Prime';
+font-size: clamp(1.15rem, 2vw, 1.55rem);
+line-height: 1.15;
+font-weight: 700;
+color: var(--gris-oscuro);
+}
+
+.imagen-principal-bienestar {
+  width: min(34vw, 360px);
+  min-width: 340px;
+  height: auto;
+  object-fit: contain;
+  animation: flotar 2.5s ease-in-out infinite;
+}
+
+@keyframes flotar {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
 /*---- SECCIÓN DEL MOOD TRACKER ---------------------------*/
 .seccion-mood-tracker {
   padding: 80px 56px;
