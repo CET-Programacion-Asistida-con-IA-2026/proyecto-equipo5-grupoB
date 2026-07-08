@@ -386,8 +386,15 @@ color: var(--gris-oscuro);
 }
 
 /* --- CALENDARIO ------------------------*/
+.calendario-moods {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
 .dia-calendario {
   position: relative;
+  aspect-ratio: 1 / 1;
   text-align: center;
   padding: 8px 0;
 }
@@ -400,4 +407,35 @@ color: var(--gris-oscuro);
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.calendario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.dias-semana {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 13px;
+}
+
+.boton-mes {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--amarillo);
+  font-size: 1.3rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.boton-mes:hover {
+  opacity: 0.70;
 }
