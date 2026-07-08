@@ -30,3 +30,17 @@ const moods = {
     consejo: "Si te sentís saturado/a, vaciá tu cabeza en una lista. Después elegí solo una cosa pequeña para resolver."
   }
 };
+
+let hoy = new Date();
+let diaFormateado = hoy.toISOString().split("T")[0]; 
+// esto da algo como "2026-07-07"
+
+const botonesMood = document.querySelectorAll(".boton-mood");
+
+botonesMood.forEach(boton => {
+  boton.addEventListener("click", () => {
+    const mood = boton.dataset.mood; // toma el valor de data-mood="motivado"
+    moodsGuardados[diaFormateado] = mood;
+    console.log(moodsGuardados); // para que veas qué se guardó
+  });
+});
