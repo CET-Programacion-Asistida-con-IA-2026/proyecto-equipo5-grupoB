@@ -2,7 +2,7 @@
 // MOOD TRACKER - Stop the Loop
 // =============================================
 
-// 1. Moods disponibles
+// Moods disponibles
 const moods = {
   tranquilo: {
     imagen: "mood-tracker-circulos/tranquilo.jpeg",
@@ -31,9 +31,51 @@ const moods = {
   }
 };
 
+let moodsGuardados = {}
+
 let hoy = new Date();
 let diaFormateado = hoy.toISOString().split("T")[0]; 
 // esto da algo como "2026-07-07"
+
+let mesActual = hoy.getMonth();
+let anioActual = hoy.getFullYear();
+
+let primerDiaDelMes = new Date(anioActual, mesActual, 1).getDay();
+
+let diasEnElMes = new Date(anioActual, mesActual + 1, 0).getDate();
+
+const contenedorCalendario = document.getElementById("calendario-moods");
+
+function dibujarCalendario() {
+  contenedorCalendario.innerHTML = ""; // borra lo anterior antes de dibujar de nuevo
+
+  // Casilleros vacíos antes del día 1
+  for (let i = 0; i < primerDiaDelMes; i++) {
+    const vacio = document.createElement("div");
+    contenedorCalendario.appendChild(vacio);
+  }
+
+  for (let dia = 1; dia <= diasEnElMes; dia++) {
+  const diaDiv = document.createElement("div");
+  diaDiv.classList.add("dia-calendario");
+  diaDiv.textContent = dia;
+
+  // tu bloque, ahora usando el "dia" del loop
+  let diaConCero = String(dia).padStart(2, "0");
+  let mesConCero = String(mesActual + 1).padStart(2, "0");
+  let fechaDelDia = anioActual + "-" + mesConCero + "-" + diaConCero;
+
+  // acá preguntamos: ¿hay un mood guardado para esta fecha?
+  if (moodsGuardados[fechaDelDia]) {
+    const moodDelDia = moodsGuardados[fechaDelDia]; // ej: "motivado"
+    diaDiv.style.backgroundColor = "lightgreen"; // color de prueba, después lo cambiamos
+  }
+
+  contenedorCalendario.appendChild(diaDiv);
+}
+}
+
+dibujarCalendario();
 
 const botonesMood = document.querySelectorAll(".boton-mood");
 
@@ -42,5 +84,6 @@ botonesMood.forEach(boton => {
     const mood = boton.dataset.mood; // toma el valor de data-mood="motivado"
     moodsGuardados[diaFormateado] = mood;
     console.log(moodsGuardados); // para que veas qué se guardó
+    dibujarCalendario();
   });
 });
