@@ -704,7 +704,11 @@ color: var(--gris-oscuro);
   max-width: 680px;
   margin: 16px auto 28px;
   font-family: 'Courier Prime';
-  font-size: 1.25rem;
+  font-size: 1.50rem;
+}
+
+.seccion-cierre h2 {
+  font-size: clamp(2.2rem, 4.5vw, 3rem);
 }
 
 
