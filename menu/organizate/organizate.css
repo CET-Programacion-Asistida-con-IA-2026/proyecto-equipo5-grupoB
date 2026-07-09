@@ -16,6 +16,103 @@
   --blanco:  #FFFFFF;
 }
 
+/* ── HEADER / NAVBAR (MENÚ PRINCIPAL) ─────────────────────────────────── */
+.site-header {
+  background-color: var(--fondo);
+  border-bottom: var(--borde-suave);
+  z-index: 100;
+}
+
+.navbar {
+max-width: 1280px;
+min-height: 82px;
+margin: 0 auto;
+padding: 12px 20px;
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 32px;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+}
+
+.logo img{
+  width: 170px;
+  height: auto;
+  opacity: 0.65;
+}
+
+.nav-links{
+  list-style: none;
+  display:flex;
+  align-items: center;
+  gap: 56px;
+
+  margin: 0;
+  padding: 0;
+
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--negro);
+}
+
+.nav-links a {
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color:#87BBFF
+}
+
+/*--- BOTONES GENERALES ------------------------ */ 
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  cursor: pointer;
+
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover,
+.loop-option:hover,
+.category-card:hover {
+  transform: translateY(-3px);
+}
+
+.btn-nav {
+  background-color: var(--blanco);
+  color: var(--negro);
+  border: var(--borde-suave);
+  border-radius: 999px;
+  padding: 12px 26px;
+  box-shadow: var(--sombra-suave);
+}
+
+.btn-large {
+  background-color: var(--lila);
+  color: var(--gris-oscuro);
+  border-radius: 999px;
+  padding: 18px 52px;
+  font-size: 1.1rem;
+  box-shadow: var(--sombra-fuerte);
+}
+
+
+
+
+
+
+
 /* =========================================================
     ESTILOS  PARA LA PÁGINA ORGANÍZATE
 ============================================================ */

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rompé con el ciclo de la procrastinación.</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="stoptheloop.css">
+</head>
+<body>
+
+  <header class="site-header" id="inicio">
+    <nav class="navbar">
+      <a class="logo" href="#inicio" aria-label="Ir al inicio">
+        <img src="../stoptheloop.svg" alt="Logo de Stop the Loop">
+      </a>
+      
+      <!--Menú Principal-->
+      <ul class="nav-links">
+        <li><a href="../aprende/aprende.html">Aprendé</a></li>
+        <li><a href="../organizate/organizate.html">Organizate</a></li>
+        <li><a href="../bienestar/bienestar.html">Bienestar</a></li>
+        <li><a href="../comunidad/comunidad.html">Comunidad</a></li>
+      </ul>
+      <a href="../registro/registro.html" class="btn btn-nav">Registrate</a>
+    </nav>
+    
+  </header>
+
+  <main>
+    <!--Sección Principal-->
+     <section class="seccion-principal seccion-con-borde">
+        <div class="contenido-principal">
+          
+          <div class="texto-principal">
+            <div class="fondo-loop" aria-hidden="true"></div>
+            <h1>Rompé con el ciclo de la procrastinación.</h1>
+            <p>Herramientas, recursos y apoyo para estudiar mejor y cuidar tu bienestar.</p>
+          </div>
+
+        <aside class="tarjeta-principal">
+          <h2>¿Qué loop querés romper hoy?</h2>
+          <button class="loop-option" data-message="Buenísimo. Empecemos por armar una planificación simple para tu semana.">Quiero organizar mejor mi tiempo</button>
+          <button class="loop-option" data-message="Esta bien, no te preocupes. Te conviene empezar por el planificador de exámenes.">Tengo que estudiar y no sé por donde empezar</button>
+          <button class="loop-option" data-message="Para trabajar tu concentración podés usar técnicas cortas y bloques de estudio.">Necesito enfocarme en mis responsabilidades</button>
+          <button class="loop-option" data-message="La sección de bienestar te puede ayudar a sostener hábitos.">Quiero mejorar mis hábitos y bienestar</button>
+          <p id="loop-message" class="loop-message"></p>
+          <p class="login-text">
+            ¿Ya tenés una cuenta en Stop the Loop?
+            <a href="../registro/registro.html">Iniciar Sesión</a>
+          </p>
+        </aside>
+        </div>
+
+        <div id="carouselExampleAutoPlaying" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+            <img src="../carousel-1.jpeg" class="d-block w-100" alt="Escritorio con hora y velas">
+            </div>
+            <div class="carousel-item">
+              <img src="../imagenes/carousel-2.jpeg" class="d-block w-100" alt="Escritorio de estudio con hora">
+            </div>
+            <div class="carousel-item">
+              <img src="../imagenes/carousel-3.jpeg" class="d-block w-100" alt="Escritorio con apuntes encima">
+            </div>
+            <div class="carousel-item">
+              <img src="../imagenes/carousel-4.jpeg" class="d-block w-100" alt="Computadora con horarios">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
+
+    <!--Sección de categorias-->
+    <section class="seccion-categorias seccion-con-borde">
+      <span class="etiqueta">¿POR DÓNDE EMPIEZO?</span>
+      <div class="section-heading">
+        <div>
+          <h2>Todo lo que necesitás, en un solo lugar.</h2>
+          <p>Explora nuestras secciones y encontrá el apoyo que necesitás para alcanzar tus objetivos.</p>
+        </div>
+        <div class="fondo-loop chico" aria-hidden="true"></div>
+      </div>
+      <div class="category-grid">
+        <article class="category-card" id="aprende">
+          <div class="icon">📖</div>
+          <h3>APRENDÉ</h3>
+          <p>Descubrí técnicas de estudio y recursos para potenciar tu aprendizaje.</p>
+          <a href="#tips">EXPLORAR</a>
+        </article>
+        <article class="category-card" id="organizate">
+          <div class="icon">🗓️</div>
+          <h3>ORGANIZATE</h3>
+          <p>Planificá tus días y prepará tus exámenes con herramientas pensadas para estudiantes.</p>
+          <a href="#tips">EXPLORAR</a>
+        </article>
+        <article class="category-card" id="bienestar">
+          <div class="icon">🤲</div>
+          <h3>BIENESTAR</h3>
+          <p>Cuidá tu salud mental y construí hábitos que acompañen tu rutina.</p>
+          <a href="menu/bienestar/bienestar.html">EXPLORAR</a>
+        </article>
+        <article class="category-card" id="comunidad">
+          <div class="icon">👥</div>
+          <h3>COMUNIDAD</h3>
+          <p>Conectá con otros estudiantes, compartí experiencias y encontrá apoyo.</p>
+          <a href="#tips">EXPLORAR</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!--Sección de Experiencias-->
+    <section class="seccion-experiencias seccion-con-borde">
+    <div class="section-top">
+      <span class="etiqueta">EXPERIENCIAS</span>
+      <a href="#compartir" class="boton-compartir">
+        Compartí tu experiencia
+        <span>+</span>
+      </a>
+    </div>
+    <div class="grilla-resenas">
+      <article class="tarjeta-resena">
+        <div class="avatar"></div>
+        <div>
+          <h3>Lucía Gonzáles</h3>
+          <p class="rol">Estudiante de Medicina</p>
+          <p class="estrellas">★★★★★</p>
+          <p>"Lo que más me gustó fue que habla de estudiar pero también te recuerda que descansar forma parte del proceso."</p>
+        </div>
+      </article>
+
+      <article class="tarjeta-resena">
+        <div class="avatar"></div>
+        <div>
+          <h3>Valentin Domínguez</h3>
+          <p class="rol">Estudiante de Diseño Gráfico</p>
+          <p class="estrellas">★★★★★</p>
+          <p>"Empecé usando el planner para organizarme y terminé usando casi todas las herramientas de esta página. Esta buenísima!"</p>
+        </div>
+      </article>
+      <article class="tarjeta-resena">
+        <div class="avatar"></div>
+        <div>
+          <h3>Camila Martinez</h3>
+          <p class="rol">Estudiante de Ingeniería Industrial</p>
+          <p class="estrellas">★★★★★</p>
+          <p>"Me gustaron muchísimo las herramientas que brinda la página. Definitivamente fue un antes y un después en mi proceso académico."</p>
+        </div>
+      </article>
+      <article class="tarjeta-resena">
+        <div class="avatar"></div>
+        <div>
+          <h3>Luca Rodríguez</h3>
+          <p class="rol">Estudiante de Ciencia de Datos</p>
+          <p class="estrellas">★★★★★</p>
+          <p>"La página es muy fácil de usar e intuitiva. Me gustaría que siga sumando más contenido."</p>
+        </div>
+      </article>
+
+    </div>
+    </section>
+
+    <!--Sección de Profesionales (Falta agregar referencias para llevar al usuario a ese articulo)-->
+    <section class="seccion-tips seccion-con-borde" id="tips">
+      <span class="etiqueta">¿NECESITÁS UNA MANO?</span>
+      <div class="section-heading">
+        <div>
+          <h2>Un pequeño consejo puede hacer la diferencia.</h2>
+          <p>Explorá artículos y recomendaciones creadas por profesionales para ayudarte a organizarte, estudiar mejor y cuidar tu bienestar.</p>
+        </div>
+        <div class="fondo-loop chico" aria-hidden="true"></div>
+      </div>
+      <div class="grilla-articulos">
+        <article class="tarjeta-articulo">
+          <p class="autor">Lic. Sofía Martínez - Psicóloga</p>
+          <h3>¿Por qué procrastinamos incluso cuando queremos empezar?</h3>
+          <p>
+            Descubrí por qué nuestro cerebro evita ciertas tareas y conocé estrategias simples para romper ese ciclo.
+          </p>
+          <a href="#">Leer artículo completo</a>
+        </article>
+        <article class="tarjeta-articulo">
+          <p class="autor">Prof. Martín López - Especialista en técnicas de estudio</p>
+          <h3>¿Cómo preparar un examen sin estudiar hasta la madrugada?</h3>
+          <p>
+            Organizá tu tiempo de estudio con un método simple que te permita llegar al examen con mayor confianza.
+          </p>
+          <a href="#">Leer artículo completo</a>
+        </article>
+        <article class="tarjeta-articulo">
+          <p class="autor">Dra. Agustina Fernández - Especialista en Medicina del sueño</p>
+          <h3>Dormir mejor también es estudiar mejor.</h3>
+          <p>
+            Descubrí cómo la calidad del sueño influte en tu memoria, concentración y rendimiento académico.
+          </p>
+          <a href="#">Leer artículo completo</a>
+        </article>
+      </div>
+    </section>
+
+    <!--Sección Final-->
+    <section class="seccion-final" id="registro">
+      <h2>
+        DEJÁ DE DAR VUELTAS.
+        <br>
+        EL MEJOR MOMENTO PARA EMPEZAR ES <strong>AHORA.</strong>
+      </h2>
+      <p>Herramientas simples para organizar tu tiempo, tus ideas y tus objetivos.</p>
+      <a href="#organizate" class="btn btn-large">EMPEZAR AHORA</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <a class="logo footer-logo" href="#inicio">
+        <span><strong>STOP THE LOOP</strong> </span>
+      </a>
+    </div>
+    <p>Stop the Loop © 2026</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="stoptheloop.js"></script>
+</body>
+</html>
