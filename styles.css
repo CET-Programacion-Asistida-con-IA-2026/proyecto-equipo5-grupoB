@@ -216,6 +216,17 @@ font-weight: 700;
 color: var(--gris-oscuro);
 }
 
+.imagen-hero {
+  grid-column: 1 / -1;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  height: 420px;
+  margin-top: -60px;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
 /* -- Card del hero -----------------------------*/
 .tarjeta-principal {
   background-color: var(--blanco);
@@ -267,50 +278,7 @@ color: var(--gris-oscuro);
   font-style: italic;
 }
 
-/* --- CAROUSEL ------------------------------ */
-.carousel {
-  max-width: 1280px;
-  height: 500px;
-  margin: 42px auto 0;
-  overflow: hidden;
-}
 
-.carousel-inner, .carousel-item {
-  height: 100%;
-}
-
-.carousel img {
-  height: 500px;
-  object-fit: cover;
-}
-
-/* ── TÍTULOS DE SECCIÓN ─────────────────────── */
-.section-heading {
-  max-width: 1280px;
-  margin: 18px auto 56px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 32px;
-}
-
-.section-heading h2 {
-  max-width: 900px;
-  font-size: clamp(2.2rem, 4vw, 3.5rem);
-  line-height: 1.05;
-  font-weight: 800;
-  color: var(--gris-oscuro);
-}
-
-.section-heading p {
-  max-width: 920px;
-  margin-top: 14px;
-  font-family: 'Courier Prime', monospace;
-  font-size: 1.25rem;
-  line-height: 1.2;
-  color: var(--gris-oscuro);
-}
 
 /* --- SECCIÓN DE CATEGORÍAS -------------------- */
 .seccion-categorias {
