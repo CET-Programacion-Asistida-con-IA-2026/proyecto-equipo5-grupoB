@@ -25,7 +25,8 @@
   </header>
   <main>
     <!----- SECCIÓN PRINCIPAL BIENESTAR -->
-    <section class="seccion-bienestar" id="bienestar">
+    <section class="seccion-bienestar section-border" id="bienestar">
+      <img src="nubes.svg" alt="" class="nube-decorativa">
       <div class="bienestar-contenido">
         <div class="bienestar-texto">
           <span class="etiqueta">BIENESTAR</span>
@@ -38,7 +39,7 @@
     </section>
 
     <!---- SECCIÓN MOOD TRACKER -->
-    <section class="seccion-mood-tracker" id="mood-tracker">
+    <section class="seccion-mood-tracker section-border" id="mood-tracker">
       <div class="encabezado-mood">
         <span class="etiqueta">MOOD TRACKER</span>
         <h2>¿Cómo te sentís hoy?</h2>
@@ -115,7 +116,7 @@
     </section>
 
     <!---- SECCIÓN MEDITACIÓN (RESPIRACIÓN GUIADA)-->
-    <section class="seccion-calma" id="respiracion">
+    <section class="seccion-calma section-border" id="respiracion">
       <div class="contenedor-calma">
         <h2>Pausa, respirá, seguí</h2>
         <button class="btn-calma-grande" id="btn-calmarme">Necesito calmarme</button>
@@ -123,7 +124,7 @@
     </section>
 
     <!-- HABIT TRACKER -->
-     <section class="grilla-habitos" id="habitos">
+     <section class="grilla-habitos section-border" id="habitos">
       <article class="tarjeta tracker-habitos">
         <span class="etiqueta etiqueta-secundaria">TRACKER DE HÁBITOS</span>
         <h2>Mis hábitos de hoy</h2>
@@ -148,11 +149,18 @@
         <div class="progreso-habitos">
          <p id="contador-habitos">Progreso: 0/0 hábitos</p>
           <div class="barra-progreso">
-        <div class="barra-completada" id="barra-completada" style="width: 0%;"></div>
+          <div class="barra-completada" id="barra-completada" style="width: 0%;"></div>
+          </div>
         </div>
-      </div>
-    </article>
-  </section>
+      </article>
+    </section>
+
+    <!-- CIERRE -->
+    <section class="seccion-cierre">
+      <h2>Un pequeño hábito puede cortar el loop.</h2>
+      <p>No hace falta hacer todo perfecto. Elegí una acción simple y empezá por ahí.</p>
+      <a href="#inicio" class="btn btn-principal">Volver arriba</a>
+    </section>
 
   </main>
   <div class="overlay-respiracion" id="overlay-respiracion">

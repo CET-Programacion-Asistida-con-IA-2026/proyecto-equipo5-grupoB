@@ -61,7 +61,7 @@ button, input {
 max-width: 1280px;
 min-height: 82px;
 margin: 0 auto;
-padding: 12px 48px;
+padding: 12px 20px;
 
 display: flex;
 justify-content: space-between;
@@ -75,7 +75,7 @@ gap: 32px;
 }
 
 .logo img{
-  width: 155px;
+  width: 170px;
   height: auto;
   opacity: 0.65;
 }
@@ -210,6 +210,7 @@ main section, main article {
 .bienestar-texto {
   position: relative;
   z-index: 1;
+  margin-left: 30px;
 }
 
 .bienestar-texto h1 {
@@ -226,27 +227,43 @@ max-width: 700px;
 margin-top: 18px;
 
 font-family: 'Courier Prime';
-font-size: clamp(1.15rem, 2vw, 1.55rem);
+font-size: clamp(1.10rem, 2vw, 1.40rem);
 line-height: 1.15;
 font-weight: 700;
 color: var(--gris-oscuro);
 }
 
 .imagen-principal-bienestar {
-  width: min(34vw, 360px);
+  width: min(34vw, 370px);
   min-width: 340px;
   height: auto;
   object-fit: contain;
+  justify-self: flex-start;
   animation: flotar 2.5s ease-in-out infinite;
 }
 
 @keyframes flotar {
   0%, 100% {
-    transform: translateY(0);
+    transform: translateY(-15);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-35px);
   }
+}
+
+.nube-decorativa {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.70;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bienestar-contenido {
+  position: relative;
+  z-index: 2;
 }
 
 /*---- SECCIÓN DEL MOOD TRACKER ---------------------------*/
@@ -674,6 +691,22 @@ color: var(--gris-oscuro);
   opacity: 1;
   font-weight: 600;
 }
+
+/*--- CIERRE -----------------------------------*/
+.seccion-cierre {
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 78px 56px 86px;
+}
+
+.seccion-cierre p {
+  max-width: 680px;
+  margin: 16px auto 28px;
+  font-family: 'Courier Prime';
+  font-size: 1.25rem;
+}
+
 
 /* ── FOOTER ─────────────────────────────────── */
 .footer {
