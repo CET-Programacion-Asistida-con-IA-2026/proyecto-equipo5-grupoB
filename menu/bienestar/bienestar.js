@@ -219,3 +219,67 @@ botonMesSiguiente.addEventListener("click", function() {
 // 11. Iniciar calendario y score al cargar
 crearCalendario();
 calcularBienestar();
+
+// RESPIRACIÓN
+const btnCalmarme = document.getElementById("btn-calmarme"); 
+const overlayRespiracion = document.getElementById("overlay-respiracion"); 
+const circuloRespiracionGrande = document.getElementById("circulo-respiracion-grande"); 
+
+btnCalmarme.addEventListener("click", function() {  
+  overlayRespiracion.style.display = "flex";
+  overlayRespiracion.style.opacity = "1";
+  circuloRespiracionGrande.classList.add("respirando"); 
+  cicloDeTexto();
+  intervaloRespiracion = setInterval(cicloDeTexto, 15000);
+});
+
+const btnCerrarOverlay = document.getElementById("btn-cerrar-overlay");
+const textoRespiracionGrande = document.getElementById("texto-respiracion-grande");
+
+btnCerrarOverlay.addEventListener("click", function() {  
+  cerrarOverlay();
+});
+
+function cicloDeTexto() {
+  textoRespiracionGrande.textContent = "Inhalá";
+
+  setTimeout(() => {
+    textoRespiracionGrande.textContent = "Sostené";
+  }, 5000);
+
+  setTimeout(() => {
+    textoRespiracionGrande.textContent = "Exhalá";
+  }, 10000);
+}
+
+let contadorCiclos = 0;
+let intervaloRespiracion;
+
+function cicloDeTexto() {
+  contadorCiclos++;
+
+  textoRespiracionGrande.textContent = "Inhalá";
+
+  setTimeout(() => {
+    textoRespiracionGrande.textContent = "Sostené";
+  }, 5000);
+
+  setTimeout(() => {
+    textoRespiracionGrande.textContent = "Exhalá";
+  }, 10000);
+
+  if (contadorCiclos >= 4) {
+  clearInterval(intervaloRespiracion);
+  cerrarOverlay();
+  contadorCiclos = 0;
+  }
+}
+
+function cerrarOverlay() {
+  overlayRespiracion.style.opacity = "0";
+
+  overlayRespiracion.addEventListener("transitionend", function () {
+    overlayRespiracion.style.display = "none";
+    circuloRespiracionGrande.classList.remove("respirando");
+  }, { once: true });
+}

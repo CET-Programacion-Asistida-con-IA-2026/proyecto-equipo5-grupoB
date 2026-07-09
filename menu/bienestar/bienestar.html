@@ -115,19 +115,30 @@
     </section>
 
     <!---- SECCIÓN MEDITACIÓN (RESPIRACIÓN GUIADA)-->
-    <article class="tarjeta tarjeta-respiración" id="respiracion">
-      <span class="etiqueta etiqueta-secundaria">RESPIRACIÓN GUIADA</span>
-      <h2>Respirá conmigo</h2>
-      <p>Usa este espacio antes de rendir o cuando sientas que te estás bloqueando.</p>
-      <div class="zona-respiracion">
-        <div class="circulo-respiracion" id="circulo-respiracion" aria-hidden="true"></div>
-        <p id="texto-respiracion" class="texto-respiracion">¿Preparado/a?</p>
+    <section class="seccion-calma" id="respiracion">
+      <div class="contenedor-calma">
+        <h2>Pausa, respirá, seguí</h2>
+        <button class="btn-calma-grande" id="btn-calmarme">Necesito calmarme</button>
       </div>
-      <button class="btn btn-secundario" id="btn-respiracion">Empezar respiración</button>
-      <p class="nota-chica">Ciclo sugerido: inhalar, sostener y exhalar. Repetilo 3 veces o hasta calmarte.</p>
-    </article>
+    </section>
 
   </main>
+  <div class="overlay-respiracion" id="overlay-respiracion">
+    <button class="btn-cerrar-overlay" id="btn-cerrar-overlay" aria-label="Cerrar">✕</button>
+    <div class="circulo-respiracion-grande" id="circulo-respiracion-grande">
+      <p class="texto-respiracion-grande" id="texto-respiracion-grande">¿Preparado/a?</p>
+    </div>
+  </div>
+
+<footer class="footer">
+    <div class="footer-grid">
+      <a class="logo footer-logo" href="#inicio">
+        <span><strong>STOP THE LOOP</strong> </span>
+      </a>
+    </div>
+    <p>Stop the Loop © 2026</p>
+  </footer>
+
   <script src="bienestar.js"></script>
 </body>
 </html>
