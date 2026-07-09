@@ -75,9 +75,9 @@ body {
 }
 
 
-/* =========================
+/* ===========================================================================
    DATOS ACADÉMICOS
-========================= */
+============================================================================== */
 
 /* Estilos para el encabezado del horario y calendario académico */
 .encabezado-calendario {
@@ -484,4 +484,85 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
 
 .color-leyenda.Proyecto{
     background:#00C2A8;
+}
+
+
+/* ===========================================================================
+    BASE DE LA ORGANIZACIÓN DE LA PÁGINA
+============================================================================== */
+.tarea{
+    background: var(--blanco);
+    border-left: 5px solid var(--lila);
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.form-tarea{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+#tituloTarea,
+#fechaTarea,
+#prioridadTarea{
+    padding:10px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:14px;
+}
+
+#tituloTarea{
+    flex:1;
+    min-width:200px;
+}
+
+#agregarTarea{
+    background: var(--lila);
+    color:white;
+    border:none;
+    border-radius:8px;
+    padding:10px 16px;
+    cursor:pointer;
+    transition:0.2s;
+}
+#agregarTarea:hover{
+    transform:translateY(-2px);
+}
+
+.eliminar-tarea{
+    margin-top:8px;
+    background:#ff6b6b;
+    color:white;
+    border:none;
+    border-radius:6px;
+    padding:6px 10px;
+    cursor:pointer;
+}
+
+.prioridad{
+    display:inline-block;
+    padding:4px 8px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+.prioridad.Alta{
+    background:#ffd6d6;
+    color:#b30000;
+}
+
+.prioridad.Media{
+    background:#fff2cc;
+    color:#8a6d00;
+}
+
+.prioridad.Baja{
+    background:#d7f5d7;
+    color:#1f6b1f;
 }

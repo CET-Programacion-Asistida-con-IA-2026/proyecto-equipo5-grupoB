@@ -235,6 +235,7 @@ const categoriaInput = document.getElementById("categoriaInput");
 let fechaActual = new Date();
 let fechaSeleccionada = null;
 
+
 function mostrarFechas(fecha = null) {
     listaFechas.innerHTML = "";
 
@@ -423,7 +424,6 @@ function renderizarCalendario() {
 
         const eventosDelDia = fechasGuardadas.filter(item => item.fecha === fechaCompleta);
     
-
         const tieneEvento = eventosDelDia.length > 0;
    
         const nombreEvento = eventosDelDia.map(item => item.evento).join(", ");
@@ -466,3 +466,117 @@ function actualizarSeleccionMes() {
 }
 
 renderizarCalendario();
+
+/* =================================================================================
+  PLANIFICADOR DE TAREAS
+script para agregar tareas a la lista de tareas y guardarlas en localStorage
+=================================================================================== */
+
+
+// Obtener las tareas guardadas en localStorage o inicializar un array vacío
+let tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+
+
+const tituloTarea = document.getElementById("tituloTarea");
+
+const prioridadTarea = document.getElementById("prioridadTarea");
+
+const fechaTarea = document.getElementById("fechaTarea");
+
+const agregarTarea = document.getElementById("agregarTarea");
+
+const listaTareas = document.getElementById("listaTareas");
+
+
+function renderizarTareas() {
+
+    listaTareas.innerHTML = "";
+
+    tareas.forEach((tarea, index) => {
+
+        listaTareas.innerHTML += `
+            <div class="tarea">
+
+                <div>
+                    <strong>${tarea.titulo}</strong>
+                </div>
+
+                <div>
+                    <span class="prioridad ${tarea.prioridad}">
+                       ${tarea.prioridad}
+                    </span>
+                </div>
+
+                <div>
+                    Fecha límite: ${tarea.fecha || "Sin fecha"}
+                </div>
+
+                <button
+                    class="eliminar-tarea"
+                    data-index="${index}">
+                    Eliminar
+                </button>
+
+            </div>
+        `;
+
+    });
+
+}
+
+renderizarTareas();
+
+listaTareas.addEventListener("click", event => {
+
+    const boton =
+        event.target.closest(".eliminar-tarea");
+
+    if (!boton) return;
+
+    const index =
+        Number(boton.dataset.index);
+
+    tareas.splice(index, 1);
+
+    localStorage.setItem(
+        "tareas",
+        JSON.stringify(tareas)
+    );
+
+    renderizarTareas();
+
+});
+
+
+
+// Agregar tarea al hacer clic en el botón "Agregar"
+agregarTarea.addEventListener("click", () => {
+
+    const titulo = tituloTarea.value.trim();
+    const prioridad = prioridadTarea.value;
+    const fecha = fechaTarea.value;
+
+    if (!titulo) {
+        alert("Ingresa una tarea.");
+        return;
+    }
+
+    tareas.push({
+        titulo,
+        prioridad,
+        fecha,
+        completada: false
+    });
+
+    localStorage.setItem(
+        "tareas",
+        JSON.stringify(tareas)
+    );
+
+    renderizarTareas();
+
+    tituloTarea.value = "";
+    fechaTarea.value = "";
+
+});
+
