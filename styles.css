@@ -154,7 +154,7 @@ main section{
   padding-right: 56px;
 }
 
-.section-border {
+.seccion-con-borde {
   border-bottom: var(--borde-suave);
 }
 
