@@ -1,0 +1,363 @@
+/* =============================================
+   Stop the Loop — aprende.css
+   Tipografías: Poppins + Courier Prime
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Courier+Prime&display=swap');
+
+/* ── VARIABLES (mismas que styles.css) ──────── */
+:root {
+  --lila:       #E7A8F8;
+  --azul:       #87BBFF;
+  --amarillo:   #FFB33F;
+  --gris-claro: #D9D9D9;
+  --gris-oscuro:#545654;
+  --fondo:      #F2F2F2;
+  --blanco:     #FFFFFF;
+  --negro:      #111111;
+
+  --sombra-suave:  0 6px 18px #0000002e;
+  --sombra-fuerte: 0 8px 22px #00000035;
+  --borde-suave:   1px solid #54565459;
+}
+
+/* ── RESET BÁSICO ───────────────────────────── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--fondo);
+  color: var(--gris-oscuro);
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; }
+
+/* ── NAVBAR ─────────────────────────────────── */
+.site-header {
+  background-color: var(--fondo);
+  border-bottom: var(--borde-suave);
+  z-index: 100;
+}
+.navbar {
+  max-width: 1280px;
+  min-height: 82px;
+  margin: 0 auto;
+  padding: 12px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+.logo { display: flex; align-items: center; }
+.logo img { width: 155px; height: auto; opacity: 0.65; }
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  margin: 0; padding: 0;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--negro);
+}
+.nav-links a { transition: color 0.2s ease; }
+.nav-links a:hover { color: var(--azul); }
+
+/* ── BOTONES ────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover { transform: translateY(-3px); }
+.btn-nav {
+  background-color: var(--blanco);
+  color: var(--negro);
+  border: var(--borde-suave);
+  border-radius: 999px;
+  padding: 12px 26px;
+  box-shadow: var(--sombra-suave);
+}
+
+/* ── MINI PILL (etiqueta) ───────────────────── */
+.mini-pill {
+  display: inline-block;
+  background-color: var(--amarillo);
+  color: var(--gris-oscuro);
+  border-radius: 999px;
+  font-weight: 700;
+  padding: 8px 22px;
+  font-size: 0.82rem;
+  box-shadow: var(--sombra-suave);
+}
+
+/* ── SECTION BORDER ─────────────────────────── */
+.section-border { border-bottom: var(--borde-suave); }
+
+/* ── HERO DE SECCIÓN ────────────────────────── */
+.aprende-hero {
+  background-color: var(--blanco);
+  padding: 72px 56px 64px;
+  border-bottom: var(--borde-suave);
+}
+.aprende-hero-content { max-width: 1280px; margin: 0 auto; }
+.aprende-hero h1 {
+  margin-top: 20px;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.0;
+  color: var(--negro);
+}
+.aprende-hero p {
+  margin-top: 16px;
+  font-family: 'Courier Prime', monospace;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  color: var(--gris-oscuro);
+  max-width: 600px;
+}
+
+/* ── INTRO DE SECCIÓN ───────────────────────── */
+.section-intro {
+  max-width: 1280px;
+  margin: 0 auto 48px;
+}
+.section-intro h2 {
+  margin-top: 16px;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--gris-oscuro);
+}
+.section-intro p {
+  margin-top: 12px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  max-width: 700px;
+}
+
+/* ── SECCIÓN TÉCNICAS ───────────────────────── */
+.tecnicas {
+  padding: 72px 56px 80px;
+}
+.tecnicas-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* ── TARJETA DE TÉCNICA ─────────────────────── */
+.tecnica-card {
+  background-color: var(--blanco);
+  border-radius: 18px;
+  border: var(--borde-suave);
+  box-shadow: var(--sombra-suave);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tecnica-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-fuerte);
+}
+
+.tecnica-header {
+  padding: 28px 24px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.tecnica-header.lila    { background-color: var(--lila); }
+.tecnica-header.azul    { background-color: var(--azul); }
+.tecnica-header.amarillo{ background-color: var(--amarillo); }
+.tecnica-header.gris    { background-color: var(--gris-claro); }
+
+.tecnica-emoji { font-size: 2rem; }
+.tecnica-header h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--negro);
+  line-height: 1.1;
+}
+
+.tecnica-body {
+  padding: 24px;
+}
+.tecnica-body p {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--gris-oscuro);
+  margin-bottom: 12px;
+}
+
+.tecnica-pasos { margin: 16px 0; }
+.tecnica-pasos h4 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--negro);
+  margin-bottom: 8px;
+}
+.tecnica-pasos ol {
+  padding-left: 18px;
+}
+.tecnica-pasos li {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-bottom: 4px;
+  color: var(--gris-oscuro);
+}
+
+.tecnica-tag {
+  display: inline-block;
+  background-color: var(--fondo);
+  border: var(--borde-suave);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 12px;
+  margin-right: 6px;
+  color: var(--gris-oscuro);
+}
+
+/* ── SECCIÓN TIPS DE PROFESIONALES ─────────── */
+.tips-profesionales {
+  padding: 72px 56px 80px;
+  background-color: var(--blanco);
+}
+
+/* ── FILTROS ────────────────────────────────── */
+.filtros {
+  max-width: 1280px;
+  margin: 0 auto 40px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.filtro-btn {
+  background-color: var(--fondo);
+  border: var(--borde-suave);
+  border-radius: 999px;
+  padding: 8px 22px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--gris-oscuro);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.filtro-btn:hover { transform: translateY(-2px); }
+.filtro-btn.activo {
+  background-color: var(--lila);
+  border-color: var(--lila);
+  color: var(--negro);
+}
+
+/* ── GRILLA DE ARTÍCULOS ────────────────────── */
+.articulos-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+/* ── TARJETA DE ARTÍCULO ────────────────────── */
+.articulo-card {
+  display: flex;
+  gap: 20px;
+  background-color: var(--fondo);
+  border-radius: 18px;
+  border: var(--borde-suave);
+  padding: 24px;
+  box-shadow: var(--sombra-suave);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.articulo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-fuerte);
+}
+.articulo-card.oculto { display: none; }
+
+.placeholder-foto {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: var(--gris-claro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.articulo-info { flex: 1; }
+.articulo-autor {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #888;
+  margin-bottom: 6px;
+}
+.articulo-info h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--negro);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.articulo-info p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--gris-oscuro);
+  margin-bottom: 14px;
+}
+
+/* Categorías de artículos */
+.articulo-categoria {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.articulo-categoria.ansiedad  { background-color: var(--lila);     color: var(--negro); }
+.articulo-categoria.estudio   { background-color: var(--azul);     color: var(--negro); }
+.articulo-categoria.sueno     { background-color: var(--amarillo); color: var(--negro); }
+.articulo-categoria.nutricion { background-color: var(--gris-claro); color: var(--negro); }
+
+/* Botón del artículo */
+.btn-articulo {
+  background: none;
+  border: var(--borde-suave);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gris-oscuro);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ── FOOTER ─────────────────────────────────── */
+.footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 0.85rem;
+  color: var(--blanco);
+  background-color: var(--gris-oscuro);
+}
+.footer-logo {
+  display: inline-flex;
+  gap: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--blanco);
+  margin-bottom: 8px;
+}

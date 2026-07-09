@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprendé — Stop the Loop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="aprende.css">
+</head>
+<body>
+
+  <!-- NAVBAR (igual que index.html) -->
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="logo" href="../../index.html" aria-label="Ir al inicio">
+        <img src="../../Imagenes/stoptheloop.svg" alt="Stop the Loop">
+      </a>
+      <ul class="nav-links">
+        <li><a href="aprende.html">Aprendé</a></li>
+        <li><a href="../organizate/organizate.html">Organizate</a></li>
+        <li><a href="../bienestar/bienestar.html">Bienestar</a></li>
+        <li><a href="../comunidad/comunidad.html">Comunidad</a></li>
+      </ul>
+      <a href="../registro/registro.html" class="btn btn-nav">Registrate</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO DE SECCIÓN -->
+    <section class="aprende-hero">
+      <div class="aprende-hero-content">
+        <span class="mini-pill">APRENDÉ</span>
+        <h1>Estudiá mejor, <br>no más.</h1>
+        <p>Técnicas probadas y consejos de profesionales para transformar cómo estudiás.</p>
+      </div>
+    </section>
+
+    <!-- TÉCNICAS DE ESTUDIO -->
+    <section class="tecnicas section-border" id="tecnicas">
+      <div class="section-intro">
+        <span class="mini-pill">TÉCNICAS DE ESTUDIO</span>
+        <h2>Encontrá el método que funciona para vos.</h2>
+        <p>No existe un único método de estudio. Probá estos y quedarte con el que mejor te funcione.</p>
+      </div>
+
+      <div class="tecnicas-grid">
+
+        <!-- Pomodoro -->
+        <article class="tecnica-card" id="pomodoro">
+          <div class="tecnica-header lila">
+            <span class="tecnica-emoji">🍅</span>
+            <h3>Técnica Pomodoro</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>Trabajás 25 minutos con foco total en una tarea, luego tomás 5 minutos de descanso. Cada 4 ciclos, un descanso más largo de 15 a 30 minutos.</p>
+            <p>Es ideal para evitar el agotamiento mental y mantener la concentración en sesiones largas de estudio.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo aplicarla?</h4>
+              <ol>
+                <li>Elegí una tarea concreta para trabajar.</li>
+                <li>Ponés un temporizador en 25 minutos.</li>
+                <li>Trabajás sin interrupciones hasta que suena.</li>
+                <li>Tomás 5 minutos de descanso.</li>
+                <li>Repetís el ciclo. Cada 4 rondas, descansás más.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Concentración</span>
+            <span class="tecnica-tag">Gestión del tiempo</span>
+          </div>
+        </article>
+
+        <!-- Blurting -->
+        <article class="tecnica-card" id="blurting">
+          <div class="tecnica-header azul">
+            <span class="tecnica-emoji">✏️</span>
+            <h3>Método Blurting</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>Leés un tema, cerrás el material y escribís todo lo que recordás sin mirar. Después comparás con el original para ver qué te faltó.</p>
+            <p>Es muy efectivo para detectar exactamente qué no sabés todavía, en lugar de releer y creer que ya lo aprendiste.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo aplicarlo?</h4>
+              <ol>
+                <li>Leés el tema con atención.</li>
+                <li>Cerrás el libro o apuntes.</li>
+                <li>Escribís en papel todo lo que recordás.</li>
+                <li>Abrís el material y comparás.</li>
+                <li>Repasás lo que te faltó y repetís.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Memoria</span>
+            <span class="tecnica-tag">Repaso activo</span>
+          </div>
+        </article>
+
+        <!-- Feynman -->
+        <article class="tecnica-card" id="feynman">
+          <div class="tecnica-header amarillo">
+            <span class="tecnica-emoji">💡</span>
+            <h3>Método Feynman</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>Si podés explicar algo con palabras simples, lo entendiste de verdad. El método Feynman te desafía a enseñar el tema como si tu interlocutor no supiera nada.</p>
+            <p>Fue creado por el físico Richard Feynman y es especialmente útil para materias conceptuales o difíciles.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo aplicarlo?</h4>
+              <ol>
+                <li>Elegís el concepto que querés entender.</li>
+                <li>Explicalo en voz alta o por escrito como si le hablaras a alguien que no sabe nada.</li>
+                <li>Identificás dónde te trabás o usás términos complicados.</li>
+                <li>Volvés al material y estudiás esa parte.</li>
+                <li>Repetís hasta que la explicación fluya sola.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Comprensión profunda</span>
+            <span class="tecnica-tag">Conceptos difíciles</span>
+          </div>
+        </article>
+
+        <!-- Cornell -->
+        <article class="tecnica-card" id="cornell">
+          <div class="tecnica-header gris">
+            <span class="tecnica-emoji">📓</span>
+            <h3>Método Cornell</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>Un sistema de toma de apuntes que divide la hoja en tres zonas: notas principales, preguntas clave y un resumen al final. Estructurá lo que aprendés mientras lo aprendés.</p>
+            <p>Muy útil para clases o lecturas donde necesitás organizar mucha información al mismo tiempo.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo aplicarlo?</h4>
+              <ol>
+                <li>Dividís la hoja: columna derecha ancha para notas, izquierda angosta para preguntas, espacio abajo para resumen.</li>
+                <li>Durante la clase o lectura, tomás notas en la columna derecha.</li>
+                <li>Después escribís preguntas sobre esas notas en la columna izquierda.</li>
+                <li>Al final, resumís el tema en el espacio de abajo con tus propias palabras.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Organización</span>
+            <span class="tecnica-tag">Toma de apuntes</span>
+          </div>
+        </article>
+
+        <!-- Lectura Activa -->
+        <article class="tecnica-card" id="lectura-activa">
+          <div class="tecnica-header lila">
+            <span class="tecnica-emoji">📚</span>
+            <h3>Lectura Activa</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>No se trata de leer y listo. La lectura activa implica subrayar, hacer preguntas, relacionar ideas y tomar notas mientras leés. Tu mente trabaja junto al texto.</p>
+            <p>Es la diferencia entre leer palabras y realmente procesar lo que dice un texto.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo aplicarla?</h4>
+              <ol>
+                <li>Antes de leer, revisás títulos y subtítulos para saber de qué trata.</li>
+                <li>Mientras leés, subrayás ideas clave y hacés anotaciones al margen.</li>
+                <li>Si algo no entendés, lo marcás para buscarlo después.</li>
+                <li>Al terminar, resumís el texto con tus propias palabras.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Comprensión lectora</span>
+            <span class="tecnica-tag">Análisis</span>
+          </div>
+        </article>
+
+        <!-- Mapas Mentales -->
+        <article class="tecnica-card" id="mapas-mentales">
+          <div class="tecnica-header azul">
+            <span class="tecnica-emoji">🗺️</span>
+            <h3>Mapas Mentales</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>Una forma visual de organizar información. Partís de un concepto central y ramificás ideas relacionadas con colores, líneas y palabras clave. Activás tanto la lógica como la creatividad.</p>
+            <p>Ideal para resumir temas complejos o preparar un examen con mucho contenido.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo hacerlo?</h4>
+              <ol>
+                <li>Escribís el tema principal en el centro de la hoja.</li>
+                <li>Trazás ramas para cada subtema o idea grande.</li>
+                <li>De cada rama, salen ramas más chicas con detalles.</li>
+                <li>Usás colores e imágenes para que sea más fácil de recordar.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Visual</span>
+            <span class="tecnica-tag">Síntesis</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- TIPS DE PROFESIONALES -->
+    <section class="tips-profesionales section-border" id="tips">
+      <div class="section-intro">
+        <span class="mini-pill">TIPS DE PROFESIONALES</span>
+        <h2>Un pequeño consejo puede hacer la diferencia.</h2>
+        <p>Artículos y recomendaciones creadas por profesionales para ayudarte a estudiar mejor y cuidar tu bienestar.</p>
+      </div>
+
+      <!-- Filtros por temática -->
+      <div class="filtros">
+        <button class="filtro-btn activo" data-filtro="todos">Todos</button>
+        <button class="filtro-btn" data-filtro="sueno">Sueño</button>
+        <button class="filtro-btn" data-filtro="nutricion">Nutrición</button>
+        <button class="filtro-btn" data-filtro="estudio">Estudio</button>
+        <button class="filtro-btn" data-filtro="ansiedad">Ansiedad</button>
+      </div>
+
+      <div class="articulos-grid" id="articulos-grid">
+
+        <!-- Artículo 1 -->
+        <article class="articulo-card" data-categoria="ansiedad">
+          <div class="articulo-foto placeholder-foto">👩‍⚕️</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria ansiedad">Ansiedad</span>
+            <p class="articulo-autor">Lic. Sofía Martínez — Psicóloga</p>
+            <h3>¿Por qué procrastinamos incluso cuando queremos empezar?</h3>
+            <p>Descubrí por qué nuestro cerebro evita ciertas tareas y conocé estrategias simples para romper ese ciclo.</p>
+            <button class="btn-articulo" disabled>Leer artículo completo →</button>
+          </div>
+        </article>
+
+        <!-- Artículo 2 -->
+        <article class="articulo-card" data-categoria="estudio">
+          <div class="articulo-foto placeholder-foto">👨‍🏫</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria estudio">Estudio</span>
+            <p class="articulo-autor">Prof. Martín López — Especialista en técnicas de estudio</p>
+            <h3>¿Cómo preparar un examen sin estudiar hasta la madrugada?</h3>
+            <p>Organizá tu tiempo de estudio con un método simple que te permita llegar al examen con mayor confianza.</p>
+            <button class="btn-articulo" disabled>Leer artículo completo →</button>
+          </div>
+        </article>
+
+        <!-- Artículo 3 -->
+        <article class="articulo-card" data-categoria="sueno">
+          <div class="articulo-foto placeholder-foto">👩‍⚕️</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria sueno">Sueño</span>
+            <p class="articulo-autor">Dra. Agustina Fernández — Especialista en Medicina del sueño</p>
+            <h3>Dormir mejor también es estudiar mejor.</h3>
+            <p>Descubrí cómo la calidad del sueño influye en tu memoria, concentración y rendimiento académico.</p>
+            <button class="btn-articulo" disabled>Leer artículo completo →</button>
+          </div>
+        </article>
+
+        <!-- Artículo 4 -->
+        <article class="articulo-card" data-categoria="nutricion">
+          <div class="articulo-foto placeholder-foto">🥗</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria nutricion">Nutrición</span>
+            <p class="articulo-autor">Lic. Carolina Reyes — Nutricionista</p>
+            <h3>Lo que comés afecta cómo pensás.</h3>
+            <p>Conocé qué alimentos favorecen la concentración y cuáles te roban energía justo cuando más la necesitás.</p>
+            <button class="btn-articulo" disabled>Leer artículo completo →</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <a class="logo footer-logo" href="../../index.html">
+        <span>STOP</span>
+        <strong>THE LOOP</strong>
+      </a>
+    </div>
+    <p>Stop the Loop © 2026</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="aprende.js"></script>
+</body>
+</html>
