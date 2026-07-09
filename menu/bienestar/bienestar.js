@@ -283,3 +283,141 @@ function cerrarOverlay() {
     circuloRespiracionGrande.classList.remove("respirando");
   }, { once: true });
 }
+
+// HABIT TRACKER
+const selectAmbito = document.getElementById("select-ambito");
+const inputNuevoHabito = document.getElementById("input-nuevo-habito");
+const btnAgregarHabito = document.getElementById("btn-agregar-habito");
+
+let habitos = JSON.parse(localStorage.getItem("habitos")) || {
+  salud: [],
+  ocio: [],
+  educacion: []
+};
+
+let habitosMarcadosHoy = JSON.parse(localStorage.getItem("habitosMarcadosHoy_" + obtenerFechaHoy())) || {};
+
+btnAgregarHabito.addEventListener("click", function() {
+  const ambitoElegido = selectAmbito.value;
+  const nuevoHabito = inputNuevoHabito.value;
+  if (nuevoHabito.trim() === "") {
+    return;
+  }
+  habitos[ambitoElegido].push(nuevoHabito);
+  inputNuevoHabito.value = "";
+  guardarHabitosEnStorage();
+  dibujarHabitos();
+});
+
+const contenedorHabitos = document.getElementById("lista-habitos-por-ambito");
+const contadorHabitos = document.getElementById("contador-habitos");
+const barraCompletada = document.getElementById("barra-completada");
+
+const nombresAmbitos = {
+  salud: "Salud",
+  ocio: "Ocio",
+  educacion: "Educación"
+};
+
+// Guardamos qué hábitos se marcaron HOY (clave: "ambito-indice", valor: true/false)
+const btnBorrarHabitos = document.getElementById("btn-borrar-habitos");
+let habitosParaBorrar = [];
+
+function dibujarHabitos() {
+  contenedorHabitos.innerHTML = "";
+  habitosParaBorrar = [];
+
+  let totalHabitos = 0;
+  let totalMarcados = 0;
+
+  for (const ambito in habitos) {
+    if (habitos[ambito].length === 0) continue;
+
+    const tituloAmbito = document.createElement("h3");
+    tituloAmbito.textContent = nombresAmbitos[ambito];
+    tituloAmbito.classList.add("titulo-ambito");
+    contenedorHabitos.appendChild(tituloAmbito);
+
+    habitos[ambito].forEach(function(nombreHabito, indice) {
+      totalHabitos++;
+
+      const claveHabito = ambito + "-" + indice;
+      const estaMarcado = habitosMarcadosHoy[claveHabito] === true;
+      if (estaMarcado) totalMarcados++;
+
+      const fila = document.createElement("div");
+      fila.classList.add("fila-habito");
+
+      const label = document.createElement("label");
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.classList.add("check-habito");
+      checkbox.checked = estaMarcado;
+      checkbox.addEventListener("change", function() {
+        habitosMarcadosHoy[claveHabito] = checkbox.checked;
+        guardarHabitosEnStorage();
+        dibujarHabitos();
+      });
+
+      label.appendChild(checkbox);
+      label.append(" " + nombreHabito);
+
+      const btnBorrarEste = document.createElement("button");
+      btnBorrarEste.classList.add("btn-borrar-item");
+      btnBorrarEste.textContent = "✕";
+      btnBorrarEste.type = "button"; // para que no envíe ningún formulario sin querer
+
+      btnBorrarEste.addEventListener("click", function() {
+        fila.classList.toggle("seleccionado-borrar");
+
+        const yaEstaEnLaLista = habitosParaBorrar.some(function(item) {
+          return item.ambito === ambito && item.indice === indice;
+        });
+
+        if (yaEstaEnLaLista) {
+          habitosParaBorrar = habitosParaBorrar.filter(function(item) {
+            return !(item.ambito === ambito && item.indice === indice);
+          });
+        } else {
+          habitosParaBorrar.push({ ambito: ambito, indice: indice });
+        }
+      });
+
+      fila.appendChild(label);
+      fila.appendChild(btnBorrarEste);
+      contenedorHabitos.appendChild(fila);
+    });
+  }
+
+  contadorHabitos.textContent = `Progreso: ${totalMarcados}/${totalHabitos} hábitos`;
+  const porcentaje = totalHabitos === 0 ? 0 : Math.round((totalMarcados / totalHabitos) * 100);
+  barraCompletada.style.width = porcentaje + "%";
+}
+
+btnBorrarHabitos.addEventListener("click", function() {
+  for (const ambito in habitos) {
+    const indicesABorrar = habitosParaBorrar
+      .filter(item => item.ambito === ambito)
+      .map(item => item.indice);
+
+    habitos[ambito] = habitos[ambito].filter(function(habito, indice) {
+      return !indicesABorrar.includes(indice);
+    });
+  }
+
+  habitosMarcadosHoy = {};
+  guardarHabitosEnStorage();
+  dibujarHabitos();
+});
+
+function guardarHabitosEnStorage() {
+  localStorage.setItem("habitos", JSON.stringify(habitos));
+  localStorage.setItem("habitosMarcadosHoy_" + obtenerFechaHoy(), JSON.stringify(habitosMarcadosHoy));
+}
+
+function obtenerFechaHoy() {
+  const hoy = new Date();
+  return hoy.toISOString().split("T")[0];
+}
+
+dibujarHabitos();

@@ -122,6 +122,38 @@
       </div>
     </section>
 
+    <!-- HABIT TRACKER -->
+     <section class="grilla-habitos" id="habitos">
+      <article class="tarjeta tracker-habitos">
+        <span class="etiqueta etiqueta-secundaria">TRACKER DE HÁBITOS</span>
+        <h2>Mis hábitos de hoy</h2>
+        <p>Agregá los hábitos que quieras sostener, organizados por ámbito.</p>
+
+        <div class="formulario-habito">
+          <select id="select-ambito">
+            <option value="salud">Salud</option>
+            <option value="ocio">Ocio</option>
+            <option value="educacion">Educación</option>
+          </select>
+          <input type="text" id="input-nuevo-habito" placeholder="Ej: Tomar agua">
+          <button id="btn-agregar-habito" class="btn btn-secundario">Agregar</button>
+        </div>
+
+        <div id="lista-habitos-por-ambito">
+          <!-- Acá vamos a generar con JS los hábitos, agrupados por ámbito -->
+        </div>
+
+        <button id="btn-borrar-habitos" class="btn btn-secundario">Borrar seleccionados</button>
+
+        <div class="progreso-habitos">
+         <p id="contador-habitos">Progreso: 0/0 hábitos</p>
+          <div class="barra-progreso">
+        <div class="barra-completada" id="barra-completada" style="width: 0%;"></div>
+        </div>
+      </div>
+    </article>
+  </section>
+
   </main>
   <div class="overlay-respiracion" id="overlay-respiracion">
     <button class="btn-cerrar-overlay" id="btn-cerrar-overlay" aria-label="Cerrar">✕</button>
