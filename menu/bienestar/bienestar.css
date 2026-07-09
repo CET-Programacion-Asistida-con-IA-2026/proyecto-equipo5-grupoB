@@ -663,6 +663,18 @@ color: var(--gris-oscuro);
   background-color: #fdecea;
 }
 
+.racha-habito {
+  color: var(--gris-oscuro);
+  opacity: 0.7;
+  font-size: 0.85rem;
+}
+
+.racha-habito.racha-activa {
+  color: var(--amarillo);
+  opacity: 1;
+  font-weight: 600;
+}
+
 /* ── FOOTER ─────────────────────────────────── */
 .footer {
   text-align: center;

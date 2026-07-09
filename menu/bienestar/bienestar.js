@@ -295,15 +295,13 @@ let habitos = JSON.parse(localStorage.getItem("habitos")) || {
   educacion: []
 };
 
-let habitosMarcadosHoy = JSON.parse(localStorage.getItem("habitosMarcadosHoy_" + obtenerFechaHoy())) || {};
-
 btnAgregarHabito.addEventListener("click", function() {
   const ambitoElegido = selectAmbito.value;
   const nuevoHabito = inputNuevoHabito.value;
   if (nuevoHabito.trim() === "") {
     return;
   }
-  habitos[ambitoElegido].push(nuevoHabito);
+  habitos[ambitoElegido].push({ nombre: nuevoHabito, fechasCumplidas: [] });
   inputNuevoHabito.value = "";
   guardarHabitosEnStorage();
   dibujarHabitos();
@@ -323,6 +321,31 @@ const nombresAmbitos = {
 const btnBorrarHabitos = document.getElementById("btn-borrar-habitos");
 let habitosParaBorrar = [];
 
+function calcularRacha(fechasCumplidas) {
+  let racha = 0;
+
+  const fechasSet = new Set(fechasCumplidas);
+  const fechaRevisada = new Date();
+
+  let claveFecha = obtenerClaveFecha(
+    fechaRevisada.getFullYear(),
+    fechaRevisada.getMonth(),
+    fechaRevisada.getDate()
+  );
+
+  while (fechasSet.has(claveFecha)) {
+    racha++;
+    fechaRevisada.setDate(fechaRevisada.getDate() - 1);
+    claveFecha = obtenerClaveFecha(
+      fechaRevisada.getFullYear(),
+      fechaRevisada.getMonth(),
+      fechaRevisada.getDate()
+    );
+  }
+
+  return racha;
+}
+
 function dibujarHabitos() {
   contenedorHabitos.innerHTML = "";
   habitosParaBorrar = [];
@@ -338,11 +361,11 @@ function dibujarHabitos() {
     tituloAmbito.classList.add("titulo-ambito");
     contenedorHabitos.appendChild(tituloAmbito);
 
-    habitos[ambito].forEach(function(nombreHabito, indice) {
+    habitos[ambito].forEach(function(habito, indice) {
       totalHabitos++;
 
-      const claveHabito = ambito + "-" + indice;
-      const estaMarcado = habitosMarcadosHoy[claveHabito] === true;
+      const fechaHoy = obtenerFechaHoy();
+      const estaMarcado = habito.fechasCumplidas.includes(fechaHoy);
       if (estaMarcado) totalMarcados++;
 
       const fila = document.createElement("div");
@@ -353,14 +376,44 @@ function dibujarHabitos() {
       checkbox.type = "checkbox";
       checkbox.classList.add("check-habito");
       checkbox.checked = estaMarcado;
+
+      const infoHabito = document.createElement("div");
+      infoHabito.classList.add("info-habito");
+
+      const nombreHabitoEl = document.createElement("div");
+      nombreHabitoEl.classList.add("nombre-habito");
+      nombreHabitoEl.textContent = habito.nombre;
+
+      const rachaHabitoEl = document.createElement("div");
+      rachaHabitoEl.classList.add("racha-habito");
+      const racha = calcularRacha(habito.fechasCumplidas);
+      if (racha === 1) {
+        rachaHabitoEl.textContent = `🔥 ${racha} día`;
+      } else {
+        rachaHabitoEl.textContent = `🔥 ${racha} días`;
+      }
+
+      rachaHabitoEl.classList.toggle("racha-activa", racha > 0);
+
+      infoHabito.appendChild(nombreHabitoEl);
+      infoHabito.appendChild(rachaHabitoEl);
+
       checkbox.addEventListener("change", function() {
-        habitosMarcadosHoy[claveHabito] = checkbox.checked;
+        if (checkbox.checked) {
+          if (!habito.fechasCumplidas.includes(fechaHoy)) {
+            habito.fechasCumplidas.push(fechaHoy);
+          }
+        } else {
+          habito.fechasCumplidas = habito.fechasCumplidas.filter(function(fecha) {
+            return fecha !== fechaHoy;
+          });
+        }
         guardarHabitosEnStorage();
         dibujarHabitos();
       });
 
       label.appendChild(checkbox);
-      label.append(" " + nombreHabito);
+      label.appendChild(infoHabito);
 
       const btnBorrarEste = document.createElement("button");
       btnBorrarEste.classList.add("btn-borrar-item");
@@ -405,14 +458,12 @@ btnBorrarHabitos.addEventListener("click", function() {
     });
   }
 
-  habitosMarcadosHoy = {};
   guardarHabitosEnStorage();
   dibujarHabitos();
 });
 
 function guardarHabitosEnStorage() {
   localStorage.setItem("habitos", JSON.stringify(habitos));
-  localStorage.setItem("habitosMarcadosHoy_" + obtenerFechaHoy(), JSON.stringify(habitosMarcadosHoy));
 }
 
 function obtenerFechaHoy() {
