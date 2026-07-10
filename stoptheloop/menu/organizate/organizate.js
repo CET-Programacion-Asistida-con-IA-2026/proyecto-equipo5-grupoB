@@ -8,6 +8,166 @@ let fechasGuardadas = JSON.parse( //Guardar las fechas importantes en localStora
     localStorage.getItem("fechas")
 ) || [];
 
+/*let tareas = JSON.parse(
+    localStorage.getItem("tareas")
+) || [];]/
+
+/*=========================================================
+MOTOR DE ORGANIZACIÓN
+Toda la información importante de la aplicación
+terminará viviendo aquí.
+=========================================================*/
+
+let organizacion = JSON.parse(
+    localStorage.getItem("organizacion")
+) || {
+
+    materias: [],
+
+    actividades: [],
+
+    objetivos: [],
+
+    pasos: []
+
+};
+//definimos función 
+function guardarOrganizacion(){ 
+
+    localStorage.setItem(
+
+        "organizacion",
+
+        JSON.stringify(organizacion)
+
+    );
+
+}
+
+
+
+/*=========================================================
+API interna. Para obtener materia
+=========================================================*/
+function crearMateria(nombre) {
+
+    const materia = {
+
+        id: crypto.randomUUID(),
+
+        nombre: formatearNombreMateria.trim(),
+
+        clave: normalizarTexto(nombre),
+
+        estado: "activa"
+
+    };
+
+    organizacion.materias.push(materia);
+
+    guardarOrganizacion();
+
+    return materia;
+
+}
+
+//función que normaliza inputs
+function normalizarTexto(texto){
+
+    return texto
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+}
+
+
+function formatearNombreMateria(nombre) {
+
+    return nombre
+        .trim()
+        .split(" ")
+        .filter(palabra => palabra !== "")
+        .map(palabra =>
+            palabra.charAt(0).toUpperCase() +
+            palabra.slice(1).toLowerCase()
+        )
+        .join(" ");
+
+}
+//
+
+function obtenerMateria(nombre){
+
+    return organizacion.materias.find(
+
+        materia =>
+
+            materia.clave === normalizarTexto(nombre)
+
+    );
+
+}
+
+function obtenerOCrearMateria(nombre){
+
+    let materia = obtenerMateria(nombre);
+
+    if(!materia){
+
+        materia = crearMateria(nombre);
+
+    }
+
+    return materia;
+
+}
+
+
+/*=========================================================
+REGISTRO DE ACTIVIDADES
+=========================================================*/
+function registrarActividad(datos){
+
+    const materia = obtenerOCrearMateria(datos.materia);
+
+    const actividad = {
+
+        id: crypto.randomUUID(),
+
+        titulo: datos.titulo,
+
+        tipo: datos.tipo || "evento",
+
+        categoria: datos.categoria || null,
+
+        fecha: datos.fecha || null,
+
+        estado: "pendiente",
+
+        origen: datos.origen || "manual",
+
+        objetivoId: null
+
+    };
+
+    organizacion.actividades.push(actividad);
+
+    guardarOrganizacion();
+
+    return actividad;
+
+}
+
+function obtenerActividades() {
+
+    return organizacion.actividades;
+
+}
+
+
+
 
 /* =========================================================
 script para generar el horario semanal dinámicamente 
@@ -161,6 +321,29 @@ guardarActividad.addEventListener("click", () => {
         } else if (tipo === "3") {
             celda.classList.add("descanso");
         }
+
+        //Añado esto por la nueva api
+        
+
+        if(tipo === "1"){
+
+            registrarActividad({
+
+                materia: actividad,
+
+                titulo: actividad,
+
+                tipo: "clase",
+
+                dia: celda.dataset.dia,
+
+                hora: celda.dataset.hora
+
+            });
+
+        }
+
+        //
 
         const existe = horarioGuardado.find(item =>
             item.dia === celda.dataset.dia &&
@@ -580,3 +763,35 @@ agregarTarea.addEventListener("click", () => {
 
 });
 
+
+
+/* =========================================================
+script para enseñar el resumen diario va aqui pq necesita que estén definidos las anteriores cosas
+
+Cuando el usuario entre, en vez de mostrar solo números, 
+podríamos mostrar un mensaje inteligente, por ejemplo:
+
+👋 ¡Hola, Gina!
+
+Hoy tenés:
+
+• 2 tareas pendientes.
+• 1 entrega el lunes.
+• Ningún examen esta semana.
+
+Tu prioridad de hoy debería ser avanzar con el Proyecto Final.
+========================================================= */
+document.getElementById("cantidadEventos").textContent =
+    fechasGuardadas.length;
+
+document.getElementById("cantidadTareas").textContent =
+    tareas.length;
+
+document.getElementById("cantidadExamenes").textContent = 0;
+
+
+
+
+
+//codigo para ver en la consola detalles
+console.log(organizacion);
