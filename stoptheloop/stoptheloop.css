@@ -418,6 +418,10 @@ color: var(--gris-oscuro);
 .boton-compartir {
   min-width: 360px;
   background-color: #87BBFF;
+  border: none;
+  cursor: pointer;
+  color: var(--negro);
+  text-align: left;
   border-radius: 999px;
   padding: 16px 22px 16px 38px;
   display: flex;
@@ -426,6 +430,12 @@ color: var(--gris-oscuro);
   font-weight: 700;
   font-size: 1.15rem;
   box-shadow: var(--sombra-suave);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.boton-compartir:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-fuerte);
 }
 
 .boton-compartir span {
@@ -440,15 +450,72 @@ color: var(--gris-oscuro);
   box-shadow: var(--sombra-fuerte);
 }
 
-.grilla-resenas {
+.carrusel-resenas {
   max-width: 1280px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.flecha {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--blanco);
+  box-shadow: var(--sombra-suave);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.flecha:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-fuerte);
+}
+
+.flecha::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+.flecha-izq::before {
+  border-right: 10px solid var(--gris-oscuro);
+  transform: translate(-40%, -50%);
+}
+
+.flecha-der::before {
+  border-left: 10px solid var(--gris-oscuro);
+  transform: translate(-60%, -50%);
+}
+
+.grilla-resenas {
+  flex: 1;
+  min-width: 0;
+  display: flex;
   gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.grilla-resenas::-webkit-scrollbar {
+  display: none;
 }
 
 .tarjeta-resena {
+flex: 0 0 270px;
+width: 270px;
+scroll-snap-align: start;
 background-color: var(--blanco);
 border: var(--borde-suave);
 border-radius: 22px;
@@ -536,4 +603,125 @@ transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   justify-content: center;
   margin-bottom: 16px;
+}
+
+/* ── MODAL: COMPARTIR EXPERIENCIA ────────────── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  padding: 24px;
+  align-items: center;
+  justify-content: center;
+  background-color: #111111ac;
+}
+
+.modal-overlay.activo {
+  display: flex;
+}
+
+.modal-resena {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: var(--blanco);
+  border-radius: 26px;
+  padding: 42px 34px 32px;
+  box-shadow: var(--sombra-fuerte);
+}
+
+.modal-resena h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--negro);
+  margin-bottom: 22px;
+}
+
+.modal-cerrar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--fondo);
+  color: var(--gris-oscuro);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-cerrar:hover {
+  background-color: var(--gris-claro);
+}
+
+#form-resena {
+  display: flex;
+  flex-direction: column;
+}
+
+#form-resena label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  color: var(--gris-oscuro);
+}
+
+#form-resena input[type="text"],
+#form-resena textarea {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  padding: 12px 16px;
+  border: var(--borde-suave);
+  border-radius: 14px;
+  background-color: var(--fondo);
+  color: var(--negro);
+  resize: vertical;
+}
+
+#form-resena input[type="text"]:focus,
+#form-resena textarea:focus {
+  outline: 2px solid var(--lila);
+}
+
+.selector-estrellas {
+  display: flex;
+  gap: 6px;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: var(--gris-claro);
+}
+
+.selector-estrellas span {
+  cursor: pointer;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.selector-estrellas span:hover {
+  transform: scale(1.12);
+}
+
+.selector-estrellas span.activa {
+  color: var(--amarillo);
+}
+
+.modal-error {
+  min-height: 18px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #d1435b;
+  margin: 8px 0 0;
+}
+
+#form-resena .btn-large {
+  align-self: flex-start;
+  margin-top: 20px;
+  padding: 14px 40px;
+  font-size: 1rem;
 }

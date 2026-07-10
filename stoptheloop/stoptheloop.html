@@ -94,16 +94,18 @@
 
     <!--Sección de Experiencias-->
     <section class="seccion-experiencias seccion-con-borde">
-    <div class="section-top">
-      <span class="etiqueta">EXPERIENCIAS</span>
-      <a href="#compartir" class="boton-compartir">
-        Compartí tu experiencia
-        <span>+</span>
-      </a>
-    </div>
-    <div class="grilla-resenas">
-      <article class="tarjeta-resena">
-        <div class="avatar"></div>
+      <div class="section-top">
+        <span class="etiqueta">EXPERIENCIAS</span>
+        <button type="button" id="btn-compartir" class="boton-compartir">
+          Compartí tu experiencia
+          <span>+</span>
+        </button>
+      </div>
+      <div class="carrusel-resenas">
+        <button type="button" class="flecha flecha-izq" id="flecha-izq" aria-label="Ver reseña anterior"></button>
+        <div class="grilla-resenas" id="grilla-resenas">
+            <article class="tarjeta-resena">
+            <div class="avatar"></div>
         <div>
           <h3>Lucía Gonzáles</h3>
           <p class="rol">Estudiante de Medicina</p>
@@ -140,6 +142,48 @@
         </div>
       </article>
 
+    <article class="tarjeta-resena">
+        <div class="avatar"></div>
+        <div>
+          <h3>Sofía Ramírez</h3>
+          <p class="rol">Estudiante de Psicología</p>
+          <p class="estrellas">★★★★★</p>
+          <p>"El planificador de exámenes me salvó este cuatrimestre. Súper recomendable para organizar los tiempos de estudio."</p>
+        </div>
+      </article>
+
+      <article class="tarjeta-resena">
+        <div class="avatar"></div>
+        <div>
+          <h3>Tomás Ibáñez</h3>
+          <p class="rol">Estudiante de Arquitectura</p>
+          <p class="estrellas">★★★★</p>
+          <p>"Buenísima la sección de bienestar, me ayudó a bajar un poco la ansiedad antes de los parciales."</p>
+        </div>
+      </article>
+
+      <article class="tarjeta-resena">
+        <div class="avatar"></div>
+        <div>
+          <h3>Martina Suárez</h3>
+          <p class="rol">Estudiante de Derecho</p>
+          <p class="estrellas">★★★★★</p>
+          <p>"Me encantó poder compartir mi experiencia y ver la de otros estudiantes. Se siente una comunidad real."</p>
+        </div>
+      </article>
+
+      <article class="tarjeta-resena">
+        <div class="avatar"></div>
+        <div>
+          <h3>Bruno Fernández</h3>
+          <p class="rol">Estudiante de Ingeniería en Sistemas</p>
+          <p class="estrellas">★★★★★</p>
+          <p>"Muy simple de usar y con herramientas que de verdad ayudan a romper la procrastinación."</p>
+        </div>
+      </article>
+
+      </div>
+      <button type="button" class="flecha flecha-der" id="flecha-der" aria-label="Ver reseña siguiente"></button>
     </div>
     </section>
 
@@ -163,6 +207,38 @@
     </div>
     <p>Stop the Loop © 2026</p>
   </footer>
+
+  <!--Modal para compartir experiencia-->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-resena" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+      <button type="button" class="modal-cerrar" id="modal-cerrar" aria-label="Cerrar">&times;</button>
+      <h3 id="modal-titulo">Compartí tu experiencia</h3>
+      <form id="form-resena">
+        <label for="input-nombre">Nombre</label>
+        <input type="text" id="input-nombre" placeholder="¿Cómo te llamás?" required>
+
+        <label for="input-rol">¿Qué estudiás?</label>
+        <input type="text" id="input-rol" placeholder="Ej: Estudiante de Medicina" required>
+
+        <label>Puntaje</label>
+        <div class="selector-estrellas" id="selector-estrellas">
+          <span data-valor="1">★</span>
+          <span data-valor="2">★</span>
+          <span data-valor="3">★</span>
+          <span data-valor="4">★</span>
+          <span data-valor="5">★</span>
+        </div>
+        <input type="hidden" id="input-estrellas" value="0">
+
+        <label for="input-comentario">Tu comentario</label>
+        <textarea id="input-comentario" rows="4" placeholder="Contanos tu experiencia con Stop the Loop" required></textarea>
+
+        <p id="modal-error" class="modal-error"></p>
+
+        <button type="submit" class="btn btn-large">Enviar</button>
+      </form>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="stoptheloop.js"></script>
