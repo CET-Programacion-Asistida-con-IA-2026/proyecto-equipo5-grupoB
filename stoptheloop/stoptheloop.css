@@ -711,3 +711,204 @@ transition: transform 0.2s ease, box-shadow 0.2s ease;
   padding: 14px 40px;
   font-size: 1rem;
 }
+
+/* ── BOTÓN HAMBURGUESA ──────────────────────── */
+.nav-derecha {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background-color: var(--negro);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-toggle.abierto span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.abierto span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.abierto span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* =============================================
+   RESPONSIVE — TABLET (≤ 1100px)
+   ============================================= */
+@media (max-width: 1100px) {
+  .contenido-principal {
+    grid-template-columns: 1fr 320px;
+    column-gap: 32px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  main section {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — MENÚ MOBILE (≤ 900px)
+   ============================================= */
+@media (max-width: 900px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    background-color: var(--fondo);
+    border-bottom: var(--borde-suave);
+    box-shadow: var(--sombra-suave);
+    transition: max-height 0.3s ease;
+  }
+
+  .nav-links.activo {
+    max-height: 320px;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 16px 24px;
+  }
+
+  .site-header {
+    position: relative;
+  }
+
+  /* Hero se apila en una sola columna */
+  .contenido-principal {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .texto-principal {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .tarjeta-principal {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 32px;
+    width: 100%;
+  }
+
+  .imagen-hero {
+    grid-row: 3;
+    height: 280px;
+  }
+
+  .section-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .boton-compartir {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE (≤ 600px)
+   ============================================= */
+@media (max-width: 600px) {
+  main section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .logo img {
+    width: 130px;
+  }
+
+  .texto-principal h1 {
+    letter-spacing: -0.5px;
+  }
+
+  .tarjeta-principal {
+    padding: 30px 24px 22px;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-card {
+    min-height: auto;
+    padding: 32px 20px 24px;
+  }
+
+  .carrusel-resenas {
+    gap: 10px;
+  }
+
+  .tarjeta-resena {
+    flex: 0 0 220px;
+    width: 220px;
+  }
+
+  .flecha {
+    width: 36px;
+    height: 36px;
+  }
+
+  .seccion-final h2 {
+    letter-spacing: -0.5px;
+  }
+
+  .modal-resena {
+    padding: 32px 22px 24px;
+  }
+
+  .selector-estrellas {
+    font-size: 1.6rem;
+  }
+}

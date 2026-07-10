@@ -16,6 +16,29 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+/* =========================================
+     MENÚ HAMBURGUESA (MOBILE)
+     ========================================= */
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function () {
+      const abierto = navLinks.classList.toggle('activo');
+      menuToggle.classList.toggle('abierto', abierto);
+      menuToggle.setAttribute('aria-expanded', abierto);
+    });
+
+    // Cerrar el menú al tocar un link
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('activo');
+        menuToggle.classList.remove('abierto');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
   /* =========================================
      1. CARRUSEL DE RESEÑAS
      ========================================= */
