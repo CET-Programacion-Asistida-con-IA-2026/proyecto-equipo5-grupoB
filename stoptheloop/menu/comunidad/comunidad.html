@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comunidad — Stop the Loop</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Courier+Prime&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="comunidad.css">
+</head>
+<body>
+
+<section id="foro">
+  <div style="text-align:center; margin-bottom:8px;">
+    <span class="etiqueta">COMUNIDAD</span>
+  </div>
+  <div class="section-heading" id="texto-intro-foro">
+    <h2>Un espacio para hablar sin filtros.</h2>
+    <p>Elegí tu nombre anónimo y sumate a la conversación del tema que quieras.</p>
+  </div>
+
+  <div class="tarjeta-pseudonimo" id="tarjeta-pseudonimo">
+    <label for="input-pseudonimo">¿Cómo querés que te llamen?</label>
+    <p class="nota-anonima">No uses tu nombre real.</p>
+    <input type="text" id="input-pseudonimo" placeholder="Ej: tosino2017">
+    <button id="btn-pseudonimo" class="btn-nav">Continuar</button>
+  </div>
+
+  <div id="resto-del-foro" style="display:none;">
+    <div class="hero-comunidad">
+      <h2>Nunca estuviste solo/a.</h2>
+      <p class="subtitulo-comunidad"><em>Estamos todos en la misma. Pero juntos vamos a salir del loop.</em></p>
+    </div>
+
+    <div class="barra-acciones">
+      <div class="barra-busqueda-grupo">
+        <button id="btn-filtrar" class="btn-filtrar">Filtrar por tags</button>
+        <input type="text" id="input-buscar" class="input-buscar" placeholder="Buscar en la comunidad...">
+        <button id="btn-buscar" class="btn-buscar" aria-label="Buscar">🔍</button>
+      </div>
+      <button id="btn-nuevo-posteo" class="btn-nuevo-posteo" aria-label="Crear nuevo posteo">+ Postear</button>
+    </div>
+
+    <div id="tags-busqueda-visual" class="tags-seleccionados-visual"></div>
+    <div id="feed-posteos"></div>
+    <p id="resultado-busqueda" class="resultado-busqueda"></p>
+
+    <div id="caja-nuevo-posteo" style="display:none;">
+      <input type="text" id="titulo-nuevo-posteo" class="titulo-nuevo-posteo" placeholder="¿Qué te está preocupando?">
+      <textarea id="texto-nuevo-posteo" class="texto-nuevo-posteo" placeholder="Describí lo que necesites con tus palabras"></textarea>
+      <div class="acciones-posteo">
+        <button id="btn-agregar-tags" class="btn-agregar-tags">Agregar tags</button>
+        <button id="btn-postear" class="btn-postear">Postear</button>
+      </div>
+      <div id="tags-posteo-visual" class="tags-seleccionados-visual"></div>
+    </div>
+
+    <p id="pseudonimo-actual"></p>
+
+    <div id="panel-tags" style="display:none;">
+      <p class="texto-panel-tags">Seleccioná todos los que quieras.</p>
+      <div id="contenedor-categorias"></div>
+    </div>
+  </div>
+</section>
+
+<script src="comunidad.js"></script>
+</body>
+</html>
