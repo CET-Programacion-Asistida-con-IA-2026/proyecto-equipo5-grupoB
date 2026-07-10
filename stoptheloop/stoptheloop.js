@@ -7,6 +7,7 @@ const boton = document.getElementById('btn-guardar');
 const textarea = document.getElementById('entrada-diario');
 const mensaje = document.getElementById('mensaje-guardado');
 
+/*
 // 2. Cuando la página carga, revisamos si hay algo guardado
 //    Si hay texto guardado, lo mostramos en el textarea
 const textoGuardado = localStorage.getItem('diario');
@@ -40,3 +41,4 @@ boton.addEventListener('click', function() {
   }, 3000);
 
 });
+*/
