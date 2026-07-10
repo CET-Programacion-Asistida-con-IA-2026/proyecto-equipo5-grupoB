@@ -174,7 +174,7 @@ main section{
 }
 
 /*--- SECCIÓN DEL HERO --------------------------*/
-.seccion-principal seccion-con-borde {
+.seccion-principal.seccion-con-borde {
   position: relative;
   padding-top: 60px;
   padding-bottom: 48px;
@@ -218,7 +218,7 @@ color: var(--gris-oscuro);
 
 .imagen-hero {
   grid-column: 1 / -1;
-  width: 100vw;
+  width: 100%;
   margin-left: calc(-50vw + 50%);
   height: 420px;
   margin-top: -60px;
