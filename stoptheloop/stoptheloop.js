@@ -4,6 +4,18 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+/* =========================================
+     0. BOTONES "¿QUÉ LOOP QUERÉS ROMPER HOY?"
+     ========================================= */
+  const opcionesLoop = document.querySelectorAll('.loop-option');
+  const mensajeLoop = document.getElementById('loop-message');
+
+  opcionesLoop.forEach(function (boton) {
+    boton.addEventListener('click', function () {
+      mensajeLoop.textContent = boton.dataset.message;
+    });
+  });
+
   /* =========================================
      1. CARRUSEL DE RESEÑAS
      ========================================= */

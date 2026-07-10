@@ -201,26 +201,6 @@ main section{
   overflow: visible;
 }
 
-.fondo-loop {
-  position: absolute;
-  top: -140px;
-  left: -80px;
-  width: 640px;
-  height: 640px;
-  z-index: -1;
-  pointer-events: none;
-
-  border-radius: 50%;
-  background: repeating-radial-gradient(
-    circle,
-    var(--lila) 0px,
-    var(--lila) 3px,
-    transparent 4px,
-    transparent 34px
-  );
-  opacity: 0.4;
-}
-
 .section-heading {
   position: relative;
   display: flex;
