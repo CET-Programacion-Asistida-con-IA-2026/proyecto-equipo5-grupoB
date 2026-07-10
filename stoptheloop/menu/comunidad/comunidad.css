@@ -383,3 +383,200 @@ body {
   justify-content: center;
   margin-bottom: 16px;
 }
+
+/* ── BOTÓN HAMBURGUESA ──────────────────────── */
+.nav-derecha {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background-color: var(--negro);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-toggle.abierto span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.abierto span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.abierto span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* =============================================
+   RESPONSIVE — TABLET (≤ 900px)
+   ============================================= */
+@media (max-width: 900px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .site-header {
+    position: relative;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    background-color: var(--fondo);
+    border-bottom: var(--borde-suave);
+    box-shadow: var(--sombra-suave);
+    transition: max-height 0.3s ease;
+  }
+
+  .nav-links.activo {
+    max-height: 320px;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 16px 24px;
+  }
+
+  #foro {
+    padding: 40px 20px 70px;
+  }
+
+  .barra-acciones {
+    flex-wrap: wrap;
+  }
+
+  .btn-nuevo-posteo {
+    width: 100%;
+  }
+
+  .barra-busqueda-grupo {
+    flex: 1 1 100%;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE (≤ 600px)
+   ============================================= */
+@media (max-width: 600px) {
+  .logo img {
+    width: 130px;
+  }
+
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .section-heading h2 {
+    font-size: 1.7rem;
+  }
+
+  .tarjeta-pseudonimo {
+    padding: 24px 20px;
+  }
+
+  .hero-comunidad h2 {
+    font-size: 1.6rem;
+  }
+
+  .subtitulo-comunidad {
+    font-size: 1rem;
+  }
+
+  .barra-busqueda-grupo {
+    flex-wrap: wrap;
+  }
+
+  .btn-filtrar {
+    width: 100%;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+
+  .input-buscar {
+    flex: 1 1 auto;
+  }
+
+  #caja-nuevo-posteo,
+  .tarjeta-post,
+  #panel-tags {
+    padding: 16px 18px;
+  }
+
+  .encabezado-post {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .autor-post {
+    white-space: normal;
+  }
+
+  .acciones-posteo {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .btn-agregar-tags,
+  .btn-postear {
+    width: 100%;
+    text-align: center;
+  }
+
+  .acciones-post {
+    flex-wrap: wrap;
+  }
+
+  .btn-like,
+  .btn-comentar {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  #panel-tags {
+    padding: 18px 20px;
+  }
+
+  .lista-tags {
+    gap: 6px;
+  }
+
+  .tag-pill {
+    font-size: 0.75rem;
+    padding: 5px 12px;
+  }
+}

@@ -1,3 +1,27 @@
+/* =========================================
+   MENÚ HAMBURGUESA (MOBILE)
+   ========================================= */
+document.addEventListener('DOMContentLoaded', function () {
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function () {
+      const abierto = navLinks.classList.toggle('activo');
+      menuToggle.classList.toggle('abierto', abierto);
+      menuToggle.setAttribute('aria-expanded', abierto);
+    });
+
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('activo');
+        menuToggle.classList.remove('abierto');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+});
+
 const boton = document.getElementById('btn-pseudonimo');
 const input = document.getElementById('input-pseudonimo');
 const pseudonimoActual = document.getElementById('pseudonimo-actual');
