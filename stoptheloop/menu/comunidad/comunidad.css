@@ -63,13 +63,36 @@ gap: 32px;
   color:#87BBFF
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--fondo);
   color: var(--gris-oscuro);
-  padding: 56px 24px;
 }
+
+#foro {
+  padding: 56px 24px 90px;
+}
+
 .etiqueta {
   display:inline-block;
   background-color: var(--amarillo);
@@ -330,4 +353,33 @@ body {
 .tag-pill-seleccionado {
   background-color:var(--azul);
   color:var(--negro);
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 0.85rem;
+  color: var(--blanco);
+  background-color: var(--gris-oscuro);
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
 }
