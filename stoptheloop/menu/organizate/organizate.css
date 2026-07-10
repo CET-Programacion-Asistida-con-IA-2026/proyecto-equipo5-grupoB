@@ -14,7 +14,46 @@
   --gris-oscuro:#545654;
   --fondo:   #F2F2F2;
   --blanco:  #FFFFFF;
+
+    --sombra-suave: 0 6px 18px #0000002e;
+   --sombra-fuerte: 0 8px 22px #00000035;
+  --borde-suave: 1px solid #54565459;
 }
+
+
+
+/* ── RESET BÁSICO ───────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  background-color: var(--fondo);
+  color: var(--gris-oscuro);
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display:block;
+}
+
+button {
+  font-family: inherit;
+}
+
 
 /* ── HEADER / NAVBAR (MENÚ PRINCIPAL) ─────────────────────────────────── */
 .site-header {
