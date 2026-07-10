@@ -428,58 +428,6 @@ transition: transform 0.2s ease, box-shadow 0.2s ease;
   line-height: 1.35;
 }
 
-/* --- SECCIÓN DE TIPS PROFESIONALES ----------------------- */
-.seccion-tips {
-  padding-top: 72px;
-  padding-bottom: 78px;
-}
-
-.grilla-articulos {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: grid;
-  gap: 34px;
-}
-
-.tarjeta-articulo {
-  background-color: var(--blanco);
-  border: var(--borde-suave);
-  border-radius: 26px;
-  padding: 34px 42px;
-  box-shadow: var(--sombra-suave);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.tarjeta-articulo:hover {
- box-shadow: var(--sombra-fuerte);
-}
-
-.tarjeta-articulo .autor {
-  font-size: 1.05rem;
-  font-weight: 700;
-  font-style: italic;
-  margin-bottom: 6px;
-}
-
-.tarjeta-articulo h3 {
-  font-size: 1.55rem;
-  font-weight: 800;
-  margin-bottom: 10px;
-}
-
-.tarjeta-articulo a {
-  display: block;
-  text-align: right;
-  margin-top: 28px;
-  font-weight: 700;
-  text-decoration: underline;
-}
-
-.tarjeta-articulo p {
-  font-size: 1.05rem;
-  line-height: 1.35;
-}
-
 /* --- SECCIÓN FINAL ---------------------------- */
 .seccion-final {
   text-align: center;
