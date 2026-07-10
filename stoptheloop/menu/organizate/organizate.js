@@ -44,11 +44,11 @@ function guardarOrganizacion(){
 
 }
 
-
-
 /*=========================================================
-API interna. Para obtener materia
+GESTOR DE MATERIAS
 =========================================================*/
+
+/*-------------API interna. Para obtener materia-----------*/
 function crearMateria(nombre) {
 
     const materia = {
@@ -59,7 +59,7 @@ function crearMateria(nombre) {
 
         clave: normalizarTexto(nombre),
 
-        estado: "activa"
+        estado: "activo"
 
     };
 
@@ -125,9 +125,37 @@ function obtenerOCrearMateria(nombre){
 }
 
 
-/*=========================================================
-REGISTRO DE ACTIVIDADES
-=========================================================*/
+function cargarMateriasEnFormulario() {
+
+    const select = document.getElementById("materiaFormulario");
+
+    if (!select) return;
+
+    select.innerHTML = `
+        <option value="">
+            Seleccioná una materia
+        </option>
+    `;
+
+    organizacion.materias.forEach(materia => {
+
+        select.innerHTML += `
+            <option value="${materia.id}">
+                ${materia.nombre}
+            </option>
+        `;
+
+    });
+
+}
+
+
+
+
+
+
+
+/*--------REGISTRO DE ACTIVIDADES---------*/
 function registrarActividad(datos){
 
     const materia = obtenerOCrearMateria(datos.materia);
@@ -154,10 +182,26 @@ function registrarActividad(datos){
 
     organizacion.actividades.push(actividad);
 
+    if(
+        datos.tipo === "examen" ||
+        datos.tipo === "final" ||
+        datos.tipo === "entrega" ||
+        datos.tipo === "proyecto"
+    ){
+
+        obtenerOCrearObjetivo({
+
+            materiaId: materia.id,
+
+            titulo: datos.titulo
+
+        });
+
+    }
+
     guardarOrganizacion();
 
     return actividad;
-
 }
 
 function obtenerActividades() {
@@ -165,6 +209,96 @@ function obtenerActividades() {
     return organizacion.actividades;
 
 }
+
+
+/*=========================================================
+GESTOR DE OBJETIVOS
+=========================================================*/
+
+function crearObjetivo(datos){
+
+    const objetivo = {
+
+        id: crypto.randomUUID(),
+
+        materiaId: datos.materiaId,
+
+        titulo: datos.titulo,
+
+        estado: "activo",
+
+        progreso: 0,
+
+        pasos: [],
+
+        fechaCreacion: new Date().toISOString()
+
+    };
+
+    organizacion.objetivos.push(objetivo);
+
+    guardarOrganizacion();
+
+    return objetivo;
+
+}
+
+function obtenerObjetivoPorTitulo(titulo){
+
+    return organizacion.objetivos.find(
+
+        objetivo =>
+
+            normalizarTexto(objetivo.titulo) ===
+            normalizarTexto(titulo)
+
+    );
+
+}
+
+function obtenerOCrearObjetivo(datos){
+
+    let objetivo = obtenerObjetivoPorTitulo(datos.titulo);
+
+    if(!objetivo){
+
+        objetivo = crearObjetivo(datos);
+
+    }
+
+    return objetivo;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -481,7 +615,7 @@ calendarioGrid.addEventListener("click", event => {
     actualizarSeleccionMes();
     mostrarFechas(fecha);
 });
-
+/*
 agregarFecha.addEventListener("click", () => {
     const fecha = fechaInput.value;
     const evento = eventoInput.value;
@@ -496,7 +630,30 @@ agregarFecha.addEventListener("click", () => {
         fecha,
         evento,
         categoria // Guardar la categoría seleccionada
-    });
+    }); 
+
+
+    if (
+        categoria === "Examen" ||
+        categoria === "Final" ||
+        categoria === "Entrega" ||
+        categoria === "Proyecto"
+    ) {
+
+        registrarActividad({
+
+            materia: evento,
+
+            titulo: evento,
+
+            tipo: categoria.toLowerCase(),
+
+            fecha: fecha
+
+        });
+
+    }
+    
 
     localStorage.setItem(
         "fechas",
@@ -511,7 +668,8 @@ agregarFecha.addEventListener("click", () => {
     eventoInput.value = "";
     categoriaInput.value = "";
 });
-
+*/
+ 
 listaFechas.addEventListener("click", event => {
     const eliminarBtn = event.target.closest(".eliminar-fecha");
     if (!eliminarBtn) return;
@@ -649,6 +807,131 @@ function actualizarSeleccionMes() {
 }
 
 renderizarCalendario();
+
+
+//permite que EL MENU cambie de color al clickear enel menú -- ACTIVO
+const menuItems = document.querySelectorAll(".menu-item");
+
+menuItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        menuItems.forEach(i => i.classList.remove("activo"));
+
+        item.classList.add("activo");
+
+    });
+
+});
+
+
+function mostrarFormulario(tipo){
+
+    const contenedor=document.getElementById("formularioDinamico");
+
+    switch(tipo){
+
+        case "examen":
+
+            contenedor.innerHTML=crearFormularioExamen();
+
+            break;
+
+        case "entrega":
+
+            contenedor.innerHTML=crearFormularioEntrega();
+
+            break;
+
+        case "actividad":
+
+            contenedor.innerHTML=crearFormularioActividad();
+
+            break;
+
+        case "evento":
+
+            contenedor.innerHTML=crearFormularioEvento();
+
+            break;
+
+        case "seminario":
+
+            contenedor.innerHTML=crearFormularioSeminario();
+
+            break;
+
+    }
+
+}
+
+
+//permite cambiar de color DEL CENTRO DE ORGANIZACIÖN al clickear -- ACTIVO
+const tarjetasCreacion = document.querySelectorAll(".tipo-card");
+
+console.log(tarjetasCreacion);
+
+tarjetasCreacion.forEach(tarjeta => {
+
+    tarjeta.addEventListener("click", () => {
+
+        console.log(tarjeta.dataset.tipo);
+
+        tarjetasCreacion.forEach(t =>
+            t.classList.remove("activo")
+        );
+
+        tarjeta.classList.add("activo");
+
+    });
+
+});
+
+
+//formulario para el examen
+function crearFormularioExamen() {
+
+    return `
+
+        <div class="formulario-creacion">
+
+            <h3>📚 Crear examen</h3>
+
+            <label>Materia</label>
+
+            <select id="materiaFormulario">
+                <option value="">
+                    Seleccioná una materia
+                </option>
+            </select>
+
+            <label>Título</label>
+
+            <input
+                type="text"
+                id="tituloFormulario"
+                placeholder="Ej: Parcial 1">
+
+            <label>Fecha</label>
+
+            <input
+                type="date"
+                id="fechaFormulario">
+
+            <button id="guardarFormulario">
+
+                Crear examen
+
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+
 
 /* =================================================================================
   PLANIFICADOR DE TAREAS
@@ -795,3 +1078,4 @@ document.getElementById("cantidadExamenes").textContent = 0;
 
 //codigo para ver en la consola detalles
 console.log(organizacion);
+
