@@ -150,14 +150,14 @@ gap: 32px;
 /* ===================================================================================================
 -------------------------HERO /SECCION PRINCIPAL ORGANIZAR --------------------------------------------
 =====================================================================================================*/
-.hero-organizate {
+.hero {
   position: relative;
   padding-top: 60px;
   padding-bottom: 48px;
   overflow: hidden;
   background-color: var(--blanco);
   border: var(--borde-suave);
-  border-radius: 0;
+  border-radius: 0 0 18px 18px;
   box-shadow: var(--sombra-suave);
   max-width: 100%;
 }
@@ -211,7 +211,7 @@ gap: 32px;
   pointer-events: none;
 }
 
-.organizate-contenido {
+.hero-contenido {
   max-width: 1400px; /*no pongo relative pq no existe*/
   width: 95%;
   margin: 0 auto;
@@ -225,13 +225,13 @@ gap: 32px;
   z-index: 2;
 }
 
-.organizate-texto {
+.hero-texto {
   position: relative;
   z-index: 3;
   margin-left: 30px;
 }
 
-.organizate-texto h1 {
+.hero-texto h1 {
   max-width: 760px;
   font-size: clamp(3rem,5.5vw,5rem);
   line-height: 0.98;
@@ -240,7 +240,7 @@ gap: 32px;
   color: var(--negro);
 }
 
-.organizate-texto p {
+.hero-texto p {
   max-width: 700px;
   margin-top: 18px;
 
@@ -261,7 +261,7 @@ gap: 32px;
   overflow: visible;
 }
 
-.imagen-principal-organizate {
+.imagen-principal-hero {
   position: relative;
   z-index: 2;
   width: 100%;
@@ -345,9 +345,8 @@ gap: 32px;
   }
 }
 
-
 /* =========================================================
-    ESTILOS GENERALES PARA LA PÁGINA ORGANÍZATE
+    ESTILOS GENERALES PARA LA PÁGINA ORGANIZATE
 ============================================================ */
 
 body {
@@ -359,7 +358,7 @@ body {
 }
 
 .contenido-organizate {
-  max-width: 95%;
+  max-width: 100%;
   margin: 0px auto;
   padding: 0 24px 32px;
   display: grid;
@@ -385,7 +384,7 @@ body {
   padding: 20px;
   background-color: var(--gris-oscuro);
   color: var(--blanco);
-  border-radius: 0 0 18px 18px;
+  border-radius:  18px 18px 0 0;
 }
 
 
@@ -1025,4 +1024,183 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
 .prioridad.Baja{
     background:#d7f5d7;
     color:#1f6b1f;
+}
+
+
+
+
+/* ==========================================================
+   SOPORTE COMPLETAMENTE RESPONSIVE (MEDIA QUERIES)
+   ========================================================== */
+
+
+@media (max-width: 900px) {
+  .hero-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .hero-texto {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-boton {
+    margin: 24px auto 0;
+  }
+
+  .lapiz-container {
+    display: none;
+  }
+
+  .imagen-principal-hero {
+    display: none;
+  }
+
+  .lapiz-base-blur {
+    display: none;
+  }
+
+  .hero-fondo-1 {
+    top: 8%;
+    left: 10%;
+    width: min(48vw, 260px);
+    
+  }
+
+  .hero-fondo-2 {
+    top: 50%;
+    left: 58%;
+    width: min(42vw, 200px);
+    z-index: 1;
+
+  }
+
+  .hero {
+    padding-bottom: 80px;
+  }
+}
+
+
+
+
+/* --- 1. Ajustes para Tablets y Pantallas Medianas (Max 1024px) --- */
+@media (max-width: 1024px) {
+  .dashboard-organizate {
+    grid-template-columns: 1fr; /* El menú pasa arriba y el contenido abajo */
+    gap: 20px;
+    padding: 16px;
+    margin: 30px auto;
+  }
+
+  .menu-organizate {
+    position: static; /* Ya no se queda pegado al costado */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; /* Scroll horizontal si los botones no entran */
+    gap: 10px;
+    padding: 12px;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .menu-item {
+    margin-bottom: 0;
+    inline-size: auto;
+    padding: 10px 16px;
+  }
+}
+
+/* --- 2. Ajustes para Celulares (Max 768px) --- */
+@media (max-width: 768px) {
+  /* Reset general de contenedores */
+  .navbar {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .nav-links {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .resumen-dashboard {
+    grid-template-columns: 1fr; /* Las mini-cards se apilan */
+    gap: 12px;
+  }
+
+  .bienvenida-dashboard {
+    padding: 20px;
+  }
+
+  /* El truco del scroll para formularios interactivos */
+  .editor-formulario, 
+  .editor-fechas,
+  .form-tarea,
+  .form-examen {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .editor-formulario input,
+  .editor-formulario select,
+  .editor-formulario button,
+  #tituloTarea, #prioridadTarea, #fechaTarea, #agregarTarea {
+    width: 100% !important;
+  }
+
+  /* SOLUCIÓN AL HORARIO SEMANAL: Contenedor con scroll horizontal */
+  .horario-semanal {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .horario {
+    min-width: 700px; /* Forzamos a que mantenga un tamaño legible sin estrujarse */
+  }
+
+  /* SOLUCIÓN AL CALENDARIO MENSUAL: Scroll horizontal para mantener la grilla legible */
+  .calendario-mensual {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #calendarioGrid {
+    min-width: 450px; /* Evita que los días queden como líneas verticales */
+  }
+
+  .dia-calendario {
+    min-height: 45px;
+    font-size: 0.9rem;
+  }
+
+  /* Ajustes en las estadísticas */
+  .estadisticas-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* --- 3. Ajustes para Pantallas Muy Chicas (Max 480px) --- */
+@media (max-width: 480px) {
+  .hero-texto h1 {
+    font-size: 2.2rem; /* El clamp base a veces queda gigante igual */
+  }
+
+  .hero-texto p {
+    font-size: 1rem;
+  }
+
+  .btn-large {
+    padding: 14px 32px;
+    font-size: 1rem;
+  }
 }
