@@ -177,21 +177,24 @@ main section{
 .seccion-principal.seccion-con-borde {
   position: relative;
   padding-top: 60px;
-  padding-bottom: 48px;
+  padding-bottom: 0;
   overflow: hidden;
 }
 
 .contenido-principal {
-  max-width: relative;
+  position: relative;
+  max-width: 1280px;
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
-  align-items: center;
-  gap: 56px;
+  grid-template-columns: 1fr 380px;
+  grid-template-rows: auto 1fr;
+  column-gap: 56px;
 }
 
 .texto-principal {
+  grid-column: 1;
+  grid-row: 1;
   position: relative;
   z-index: 1;
 }
@@ -218,10 +221,12 @@ color: var(--gris-oscuro);
 
 .imagen-hero {
   grid-column: 1 / -1;
-  width: 100%;
+  grid-row: 2;
+  width: 100vw;
+  max-width: none;
   margin-left: calc(-50vw + 50%);
-  height: 420px;
-  margin-top: -60px;
+  height: 360px;
+  margin-top: 32px;
   object-fit: cover;
   position: relative;
   z-index: 1;
@@ -229,6 +234,12 @@ color: var(--gris-oscuro);
 
 /* -- Card del hero -----------------------------*/
 .tarjeta-principal {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: start;
+  position: relative;
+  z-index: 2;
+
   background-color: var(--blanco);
   padding: 40px 38px 28px;
   box-shadow: var(--sombra-fuerte);
