@@ -234,8 +234,8 @@ function toggleTag(tag, modo) {
       return t !== tag;
     });
   } else {
-    if (seleccionActual.length >= 15) {
-      alert('Podés seleccionar hasta 15 tags.');
+    if (seleccionActual.length >= 10) {
+      alert('Podés seleccionar hasta 10 tags.');
       return;
     }
     nuevaSeleccion = seleccionActual.concat([tag]);
