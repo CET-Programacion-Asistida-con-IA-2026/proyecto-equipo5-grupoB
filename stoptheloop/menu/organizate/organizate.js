@@ -1,5 +1,9 @@
+/*=========================================================
+BLOQUE 1: CONFIGURACIÓN
+=========================================================*/
 
 
+/*============ 1 TODOS LOS DATOS GUARDADOS=================*/
 let horarioGuardado = JSON.parse( //Guardar el horario en localStorage para que no se pierda al recargar la página
     localStorage.getItem("horario")
 ) || [];
@@ -7,28 +11,86 @@ let horarioGuardado = JSON.parse( //Guardar el horario en localStorage para que 
 let fechasGuardadas = JSON.parse( //Guardar las fechas importantes en localStorage para que no se pierdan al recargar la página
     localStorage.getItem("fechas")
 ) || [];
+// Obtener las tareas guardadas en localStorage o inicializar un array vacío
+let tareas = JSON.parse(localStorage.getItem("tareas")) || [];
 
-/*let tareas = JSON.parse(
-    localStorage.getItem("tareas")
-) || [];]/
+
+
+
+
+
+/*============ 2 TODAS LAS REFERRENCIAS AL DOM =================*/
+
+/*----------horario-------------------*/ //Obtener el input de (...)
+const horario = document.getElementById("horario"); // Obtener el elemento del horario semanal
+const guardarActividad = document.getElementById("guardarActividad");
+const eliminarActividad = document.getElementById("eliminarActividad");
+const actividadInput = document.getElementById("actividadInput");
+const tipoInput = document.getElementById("tipoInput");
+
+
+/*----------calendario-------------------*/ //Obtener el input de (...)
+
+const listaFechas = document.getElementById("listaFechas");
+const btnMesAnterior = document.getElementById("mesAnterior");
+const btnMesSiguiente = document.getElementById("mesSiguiente");
+
+// Obtener el contenedor del calendario mensual y el título del mes
+const calendarioGrid = document.getElementById("calendarioGrid");
+const tituloMes = document.getElementById("tituloMes");
+
+/*----------planificador-------------------*/ //Obtener el input de (...)
+const tituloTarea = document.getElementById("tituloTarea");
+const prioridadTarea = document.getElementById("prioridadTarea");
+const fechaTarea = document.getElementById("fechaTarea");
+const agregarTarea = document.getElementById("agregarTarea");
+const listaTareas = document.getElementById("listaTareas");
+
+/*----------dashboard-------------------*/ //Obtener el input de (...)
+const menuItems = document.querySelectorAll(".menu-item");
+const tarjetasCreacion = document.querySelectorAll(".tipo-card");
+
+
+/*============ 3 CONSTANTES =================*/
+//horario
+const dias = [
+    "Lun",
+    "Mar",
+    "Mié",
+    "Jue",
+    "Vie",
+    "Sáb",
+    "Dom"
+];
+const horaInicio = 6; // Hora de inicio del horario (6s AM)
+const horaFin = 23; // Hora de fin del horario (11 PM)
+
+/*============ 4 ESTADOS =================*/
+let selectedCells = [];
+let fechaActual = new Date();
+let fechaSeleccionada = null;
+
+
+
+/*============??=================*/
+/*============??=================*/
+
+
+
 
 /*=========================================================
-MOTOR DE ORGANIZACIÓN
-Toda la información importante de la aplicación
-terminará viviendo aquí.
+BLOQUE 2: MOTOR DE ORGANIZACIÓN //Toda la información importante de la aplicación terminará viviendo aquí.
 =========================================================*/
 
-let organizacion = JSON.parse(
-    localStorage.getItem("organizacion")
-) || {
+let organizacion = JSON.parse(localStorage.getItem("organizacion")) || {
 
     materias: [],
     objetivos: [],
-
+    actividades: [],
     pasos: []
 
 };
-//definimos función 
+
 function guardarOrganizacion(){ 
 
     localStorage.setItem(
@@ -42,31 +104,10 @@ function guardarOrganizacion(){
 }
 
 /*=========================================================
-GESTOR DE MATERIAS
+BLOQUE 3: API INTERNA
 =========================================================*/
 
-/*-------------API interna. Para obtener materia-----------*/
-function crearMateria(nombre) {
-
-    const materia = {
-
-        id: crypto.randomUUID(),
-
-        nombre: formatearNombreMateria.trim(),
-
-        clave: normalizarTexto(nombre),
-
-        estado: "activo"
-
-    };
-
-    organizacion.materias.push(materia);
-
-    guardarOrganizacion();
-
-    return materia;
-
-}
+/*------------- GESTOR DE MATERIAS-----------*/
 
 //función que normaliza inputs
 function normalizarTexto(texto){
@@ -78,7 +119,6 @@ function normalizarTexto(texto){
         .replace(/[\u0300-\u036f]/g, "");
 
 }
-
 
 function formatearNombreMateria(nombre) {
 
@@ -93,7 +133,26 @@ function formatearNombreMateria(nombre) {
         .join(" ");
 
 }
-//
+
+
+function crearMateria(nombre) {
+
+    const materia = {
+
+        id: crypto.randomUUID(),
+        nombre: formatearNombreMateria(nombre),
+        clave: normalizarTexto(nombre),
+        estado: "activo",
+
+    };
+
+    organizacion.materias.push(materia);
+
+    guardarOrganizacion();
+
+    return materia;
+
+}
 
 function obtenerMateria(nombre){
 
@@ -161,6 +220,8 @@ function registrarActividad(datos){
 
         id: crypto.randomUUID(),
 
+        materiaId: materia.id,
+
         titulo: datos.titulo,
 
         tipo: datos.tipo || "evento",
@@ -207,10 +268,7 @@ function obtenerActividades() {
 
 }
 
-
-/*=========================================================
-GESTOR DE OBJETIVOS
-=========================================================*/
+/*--------GESTOR DE OBJETIVOS---------*/
 
 function crearObjetivo(datos){
 
@@ -268,57 +326,12 @@ function obtenerOCrearObjetivo(datos){
 }
 
 
+/*=========================================================
+BLOQUE 4: TODAS LAS FUNCIONES QUE RENDERIZAN
+=========================================================*/
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* =========================================================
-script para generar el horario semanal dinámicamente 
-y permitir al usuario agregar actividades a cada celda del horario
-========================================================= */
-const horario = document.getElementById("horario"); // Obtener el elemento del horario semanal
-
-const dias = [
-    "Lun",
-    "Mar",
-    "Mié",
-    "Jue",
-    "Vie",
-    "Sáb",
-    "Dom"
-];
-
-const horaInicio = 6; // Hora de inicio del horario (6s AM)
-const horaFin = 23; // Hora de fin del horario (11 PM)
-
+/* ==============HORARIO SEMANAL=========================================================script para generar el horario semanal dinámicamente y permitir al usuario agregar actividades a cada celda del horario============ */
 
 function generarHorario() {
     horario.innerHTML = '';
@@ -368,187 +381,8 @@ function aplicarHorarioGuardado() {
     });
 }
 
-generarHorario();
-aplicarHorarioGuardado();
 
-
-
-const celdas = document.querySelectorAll(
-    ".libre, .clase, .estudio, .descanso"
-); // Seleccionar todas las celdas del horario
-
-console.log(celdas.length); // Verificar la cantidad de celdas generadas
-
-
-
-let selectedCells = [];
-
-function actualizarInputsDesdeCelda(celda) {
-    const guardado = horarioGuardado.find(item =>
-        item.dia === celda.dataset.dia &&
-        item.hora === celda.dataset.hora
-    );
-
-    if (guardado) {
-        document.getElementById("actividadInput").value = guardado.actividad;
-        document.getElementById("tipoInput").value = guardado.tipo;
-    } else {
-        document.getElementById("actividadInput").value = "";
-        document.getElementById("tipoInput").value = "";
-    }
-}
-
-function actualizarSeleccion(celda) {
-    if (selectedCells.includes(celda)) {
-        celda.classList.remove("celda-seleccionada");
-        selectedCells = selectedCells.filter(item => item !== celda);
-    } else {
-        celda.classList.add("celda-seleccionada");
-        selectedCells.push(celda);
-    }
-}
-
-celdas.forEach(celda => {
-    celda.addEventListener("click", () => {
-        actualizarSeleccion(celda);
-
-        if (selectedCells.length === 1) {
-            actualizarInputsDesdeCelda(celda);
-        } else {
-            document.getElementById("actividadInput").value = "";
-            document.getElementById("tipoInput").value = "";
-        }
-    });
-});
-
-const guardarActividad = document.getElementById("guardarActividad");
-guardarActividad.addEventListener("click", () => {
-    const actividad = document.getElementById("actividadInput").value.trim();
-    const tipo = document.getElementById("tipoInput").value;
-
-    if (selectedCells.length === 0) {
-        alert("Selecciona al menos una celda del horario primero.");
-        return;
-    }
-
-    if (!actividad) {
-        alert("Ingresa el nombre de la actividad.");
-        return;
-    }
-
-    if (!tipo) {
-        alert("Selecciona el tipo de actividad.");
-        return;
-    }
-
-    selectedCells.forEach(celda => {
-        celda.textContent = actividad;
-        celda.classList.remove("libre", "clase", "estudio", "descanso");
-
-        if (tipo === "1") {
-            celda.classList.add("clase");
-        } else if (tipo === "2") {
-            celda.classList.add("estudio");
-        } else if (tipo === "3") {
-            celda.classList.add("descanso");
-        }
-
-        //Añado esto por la nueva api
-        
-
-        if(tipo === "1"){
-
-            registrarActividad({
-
-                materia: actividad,
-
-                titulo: actividad,
-
-                tipo: "clase",
-
-                dia: celda.dataset.dia,
-
-                hora: celda.dataset.hora
-
-            });
-
-        }
-
-        //
-
-        const existe = horarioGuardado.find(item =>
-            item.dia === celda.dataset.dia &&
-            item.hora === celda.dataset.hora
-        );
-
-        if (existe) {
-            existe.actividad = actividad;
-            existe.tipo = tipo;
-        } else {
-            horarioGuardado.push({
-                dia: celda.dataset.dia,
-                hora: celda.dataset.hora,
-                actividad,
-                tipo
-            });
-        }
-    });
-
-    localStorage.setItem("horario", JSON.stringify(horarioGuardado));
-    alert("Actividad guardada en las celdas seleccionadas.");
-});
-
-const eliminarActividad = document.getElementById("eliminarActividad");
-eliminarActividad.addEventListener("click", () => {
-    if (selectedCells.length === 0) {
-        alert("Selecciona al menos una celda del horario primero.");
-        return;
-    }
-
-    selectedCells.forEach(celda => {
-        const indice = horarioGuardado.findIndex(item =>
-            item.dia === celda.dataset.dia &&
-            item.hora === celda.dataset.hora
-        );
-
-        if (indice !== -1) {
-            horarioGuardado.splice(indice, 1);
-        }
-
-        celda.textContent = "";
-        celda.classList.remove("clase", "estudio", "descanso");
-        celda.classList.add("libre");
-        celda.classList.remove("celda-seleccionada");
-    });
-
-    selectedCells = [];
-    localStorage.setItem("horario", JSON.stringify(horarioGuardado));
-    document.getElementById("actividadInput").value = "";
-    document.getElementById("tipoInput").value = "";
-    alert("Actividad eliminada de las celdas seleccionadas.");
-});
-
-/*=========================================================
-script para agregar fechas importantes al calendario mensual
-y guardarlas en localStorage
-===========================================================*/
-const fechaInput = document.getElementById("fechaInput");
-const eventoInput = document.getElementById("eventoInput");
-const agregarFecha = document.getElementById("agregarFecha");
-const listaFechas = document.getElementById("listaFechas");
-const btnMesAnterior = document.getElementById("mesAnterior");
-const btnMesSiguiente = document.getElementById("mesSiguiente");
-
-// Obtener el contenedor del calendario mensual y el título del mes
-const calendarioGrid = document.getElementById("calendarioGrid");
-const tituloMes = document.getElementById("tituloMes");
-
-// Obtener el input de categoría
-const categoriaInput = document.getElementById("categoriaInput");
-
-let fechaActual = new Date();
-let fechaSeleccionada = null;
-
+/*==============CALENDARIO MENSSUAL======================================================             script para agregar fechas importantes al calendario mensualy guardarlas en localStorage===========================================================*/
 
 function mostrarFechas(fecha = null) {
     listaFechas.innerHTML = "";
@@ -587,100 +421,6 @@ function mostrarFechas(fecha = null) {
     });
 }
 
-btnMesAnterior.addEventListener("click", () => {
-    fechaActual.setMonth(fechaActual.getMonth() - 1);
-    fechaSeleccionada = null;
-    renderizarCalendario();
-    mostrarFechas();
-});
-
-btnMesSiguiente.addEventListener("click", () => {
-    fechaActual.setMonth(fechaActual.getMonth() + 1);
-    fechaSeleccionada = null;
-    renderizarCalendario();
-    mostrarFechas();
-});
-
-calendarioGrid.addEventListener("click", event => {
-    const diaCelda = event.target.closest(".dia-calendario");
-    if (!diaCelda) return;
-
-    const fecha = diaCelda.dataset.fecha;
-    if (!fecha) return;
-
-    fechaSeleccionada = fecha;
-    actualizarSeleccionMes();
-    mostrarFechas(fecha);
-});
-/*
-agregarFecha.addEventListener("click", () => {
-    const fecha = fechaInput.value;
-    const evento = eventoInput.value;
-    const categoria = categoriaInput.value; // Obtener la categoría seleccionada    
-
-    if (!fecha || !evento) {
-        alert("Completa fecha y descripción");
-        return;
-    }
-
-    fechasGuardadas.push({
-        fecha,
-        evento,
-        categoria // Guardar la categoría seleccionada
-    }); 
-
-
-    if (
-        categoria === "Examen" ||
-        categoria === "Final" ||
-        categoria === "Entrega" ||
-        categoria === "Proyecto"
-    ) {
-
-        registrarActividad({
-
-            materia: evento,
-
-            titulo: evento,
-
-            tipo: categoria.toLowerCase(),
-
-            fecha: fecha
-
-        });
-
-    }
-    
-
-    localStorage.setItem(
-        "fechas",
-        JSON.stringify(fechasGuardadas)
-    );
-
-    fechaSeleccionada = fecha;
-    renderizarCalendario();
-    actualizarSeleccionMes();
-    mostrarFechas(fecha);
-
-    eventoInput.value = "";
-    categoriaInput.value = "";
-});
-*/
- 
-listaFechas.addEventListener("click", event => {
-    const eliminarBtn = event.target.closest(".eliminar-fecha");
-    if (!eliminarBtn) return;
-
-    const index = Number(eliminarBtn.dataset.index);
-    if (Number.isNaN(index)) return;
-
-    fechasGuardadas.splice(index, 1);
-    localStorage.setItem("fechas", JSON.stringify(fechasGuardadas));
-    renderizarCalendario();
-    mostrarFechas();
-});
-
-mostrarFechas();
 
 // Renderizar el calendario mensual
 function renderizarCalendario() {
@@ -803,89 +543,48 @@ function actualizarSeleccionMes() {
     });
 }
 
-renderizarCalendario();
 
 
-//permite que EL MENU cambie de color al clickear enel menú -- ACTIVO
-const menuItems = document.querySelectorAll(".menu-item");
+/* ===========================PLANIFICADOR DE TAREAS============================== */
+function renderizarTareas() {
 
-menuItems.forEach(item => {
+    listaTareas.innerHTML = "";
 
-    item.addEventListener("click", () => {
+    tareas.forEach((tarea, index) => {
 
-        menuItems.forEach(i => i.classList.remove("activo"));
+        listaTareas.innerHTML += `
+            <div class="tarea">
 
-        item.classList.add("activo");
+                <div>
+                    <strong>${tarea.titulo}</strong>
+                </div>
+
+                <div>
+                    <span class="prioridad ${tarea.prioridad}">
+                       ${tarea.prioridad}
+                    </span>
+                </div>
+
+                <div>
+                    Fecha límite: ${tarea.fecha || "Sin fecha"}
+                </div>
+
+                <button
+                    class="eliminar-tarea"
+                    data-index="${index}">
+                    Eliminar
+                </button>
+
+            </div>
+        `;
 
     });
-
-});
-
-
-function mostrarFormulario(tipo){
-
-    const contenedor=document.getElementById("formularioDinamico");
-
-    switch(tipo){
-
-        case "examen":
-
-            contenedor.innerHTML=crearFormularioExamen();
-
-            break;
-
-        case "entrega":
-
-            contenedor.innerHTML=crearFormularioEntrega();
-
-            break;
-
-        case "actividad":
-
-            contenedor.innerHTML=crearFormularioActividad();
-
-            break;
-
-        case "evento":
-
-            contenedor.innerHTML=crearFormularioEvento();
-
-            break;
-
-        case "seminario":
-
-            contenedor.innerHTML=crearFormularioSeminario();
-
-            break;
-
-    }
 
 }
 
 
-//permite cambiar de color DEL CENTRO DE ORGANIZACIÖN al clickear -- ACTIVO
-const tarjetasCreacion = document.querySelectorAll(".tipo-card");
 
-console.log(tarjetasCreacion);
-
-tarjetasCreacion.forEach(tarjeta => {
-
-    tarjeta.addEventListener("click", () => {
-
-        console.log(tarjeta.dataset.tipo);
-
-        tarjetasCreacion.forEach(t =>
-            t.classList.remove("activo")
-        );
-
-        tarjeta.classList.add("activo");
-
-    });
-
-});
-
-
-//formulario para el examen
+/*======================formulario para el examen================== */
 function crearFormularioExamen() {
 
     return `
@@ -927,67 +626,305 @@ function crearFormularioExamen() {
 
 }
 
+function mostrarFormulario(tipo){
+
+    const contenedor=document.getElementById("formularioDinamico");
+
+    switch(tipo){
+
+        case "examen":
+
+            contenedor.innerHTML=crearFormularioExamen();
+
+            break;
+
+        case "entrega":
+
+            contenedor.innerHTML=crearFormularioEntrega();
+
+            break;
+
+        case "actividad":
+
+            contenedor.innerHTML=crearFormularioActividad();
+
+            break;
+
+        case "evento":
+
+            contenedor.innerHTML=crearFormularioEvento();
+
+            break;
+
+        case "seminario":
+
+            contenedor.innerHTML=crearFormularioSeminario();
+
+            break;
+
+    }
+
+}
+
+/*=========================================================
+BLOQUE 5: TODOS LOS EVENTOS
+=========================================================*/
 
 
+/* HORARIO*/
 
-/* =================================================================================
-  PLANIFICADOR DE TAREAS
-script para agregar tareas a la lista de tareas y guardarlas en localStorage
-=================================================================================== */
+function actualizarInputsDesdeCelda(celda) {
+    const guardado = horarioGuardado.find(item =>
+        item.dia === celda.dataset.dia &&
+        item.hora === celda.dataset.hora
+    );
+
+    if (guardado) {
+        document.getElementById("actividadInput").value = guardado.actividad;
+        document.getElementById("tipoInput").value = guardado.tipo;
+    } else {
+        document.getElementById("actividadInput").value = "";
+        document.getElementById("tipoInput").value = "";
+    }
+}
+
+function actualizarSeleccion(celda) {
+    if (selectedCells.includes(celda)) {
+        celda.classList.remove("celda-seleccionada");
+        selectedCells = selectedCells.filter(item => item !== celda);
+    } else {
+        celda.classList.add("celda-seleccionada");
+        selectedCells.push(celda);
+    }
+}
 
 
-// Obtener las tareas guardadas en localStorage o inicializar un array vacío
-let tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+function iniciarEventosHorario() {
+
+    const celdas = document.querySelectorAll(
+        ".libre, .clase, .estudio, .descanso"
+    );
+
+    console.log(celdas.length);
+
+    celdas.forEach(celda => {
+
+        celda.addEventListener("click", () => {
+
+            actualizarSeleccion(celda);
+
+            if (selectedCells.length === 1) {
+
+                actualizarInputsDesdeCelda(celda);
+
+            } else {
+
+                actividadInput.value = "";
+
+                tipoInput.value = "";
+
+            }
+
+        });
+
+    });
 
 
-const tituloTarea = document.getElementById("tituloTarea");
+    guardarActividad.addEventListener("click", () => {
+        const actividad = document.getElementById("actividadInput").value.trim();
+        const tipo = document.getElementById("tipoInput").value;
 
-const prioridadTarea = document.getElementById("prioridadTarea");
+        if (selectedCells.length === 0) {
+            alert("Selecciona al menos una celda del horario primero.");
+            return;
+        }
 
-const fechaTarea = document.getElementById("fechaTarea");
+        if (!actividad) {
+            alert("Ingresa el nombre de la actividad.");
+            return;
+        }
 
-const agregarTarea = document.getElementById("agregarTarea");
+        if (!tipo) {
+            alert("Selecciona el tipo de actividad.");
+            return;
+        }
 
-const listaTareas = document.getElementById("listaTareas");
+        selectedCells.forEach(celda => {
+            celda.textContent = actividad;
+            celda.classList.remove("libre", "clase", "estudio", "descanso");
+
+            if (tipo === "1") {
+                celda.classList.add("clase");
+            } else if (tipo === "2") {
+                celda.classList.add("estudio");
+            } else if (tipo === "3") {
+                celda.classList.add("descanso");
+            }
+
+            //Añado esto por la nueva api
+            
+
+            if(tipo === "1"){
+
+                registrarActividad({
+
+                    materia: actividad,
+
+                    titulo: actividad,
+
+                    tipo: "clase",
+
+                    dia: celda.dataset.dia,
+
+                    hora: celda.dataset.hora
+
+                });
+
+            }
+
+            //
+
+            const existe = horarioGuardado.find(item =>
+                item.dia === celda.dataset.dia &&
+                item.hora === celda.dataset.hora
+            );
+
+            if (existe) {
+                existe.actividad = actividad;
+                existe.tipo = tipo;
+            } else {
+                horarioGuardado.push({
+                    dia: celda.dataset.dia,
+                    hora: celda.dataset.hora,
+                    actividad,
+                    tipo
+                });
+            }
+        });
+
+        localStorage.setItem("horario", JSON.stringify(horarioGuardado));
+        alert("Actividad guardada en las celdas seleccionadas.");
+    });
 
 
-function renderizarTareas() {
+    eliminarActividad.addEventListener("click", () => {
+        if (selectedCells.length === 0) {
+            alert("Selecciona al menos una celda del horario primero.");
+            return;
+        }
 
-    listaTareas.innerHTML = "";
+        selectedCells.forEach(celda => {
+            const indice = horarioGuardado.findIndex(item =>
+                item.dia === celda.dataset.dia &&
+                item.hora === celda.dataset.hora
+            );
 
-    tareas.forEach((tarea, index) => {
+            if (indice !== -1) {
+                horarioGuardado.splice(indice, 1);
+            }
 
-        listaTareas.innerHTML += `
-            <div class="tarea">
+            celda.textContent = "";
+            celda.classList.remove("clase", "estudio", "descanso");
+            celda.classList.add("libre");
+            celda.classList.remove("celda-seleccionada");
+        });
 
-                <div>
-                    <strong>${tarea.titulo}</strong>
-                </div>
-
-                <div>
-                    <span class="prioridad ${tarea.prioridad}">
-                       ${tarea.prioridad}
-                    </span>
-                </div>
-
-                <div>
-                    Fecha límite: ${tarea.fecha || "Sin fecha"}
-                </div>
-
-                <button
-                    class="eliminar-tarea"
-                    data-index="${index}">
-                    Eliminar
-                </button>
-
-            </div>
-        `;
-
+        selectedCells = [];
+        localStorage.setItem("horario", JSON.stringify(horarioGuardado));
+        document.getElementById("actividadInput").value = "";
+        document.getElementById("tipoInput").value = "";
+        alert("Actividad eliminada de las celdas seleccionadas.");
     });
 
 }
 
-renderizarTareas();
+
+
+/*CALENDARIO*/
+
+btnMesAnterior.addEventListener("click", () => {
+    fechaActual.setMonth(fechaActual.getMonth() - 1);
+    fechaSeleccionada = null;
+    renderizarCalendario();
+    mostrarFechas();
+});
+
+btnMesSiguiente.addEventListener("click", () => {
+    fechaActual.setMonth(fechaActual.getMonth() + 1);
+    fechaSeleccionada = null;
+    renderizarCalendario();
+    mostrarFechas();
+});
+
+calendarioGrid.addEventListener("click", event => {
+    const diaCelda = event.target.closest(".dia-calendario");
+    if (!diaCelda) return;
+
+    const fecha = diaCelda.dataset.fecha;
+    if (!fecha) return;
+
+    fechaSeleccionada = fecha;
+    actualizarSeleccionMes();
+    mostrarFechas(fecha);
+});
+
+
+ 
+listaFechas.addEventListener("click", event => {
+    const eliminarBtn = event.target.closest(".eliminar-fecha");
+    if (!eliminarBtn) return;
+
+    const index = Number(eliminarBtn.dataset.index);
+    if (Number.isNaN(index)) return;
+
+    fechasGuardadas.splice(index, 1);
+    localStorage.setItem("fechas", JSON.stringify(fechasGuardadas));
+    renderizarCalendario();
+    mostrarFechas();
+});
+
+
+
+/*CENTRO ORGANIZACIÓN*/
+
+//permite que EL MENU cambie de color al clickear enel menú -- ACTIVO
+menuItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        menuItems.forEach(i => i.classList.remove("activo"));
+
+        item.classList.add("activo");
+
+    });
+
+});
+
+//permite cambiar de color DEL CENTRO DE ORGANIZACIÖN al clickear -- ACTIVO y además entiende decide si se despliega forms o no 
+tarjetasCreacion.forEach(tarjeta => {
+
+    tarjeta.addEventListener("click", () => {
+
+        console.log(tarjeta.dataset.tipo);
+
+        tarjetasCreacion.forEach(t =>
+            t.classList.remove("activo")
+        );
+
+        tarjeta.classList.add("activo");
+
+        mostrarFormulario(tarjeta.dataset.tipo);
+
+    });
+
+});
+
+
+
+
+
+
+/*PLANIFICADOR DE TAREAS*/
 
 listaTareas.addEventListener("click", event => {
 
@@ -1009,8 +946,6 @@ listaTareas.addEventListener("click", event => {
     renderizarTareas();
 
 });
-
-
 
 // Agregar tarea al hacer clic en el botón "Agregar"
 agregarTarea.addEventListener("click", () => {
@@ -1044,7 +979,9 @@ agregarTarea.addEventListener("click", () => {
 });
 
 
-
+/*=========================================================
+BLOQUE 6: INICIALIZACIÓN
+=========================================================*/
 /* =========================================================
 script para enseñar el resumen diario va aqui pq necesita que estén definidos las anteriores cosas
 
@@ -1061,6 +998,18 @@ Hoy tenés:
 
 Tu prioridad de hoy debería ser avanzar con el Proyecto Final.
 ========================================================= */
+
+//evaluo las func que acabo de definir son parte de inicialización
+generarHorario();
+aplicarHorarioGuardado();
+iniciarEventosHorario();
+
+mostrarFechas();
+renderizarCalendario();
+
+renderizarTareas();
+
+
 document.getElementById("cantidadEventos").textContent =
     fechasGuardadas.length;
 
@@ -1069,10 +1018,6 @@ document.getElementById("cantidadTareas").textContent =
 
 document.getElementById("cantidadExamenes").textContent = 0;
 
-
-
-
-
 //codigo para ver en la consola detalles
+console.log(tarjetasCreacion);
 console.log(organizacion);
-

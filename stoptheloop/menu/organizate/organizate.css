@@ -841,8 +841,7 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
 
 /* Estilos para los inputs del formulario de eventos del calendario mensual */
 #fechaInput,
-#eventoInput,
-#categoriaInput{
+#eventoInput{
     padding:8px 10px;
     border:1px solid #d5dbe8;
     border-radius:8px;
@@ -851,8 +850,7 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
 }
 
 #fechaInput:focus,
-#eventoInput:focus,
-#categoriaInput:focus{
+#eventoInput:focus{
     border-color:#7eaef7;
 }
 
