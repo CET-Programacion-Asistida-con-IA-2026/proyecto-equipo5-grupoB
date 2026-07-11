@@ -23,9 +23,6 @@ let organizacion = JSON.parse(
 ) || {
 
     materias: [],
-
-    actividades: [],
-
     objetivos: [],
 
     pasos: []
