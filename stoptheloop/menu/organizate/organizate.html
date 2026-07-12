@@ -132,7 +132,7 @@
                 entregas principales
                 Ese bloque va a ser el cerebro de toda la organización.-->
                 <section id="objetivos" class="section">
-                <h1>OBJETIVOS</h1>
+                <h2>OBJETIVOS</h2>
                 </section>
               
 
@@ -152,7 +152,7 @@
 
                                 <!-- Editor de horario -->
                                 <section class="editor-horario">
-                                    <h4>Agregar actividad</h4>
+                                    <h4>➕ Actividad </h4>
 
                                     <div class="editor-formulario">
 
@@ -192,40 +192,60 @@
 
                         <!-- Calendario mensual -->
                         <div class="calendario-mensual">
-                            <h3>Próximas fechas</h3>
+                            <h3>Centro de organización</h3>
 
 
-                            <div class="editor-fechas">
+                            <div class="centro-organizacion">
 
-                                <input
-                                    type="date"
-                                    id="fechaInput"
-                                >
+                                <h4>➕ Actividad </h4>
 
-                                <input
-                                    type="text"
-                                    id="eventoInput"
-                                    placeholder="Ej: Parcial de Matemática"
-                                >
+                                <div class="opciones-creacion">
 
-                                <select id="categoriaInput">
-                                    <option value="">Selecciona una opción</option>
-                                    <option value="Examen">Examen</option>
-                                    <option value="Final">Final</option>
-                                    <option value="Seminario">Seminario</option>
-                                    <optgroup label="Eventos y entregas">
-                                        <option value="Entrega">Entrega</option>
-                                        <option value="Actividad">Actividad</option>
-                                        <option value="Proyecto">Proyecto</option>
-                                    </optgroup>
-                                    
+                                    <button class="tipo-card activo" data-tipo="examen">
+                                        <span>📋</span>
+                                        <h4>Examen</h4>
+                                        <p>Crear un examen con plan de estudio.</p>
+                                    </button>
+
+                                    <button class="tipo-card" data-tipo="entrega">
+                                        <span>📑</span>
+                                        <h4>Entrega</h4>
+                                        <p>Registrar una entrega importante.</p>
+                                    </button>
+
+                                    <button class="tipo-card" data-tipo="actividad">
+                                        <span>📝</span>
+                                        <h4>Actividad</h4>
+                                        <p>Clase, práctica o estudio.</p>
+                                    </button>
+
+                                    <button class="tipo-card" data-tipo="evento">
+                                        <span>🎉</span>
+                                        <h4>Evento</h4>
+                                        <p>Algo personal.</p>
+                                    </button>
+
+                                    <button class="tipo-card" data-tipo="seminario">
+                                        <span>🎤</span>
+                                        <h4>Seminario</h4>
+                                        <p>Curso o charla.</p>
+                                    </button>
+
+                                </div>
+
+                                <select id="materiaFormulario">
+
+                                    <option value="">
+                                        Cargando materias...
+                                    </option>
+                                    <button id="guardarFormulario">Guardar</button>
+
                                 </select>
 
-                                <button id="agregarFecha">
-                                    Agregar
-                                </button>
+                                
 
                             </div>
+                            
 
                             <div class="cabecera-calendario">
                                 <button id="mesAnterior">◀</button>
@@ -293,11 +313,6 @@
                         <p>Poner estructura de matriz y descripción además, opción de actividades por hacer y el sistema organiza según el criterio adecuado </p>
                     </section>
                    
-                    <section id="planificadores" class="section">
-                        <h2>Planificadores</h2>
-                        <p>planificadores gratuitos para subir y dejar a disposición.</p>
-                    </section>
-
                     <section id="examenes" class="section">
                         <h2>Preparador de exámenes</h2>
                         <div class="form-examen">
@@ -345,7 +360,7 @@
 
                 <!--  
                 
-                ----esto va con ida de ia colaborativa /////La linea de flujo temina acá y el estudiante finalmente decide qué estudiar y lo motivamos 
+                ----esto va con idea de ia colaborativa /////La linea de flujo temina acá y el estudiante finalmente decide qué estudiar y lo motivamos 
                 <div class="section ">
                     <label for="subject-select">¿Qué vas a estudiar hoy?</label>
                     <select id="subject-select" onchange="handleSubjectSelection()">
