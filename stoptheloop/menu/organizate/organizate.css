@@ -1174,6 +1174,126 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
 
 
 
+
+
+/*=========================================================
+MODAL DEL PLANIFICADOR
+=========================================================*/
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:5000;
+
+}
+
+.oculto{
+
+    display:none;
+
+}
+
+.modal-contenido{
+
+    background:var(--blanco);
+
+    width:min(500px,90%);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    position:relative;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+}
+
+.cerrar-modal{
+
+    position:absolute;
+
+    right:15px;
+
+    top:15px;
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    font-size:1.2rem;
+
+}
+
+/* algo más*/
+.menu-modal{
+
+    display:grid;
+
+    gap:15px;
+
+    margin-top:25px;
+
+}
+
+.opcion-modal{
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    background:var(--fondo);
+
+    transition:.2s;
+
+}
+
+.opcion-modal:hover{
+
+    transform:scale(1.02);
+
+}
+
+.fecha-formulario{
+
+    margin:15px 0 25px;
+
+    font-weight:600;
+
+    color:var(--gris-oscuro);
+
+}
+
+
+
+
+/* ========================================================== */
+
+
+
+
+
+
+
 /* ==========================================================
    SOPORTE COMPLETAMENTE RESPONSIVE (MEDIA QUERIES)
    ========================================================== */
