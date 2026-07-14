@@ -28,7 +28,7 @@ let estadoFormulario = {
 
     materiaId: null,
 
-    titulo: ""
+    titulo: "",
 
     tipoEvaluación: "Parcial"
 
