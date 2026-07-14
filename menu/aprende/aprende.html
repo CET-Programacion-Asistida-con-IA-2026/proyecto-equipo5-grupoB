@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprendé — Stop the Loop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="aprende.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="logo" href="../../index.html" aria-label="Ir al inicio">
+        <img src="../../Imagenes/stoptheloop.svg" alt="Stop the Loop">
+      </a>
+      <ul class="nav-links">
+        <li><a href="aprende.html">Aprendé</a></li>
+        <li><a href="../organizate/organizate.html">Organizate</a></li>
+        <li><a href="../bienestar/bienestar.html">Bienestar</a></li>
+        <li><a href="../comunidad/comunidad.html">Comunidad</a></li>
+      </ul>
+      <a href="../registro/registro.html" class="btn btn-nav">Registrate</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="aprende-hero">
+      <div class="aprende-hero-content">
+        <span class="mini-pill">APRENDÉ</span>
+        <h1>Estudiá mejor, <br>no más.</h1>
+        <p>Técnicas probadas y consejos de profesionales para transformar cómo estudiás.</p>
+      </div>
+    </section>
+
+    <!-- TÉCNICAS DE ESTUDIO -->
+    <section class="tecnicas section-border" id="tecnicas">
+      <div class="section-intro">
+        <span class="mini-pill">TÉCNICAS DE ESTUDIO</span>
+        <h2>Encontrá el método que funciona para vos.</h2>
+        <p>Aprendé, experimentá y descubrí qué técnica funciona mejor para vos. Cada estudiante aprende de forma distinta, por eso podés explorar diferentes métodos y ponerlos en práctica al instante.</p>
+      </div>
+
+      <div class="tecnicas-grid">
+
+        <!-- Pomodoro -->
+        <article class="tecnica-card">
+          <div class="tecnica-header lila">
+            <span class="tecnica-emoji">🍅</span>
+            <h3 class="tecnica-titulo" data-tecnica="pomodoro">Técnica Pomodoro</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>Trabajá 25 minutos con concentración total y descansá 5 minutos. Cada cuatro sesiones, hacé una pausa más larga para recuperar energías y mantener el rendimiento.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo aplicarla?</h4>
+              <ol>
+                <li>Elegí una tarea.</li>
+                <li>Configurá un temporizador de 25 minutos.</li>
+                <li>Estudiá sin interrupciones.</li>
+                <li>Descansá 5 minutos.</li>
+                <li>Repetí el ciclo.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Concentración</span>
+            <span class="tecnica-tag">Gestión del tiempo</span>
+            <div class="tecnica-acciones">
+              <button class="btn-aplicar" data-modal="modal-pomodoro">Aplicar técnica</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Recuerdo Activo -->
+        <article class="tecnica-card">
+          <div class="tecnica-header azul">
+            <span class="tecnica-emoji">💭</span>
+            <h3 class="tecnica-titulo" data-tecnica="recuerdo-activo">Recuerdo Activo</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>Después de estudiar un tema, intentá recordarlo sin mirar los apuntes. Así descubrís qué aprendiste realmente y qué necesitás seguir repasando.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo aplicarlo?</h4>
+              <ol>
+                <li>Estudiá un tema.</li>
+                <li>Guardá los apuntes.</li>
+                <li>Escribí o contá todo lo que recordás.</li>
+                <li>Compará con el material.</li>
+                <li>Repasá lo que olvidaste y repetí.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Memoria</span>
+            <span class="tecnica-tag">Preparación de exámenes</span>
+            <div class="tecnica-acciones">
+              <button class="btn-aplicar" data-modal="modal-recuerdo">Aplicar técnica</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Feynman -->
+        <article class="tecnica-card">
+          <div class="tecnica-header amarillo">
+            <span class="tecnica-emoji">💡</span>
+            <h3 class="tecnica-titulo" data-tecnica="feynman">Método Feynman</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>Explicá un tema con palabras simples, como si se lo contaras a alguien que nunca lo estudió. Si podés enseñarlo, es porque realmente lo entendiste.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo aplicarlo?</h4>
+              <ol>
+                <li>Elegí un tema.</li>
+                <li>Explicalo con tus propias palabras.</li>
+                <li>Detectá lo que no entendés.</li>
+                <li>Revisá la información.</li>
+                <li>Volvé a explicarlo de forma más simple.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Comprensión</span>
+            <span class="tecnica-tag">Aprendizaje profundo</span>
+            <div class="tecnica-acciones">
+              <button class="btn-aplicar" data-modal="modal-feynman">Aplicar técnica</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Cornell -->
+        <article class="tecnica-card">
+          <div class="tecnica-header gris">
+            <span class="tecnica-emoji">📓</span>
+            <h3 class="tecnica-titulo" data-tecnica="cornell">Método Cornell</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>Organizá tus apuntes dividiendo la hoja en secciones para registrar información, escribir preguntas clave y crear un resumen que facilite el repaso.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo aplicarlo?</h4>
+              <ol>
+                <li>Escribí el tema y la fecha.</li>
+                <li>Tomá notas en la columna principal.</li>
+                <li>Anotá preguntas en la columna izquierda.</li>
+                <li>Escribí un resumen con tus propias palabras.</li>
+                <li>Repasá respondiendo las preguntas sin mirar las notas.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Organización</span>
+            <span class="tecnica-tag">Toma de apuntes</span>
+            <div class="tecnica-acciones">
+              <button class="btn-aplicar" data-modal="modal-cornell">Aplicar técnica</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Lectura Activa -->
+        <article class="tecnica-card">
+          <div class="tecnica-header lila">
+            <span class="tecnica-emoji">📚</span>
+            <h3 class="tecnica-titulo" data-tecnica="lectura-activa">Lectura Activa</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>No se trata solo de leer. La lectura activa consiste en analizar el texto, hacer preguntas, subrayar ideas importantes y tomar notas para comprenderla mejor.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo aplicarla?</h4>
+              <ol>
+                <li>Observá títulos y subtítulos.</li>
+                <li>Leé con atención.</li>
+                <li>Hacé preguntas mientras leés.</li>
+                <li>Subrayá solo las ideas principales.</li>
+                <li>Resumí el contenido con tus propias palabras.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Comprensión lectora</span>
+            <span class="tecnica-tag">Análisis</span>
+            <div class="tecnica-acciones">
+              <button class="btn-aplicar" data-modal="modal-lectura">Aplicar técnica</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Mapas Mentales -->
+        <article class="tecnica-card">
+          <div class="tecnica-header azul">
+            <span class="tecnica-emoji">🗺️</span>
+            <h3 class="tecnica-titulo" data-tecnica="mapas-mentales">Mapas Mentales</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>Organizá la información de forma visual partiendo de una idea principal y conectando conceptos mediante ramas, palabras clave y colores para recordar mejor.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo hacerlos?</h4>
+              <ol>
+                <li>Escribí el tema principal en el centro.</li>
+                <li>Agregá ramas con las ideas más importantes.</li>
+                <li>Incorporá subramas con detalles o ejemplos.</li>
+                <li>Usá palabras clave en lugar de párrafos.</li>
+                <li>Revisá las conexiones entre los conceptos.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Organización visual</span>
+            <span class="tecnica-tag">Síntesis</span>
+            <div class="tecnica-acciones">
+              <button class="btn-aplicar" data-modal="modal-mapas">Aplicar técnica</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="tecnicas-footer">
+        <a href="tecnicas.html" class="btn-ver-mas">Ver todos los métodos en profundidad →</a>
+      </div>
+    </section>
+
+    <!-- TIPS DE PROFESIONALES -->
+    <section class="tips-profesionales section-border" id="tips">
+      <div class="section-intro">
+        <span class="mini-pill">TIPS DE PROFESIONALES</span>
+        <h2>Un pequeño consejo puede hacer la diferencia.</h2>
+        <p>Artículos y recomendaciones basadas en investigaciones reales para ayudarte a estudiar mejor y cuidar tu bienestar.</p>
+      </div>
+
+      <div class="filtros">
+        <button class="filtro-btn activo" data-filtro="todos">Todos</button>
+        <button class="filtro-btn" data-filtro="sueno">Sueño</button>
+        <button class="filtro-btn" data-filtro="nutricion">Nutrición</button>
+        <button class="filtro-btn" data-filtro="ansiedad">Ansiedad</button>
+        <button class="filtro-btn" data-filtro="estudio">Estudio</button>
+        <button class="filtro-btn" data-filtro="tecnologia">Tecnología</button>
+      </div>
+
+      <div class="articulos-grid" id="articulos-grid">
+
+        <!-- SUEÑO -->
+        <article class="articulo-card" data-categoria="sueno">
+          <div class="articulo-foto placeholder-foto">🌙</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria sueno">Sueño</span>
+            <h3>Dormir siempre a la misma hora mejora tu rendimiento.</h3>
+            <p>Dormir muchas horas ayuda, pero hacerlo en horarios regulares también. Este estudio muestra que mantener una rutina de sueño estable puede favorecer el aprendizaje.</p>
+            <p class="articulo-autor">Lin, C.-T., Liang, S.-F. y Shaw, F.-Z. — Scientific Reports (2025)</p>
+            <a href="tips.html#sueno-1" class="btn-articulo">Leer artículo completo →</a>
+          </div>
+        </article>
+
+        <article class="articulo-card" data-categoria="sueno">
+          <div class="articulo-foto placeholder-foto">🌙</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria sueno">Sueño</span>
+            <h3>Tu cerebro sigue trabajando mientras dormís (y eso juega a tu favor).</h3>
+            <p>Lo que estudiaste hoy se guarda de verdad mientras descansás esta noche. Descubrí por qué dormir es parte del plan de estudio, no una pausa en él.</p>
+            <p class="articulo-autor">Conte, F., Malloggi, S., De Rosa, O., et al. — Brain Sciences</p>
+            <a href="tips.html#sueno-2" class="btn-articulo">Leer artículo completo →</a>
+          </div>
+        </article>
+
+        <article class="articulo-card" data-categoria="sueno">
+          <div class="articulo-foto placeholder-foto">🌙</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria sueno">Sueño</span>
+            <h3>Dormir poco hoy también afecta cómo aprendés mañana.</h3>
+            <p>Dormir poco una noche ya puede afectar la concentración, pero hacerlo de forma repetida tiene un impacto aún mayor en el aprendizaje y el rendimiento académico.</p>
+            <p class="articulo-autor">Cureus (2025)</p>
+            <a href="tips.html#sueno-3" class="btn-articulo">Leer artículo completo →</a>
+          </div>
+        </article>
+
+        <!-- NUTRICIÓN -->
+        <article class="articulo-card" data-categoria="nutricion">
+          <div class="articulo-foto placeholder-foto">🥗</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria nutricion">Nutrición</span>
+            <h3>Cómo comés también es cómo te sentís (y cómo rendís).</h3>
+            <p>Hay una conexión entre lo que comés casi todos los días y cómo te sentís por dentro. Este artículo lo explica con claridad, sin culpa y con foco en lo que sí podés cambiar.</p>
+            <p class="articulo-autor">Ertaş Öztürk, Y. y Uzdil, Z. — PeerJ (2025)</p>
+            <a href="tips.html#nutricion-1" class="btn-articulo">Leer artículo completo →</a>
+          </div>
+        </article>
+
+        <article class="articulo-card" data-categoria="nutricion">
+          <div class="articulo-foto placeholder-foto">💧</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria nutricion">Nutrición</span>
+            <h3>Tu cerebro es agua: por qué hidratarte no es un detalle menor.</h3>
+            <p>Hay una parte de vos que depende del agua más de lo que imaginás: tu concentración, tu memoria y hasta tu estado de ánimo.</p>
+            <p class="articulo-autor">Zhang, N., Du, S. M., Zhang, J. F. y Ma, G. S. — Int. Journal of Environmental Research</p>
+            <a href="tips.html#nutricion-2" class="btn-articulo">Leer artículo completo →</a>
+          </div>
+        </article>
+
+        <article class="articulo-card" data-categoria="nutricion">
+          <div class="articulo-foto placeholder-foto">⚡</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria nutricion">Nutrición</span>
+            <h3>La clave para no quedarte sin energía a mitad de la tarde de estudio.</h3>
+            <p>No es lo mismo un pico de energía que dura diez minutos que una energía que te acompaña varias horas. Esto es lo que hace la diferencia.</p>
+            <p class="articulo-autor">Gaylor, C. M., Benton, D. et al. — Neuroscience & Biobehavioral Reviews</p>
+            <a href="tips.html#nutricion-3" class="btn-articulo">Leer artículo completo →</a>
+          </div>
+        </article>
+
+        <!-- ANSIEDAD -->
+        <article class="articulo-card" data-categoria="ansiedad">
+          <div class="articulo-foto placeholder-foto">🧠</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria ansiedad">Ansiedad</span>
+            <h3>Antes de un examen, tu cabeza también se puede entrenar.</h3>
+            <p>La ansiedad antes de un examen no es "todo o nada": hay formas concretas de trabajarla, y funcionan mejor de lo que imaginás.</p>
+            <p class="articulo-autor">Saravanan, C. y Kingston, R. — Journal of Research in Medical Science</p>
+            <a href="tips.html#ansiedad-1" class="btn-articulo">Leer artículo completo →</a>
+          </div>
+        </article>
+
+        <article class="articulo-card" data-categoria="ansiedad">
+          <div class="articulo-foto placeholder-foto">💙</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria ansiedad">Ansiedad</span>
+            <h3>Pedir ayuda no es una señal de debilidad.</h3>
+            <p>Muchos estudiantes evitan pedir ayuda psicológica por vergüenza o por dudas de si realmente sirve. Esto es lo que dicen quienes ya lo hicieron.</p>
+            <p class="articulo-autor">Vidourek, R. A., King, K. A. et al. — Journal of American College Health</p>
+            <a href="tips.html#ansiedad-2" class="btn-articulo">Leer artículo completo →</a>
+          </div>
+        </article>
+
+        <article class="articulo-card" data-categoria="ansiedad">
+          <div class="articulo-foto placeholder-foto">💪</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria ansiedad">Ansiedad</span>
+            <h3>Presión académica: lo que te frena.</h3>
+            <p>Dos estudiantes con la misma carga de exámenes pueden terminar en lugares muy distintos. La diferencia no está en cuánta presión sienten, sino en qué hacen con ella.</p>
+            <p class="articulo-autor">Xue, C., Helian, Z. y Li, Y. — PLOS ONE</p>
+            <a href="tips.html#ansiedad-3" class="btn-articulo">Leer artículo completo →</a>
+          </div>
+        </article>
+
+        <!-- ESTUDIO -->
+        <article class="articulo-card" data-categoria="estudio">
+          <div class="articulo-foto placeholder-foto">📖</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria estudio">Estudio</span>
+            <h3>¿Por qué posponemos? La ciencia detrás de la procrastinación académica.</h3>
+            <p>Procrastinar no es "ser flojo". Un psicólogo explica que detrás de la postergación suelen estar la falta de autorregulación y propone pasos simples para empezar a moverse.</p>
+            <p class="articulo-autor">Dr. Alberto Alegre, psicólogo — Universidad Peruana Cayetano Heredia</p>
+            <a href="tips.html#estudio-1" class="btn-articulo">Leer artículo completo →</a>
+          </div>
+        </article>
+
+        <article class="articulo-card" data-categoria="estudio">
+          <div class="articulo-foto placeholder-foto">🎓</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria estudio">Estudio</span>
+            <h3>Ir a clase no es lo mismo que aprender: las trampas que nos jugamos a nosotros mismos.</h3>
+            <p>Estar sentado en el aula o subrayar el apunte no es lo mismo que haber aprendido. El artículo explica qué son las "ilusiones de competencia" en el aprendizaje.</p>
+            <p class="articulo-autor">Dra. Barbara Oakley</p>
+            <a href="tips.html#estudio-2" class="btn-articulo">Leer artículo completo →</a>
+          </div>
+        </article>
+
+        <article class="articulo-card" data-categoria="estudio">
+          <div class="articulo-foto placeholder-foto">📝</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria estudio">Estudio</span>
+            <h3>Hábitos de estudio: la base de un buen rendimiento.</h3>
+            <p>Explica por qué los hábitos de estudio —no la inteligencia ni la memoria— son el mejor predictor del éxito académico, y da una serie de hábitos concretos.</p>
+            <p class="articulo-autor">Sagüés Psicología / Juan Armando Corbin — Psicología y Mente</p>
+            <a href="tips.html#estudio-3" class="btn-articulo">Leer artículo completo →</a>
+          </div>
+        </article>
+
+        <!-- TECNOLOGÍA -->
+        <article class="articulo-card" data-categoria="tecnologia">
+          <div class="articulo-foto placeholder-foto">🤖</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria tecnologia">Tecnología</span>
+            <h3>La IA como aliada de tu estudio, no como atajo.</h3>
+            <p>Un estudio universitario reciente muestra que casi todos los estudiantes ya usan inteligencia artificial para estudiar, pero pocos reciben orientación sobre cómo hacerlo bien.</p>
+            <p class="articulo-autor">Hernández Uchuya, D. M. et al. — Revista InveCom</p>
+            <a href="tips.html#tecnologia-1" class="btn-articulo">Leer artículo completo →</a>
+          </div>
+        </article>
+
+        <article class="articulo-card" data-categoria="tecnologia">
+          <div class="articulo-foto placeholder-foto">📱</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria tecnologia">Tecnología</span>
+            <h3>¿Por qué cuesta tanto soltar el celular cuando hay que estudiar?</h3>
+            <p>No es falta de voluntad ni de personalidad. Un estudio explica por qué el celular se vuelve un refugio automático justo cuando más necesitamos concentrarnos.</p>
+            <p class="articulo-autor">Camporro-Montila, Á. y de la Villa Moral-Jiménez, M. — Universidad de Oviedo</p>
+            <a href="tips.html#tecnologia-2" class="btn-articulo">Leer artículo completo →</a>
+          </div>
+        </article>
+
+        <article class="articulo-card" data-categoria="tecnologia">
+          <div class="articulo-foto placeholder-foto">✅</div>
+          <div class="articulo-info">
+            <span class="articulo-categoria tecnologia">Tecnología</span>
+            <h3>Tu celular no es el enemigo: aprendé a usarlo a tu favor.</h3>
+            <p>Una revisión académica muestra que el mismo dispositivo que te distrae también puede ser una herramienta poderosa de estudio, si sabés cómo ponerlo a tu servicio.</p>
+            <p class="articulo-autor">Pascuas-Rengifo, Y. S. et al. — Revista Politécnica</p>
+            <a href="tips.html#tecnologia-3" class="btn-articulo">Leer artículo completo →</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODALES DE TÉCNICAS -->
+
+  <!-- Modal Pomodoro -->
+  <div class="modal-overlay" id="modal-pomodoro">
+    <div class="modal-caja">
+      <button class="modal-cerrar" data-cerrar="modal-pomodoro">✕</button>
+      <h2>🍅 Iniciá tu Pomodoro</h2>
+      <div class="pomodoro-ronda">Ronda <span id="ronda-actual">1</span> de 4</div>
+      <div class="pomodoro-timer" id="pomodoro-display">25:00</div>
+      <div class="pomodoro-estado" id="pomodoro-estado">Listo para empezar</div>
+      <div class="pomodoro-btns">
+        <button class="btn-modal-accion" id="btn-iniciar">Iniciar</button>
+        <button class="btn-modal-accion btn-secundario" id="btn-pausar" disabled>Pausar</button>
+        <button class="btn-modal-accion btn-secundario" id="btn-reiniciar">Reiniciar</button>
+      </div>
+      <div class="pomodoro-mensaje" id="pomodoro-mensaje"></div>
+    </div>
+  </div>
+
+  <!-- Modal Feynman -->
+  <div class="modal-overlay" id="modal-feynman">
+    <div class="modal-caja">
+      <button class="modal-cerrar" data-cerrar="modal-feynman">✕</button>
+      <h2>💡 Explicalo con tus palabras</h2>
+      <div class="modal-campo">
+        <label>¿Qué tema querés explicar?</label>
+        <input type="text" id="feynman-tema" placeholder="Ej: La fotosíntesis, La Segunda Guerra Mundial...">
+      </div>
+      <p class="modal-consigna">Explicá este tema como si se lo enseñaras a alguien de 12 años. Usá palabras simples, sin tecnicismos.</p>
+      <textarea class="modal-textarea" id="feynman-texto" placeholder="Escribí tu explicación acá..."></textarea>
+      <div class="feynman-checklist">
+        <label><input type="checkbox"> ¿Usaste palabras simples?</label>
+        <label><input type="checkbox"> ¿Pudiste explicar todo?</label>
+        <label><input type="checkbox"> ¿Encontraste algo que no sabías?</label>
+      </div>
+      <button class="btn-modal-accion btn-secundario" onclick="document.getElementById('feynman-texto').value=''; document.getElementById('feynman-tema').value=''; document.querySelectorAll('#modal-feynman input[type=checkbox]').forEach(c=>c.checked=false)">Quiero volver a estudiarlo</button>
+    </div>
+  </div>
+
+  <!-- Modal Cornell -->
+  <div class="modal-overlay" id="modal-cornell">
+    <div class="modal-caja modal-caja-grande">
+      <button class="modal-cerrar" data-cerrar="modal-cornell">✕</button>
+      <h2>📓 Creá tu hoja Cornell</h2>
+      <div class="cornell-encabezado">
+        <input type="text" placeholder="Materia">
+        <input type="text" placeholder="Tema">
+        <input type="text" placeholder="Fecha">
+      </div>
+      <div class="cornell-cuerpo">
+        <div class="cornell-col">
+          <p class="cornell-label">📍 Preguntas</p>
+          <textarea placeholder="Escribí tus preguntas clave acá..."></textarea>
+        </div>
+        <div class="cornell-col cornell-col-grande">
+          <p class="cornell-label">📝 Notas</p>
+          <textarea placeholder="Tomá tus notas acá..."></textarea>
+        </div>
+      </div>
+      <div class="cornell-resumen">
+        <p class="cornell-label">📌 Resumen</p>
+        <textarea placeholder="Resumí el tema con tus propias palabras..."></textarea>
+      </div>
+      <button class="btn-modal-accion" onclick="alert('¡Hoja guardada! (Próximamente podrás descargarla)')">Guardar hoja</button>
+    </div>
+  </div>
+
+  <!-- Modal Lectura Activa -->
+  <div class="modal-overlay" id="modal-lectura">
+    <div class="modal-caja modal-caja-grande">
+      <button class="modal-cerrar" data-cerrar="modal-lectura">✕</button>
+      <h2>📚 Leé activamente</h2>
+      <p class="modal-consigna">Leé el siguiente texto. Podés subrayar, agregar notas y marcar ideas importantes.</p>
+      <div class="lectura-texto" id="lectura-texto">
+        <p>La procrastinación académica consiste en postergar tareas importantes aun sabiendo que esto traerá consecuencias negativas. No se debe a la pereza, sino a dificultades para autorregularse, una baja confianza en las propias capacidades y, en algunos casos, el miedo al fracaso.</p>
+        <p>Para empezar a cambiar este hábito, es importante reconocer el problema sin juzgarse e identificar qué está provocando la postergación. Dividir las tareas grandes en objetivos pequeños, utilizar herramientas de organización como agendas o calendarios, y reducir las distracciones son estrategias concretas que pueden ayudar.</p>
+        <p>La procrastinación no se supera de un día para otro, pero con organización, autoconocimiento y constancia es posible desarrollar hábitos de estudio más saludables y sostenibles en el tiempo.</p>
+      </div>
+      <div class="lectura-herramientas">
+        <button class="btn-herramienta activo" data-herramienta="subrayar">🟡 Subrayar</button>
+        <button class="btn-herramienta" data-herramienta="importante">⭐ Idea importante</button>
+        <button class="btn-herramienta" data-herramienta="pregunta">❓ Pregunta</button>
+        <button class="btn-herramienta btn-limpiar">🗑️ Limpiar</button>
+      </div>
+      <div class="modal-campo" style="margin-top:16px">
+        <label>Escribí un resumen de 3 líneas:</label>
+        <textarea class="modal-textarea" placeholder="¿Qué aprendiste? ¿Cuál es la idea principal?"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Mapas Mentales -->
+  <div class="modal-overlay" id="modal-mapas">
+    <div class="modal-caja">
+      <button class="modal-cerrar" data-cerrar="modal-mapas">✕</button>
+      <h2>🗺️ Creá tu mapa mental</h2>
+      <div class="modal-campo">
+        <label>Tema principal:</label>
+        <input type="text" id="mapa-tema" placeholder="Ej: La célula, La Revolución Francesa...">
+      </div>
+      <div id="mapa-ramas"></div>
+      <button class="btn-modal-accion" id="btn-agregar-rama">+ Agregar rama</button>
+    </div>
+  </div>
+
+  <!-- Modal Recuerdo Activo -->
+  <div class="modal-overlay" id="modal-recuerdo">
+    <div class="modal-caja">
+      <button class="modal-cerrar" data-cerrar="modal-recuerdo">✕</button>
+      <h2>💭 Poné a prueba tu memoria</h2>
+      <div class="modal-campo">
+        <label>¿Qué tema querés repasar?</label>
+        <input type="text" id="recuerdo-tema" placeholder="Ej: Fotosíntesis, Revolución Francesa...">
+      </div>
+      <textarea class="modal-textarea" id="recuerdo-texto" placeholder="Escribí todo lo que recordás sin mirar los apuntes..."></textarea>
+      <button class="btn-modal-accion" id="btn-comparar">Comparar</button>
+      <div class="recuerdo-panel" id="recuerdo-panel" style="display:none">
+        <p class="modal-consigna">Ahora que revisaste tus apuntes, ¿cómo te fue?</p>
+        <div class="recuerdo-opciones">
+          <label><input type="radio" name="recuerdo" value="100"> ✅ Lo recordé todo</label>
+          <label><input type="radio" name="recuerdo" value="50"> ⚠️ Lo recordé a medias</label>
+          <label><input type="radio" name="recuerdo" value="0"> ❌ Lo olvidé</label>
+        </div>
+        <button class="btn-modal-accion" id="btn-resultado">Ver resultado</button>
+        <div class="recuerdo-resultado" id="recuerdo-resultado"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <a class="logo footer-logo" href="../../index.html">
+        <span>STOP</span><strong> THE LOOP</strong>
+      </a>
+    </div>
+    <p>Stop the Loop © 2026</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="aprende.js"></script>
+</body>
+</html>
