@@ -53,36 +53,34 @@
         
 
 
-        <!-- Menu de navegacion para acceder a las secciones de la página de organización -->
+       
         <section id="dashboardOrganizate" class=" dashboard-organizate"> 
 
+            <!-- Menu de navegacion para acceder a las secciones de la página de organización -->
             <aside class="section menu-organizate">
 
                 <a href="#objetivos" class="menu-item activo" data-seccion="objetivos">
                     🎯 Mis objetivos
                 </a>
 
-                <a href="#calendario" class="menu-item" data-seccion="calendario">
-                    📅 Calendario
+                <a href="#planificador" class="menu-item" data-seccion="tareas">
+                    ✅ Planificador
                 </a>
 
-                <a href="#planDiario" class="menu-item" data-seccion="tareas">
-                    ✅ Plan diario
-                </a>
-
-                <a href="#matriz" class="menu-item" data-seccion="matriz">
-                    📊 Matriz Eisenhower
-                </a>
-
-                <a href="#examenes" class="menu-item" data-seccion="examenes">
-                    📚 Preparador de exámenes
-                </a>
-
-                <a href="#estadistas" class="menu-item" data-seccion="estadisticas">
+                <a href="#estadisticas" class="menu-item" data-seccion="estadisticas">
                     📊 Estadisticas
                 </a>
 
             </aside>
+
+            <!--nota flotante -->
+            <!--
+            <article id="semaforo" class="section">
+                <h2>Semaforo de actividades</h2>
+                <p>Rojo (urgente) Amarillo (importante) Verde (normal)  </p>
+                🟡 Hace tres días que no avanzás en Física. [Reorganizar]
+            </article>
+            -->
         
 
             <!-- CONTENDIO DEL DASHBOARD //Jerarquía propuesta en base a la utilidad-->
@@ -124,7 +122,7 @@
 
 
 
-                <!--objetivos
+                <!--objetivos...
                 Ahí va a ir después:
                 objetivos grandes
                 progreso
@@ -133,18 +131,35 @@
                 Ese bloque va a ser el cerebro de toda la organización.-->
                 <section id="objetivos" class="section">
                 <h2>OBJETIVOS</h2>
+                <p>
+            
+                    ──────────────<br>
+                    📚 Exámenes<br>
+
+                    Parcial Álgebra<br>
+
+                    ██████░░░░<br>
+
+                    ──────────────<br>
+
+                    📑 Entregas<br>
+
+                    Informe Biología<br>
+
+                    ████░░░░░<br>
+                </p>
                 </section>
               
 
 
 
-                <!-- Horario y Calendario como protagonistas -->
-                <section id="calendario" class="section calendario-academico">
-                    <h2 class="encabezado-calendario">📅 Calendario Académico</h2>
+                <!-- Planificador -->
+                <section id="planificador" class="section calendario-academico">
+                    <h2 class="encabezado-planificador">📅 Planificador Académico</h2>
                     <p >Organiza tus materias, sesiones de estudio, descansos y fechas importantes.</p>
                     
                     <!-- Contenedor para el horario semanal y el calendario mensual -->
-                    <section class="calendario-layout">
+                    <section class="section calendario-layout">
 
                         <!-- Horario semanal -->
                         <div class="horario-semanal">
@@ -192,7 +207,7 @@
 
                         <!-- Calendario mensual -->
                         <div class="calendario-mensual">
-                            <h3>Centro de organización</h3>
+                            <h3>Calendario</h3>
 
 
                             <div class="centro-organizacion">
@@ -204,43 +219,42 @@
                                     <button class="tipo-card activo" data-tipo="examen">
                                         <span>📋</span>
                                         <h4>Examen</h4>
-                                        <p>Crear un examen con plan de estudio.</p>
+                                        <!--<p>Crear un examen con plan de estudio.</p> -->
                                     </button>
 
                                     <button class="tipo-card" data-tipo="entrega">
                                         <span>📑</span>
                                         <h4>Entrega</h4>
-                                        <p>Registrar una entrega importante.</p>
+                                        <!--<p>Registrar una entrega importante.</p> -->
                                     </button>
 
                                     <button class="tipo-card" data-tipo="actividad">
                                         <span>📝</span>
                                         <h4>Actividad</h4>
-                                        <p>Clase, práctica o estudio.</p>
+                                        <!--<p>Clase, práctica o estudio.</p> -->
                                     </button>
 
                                     <button class="tipo-card" data-tipo="evento">
                                         <span>🎉</span>
                                         <h4>Evento</h4>
-                                        <p>Algo personal.</p>
+                                        <!--<p>Algo personal.</p> -->
                                     </button>
 
                                     <button class="tipo-card" data-tipo="seminario">
                                         <span>🎤</span>
                                         <h4>Seminario</h4>
-                                        <p>Curso o charla.</p>
+                                        <!--<p>Curso o charla.</p> -->
                                     </button>
 
                                 </div>
 
-                                <select id="materiaFormulario">
+                                <div id="formularioDinamico">
 
-                                    <option value="">
-                                        Cargando materias...
-                                    </option>
-                                    <button id="guardarFormulario">Guardar</button>
+                                    <p class="mensaje-formulario">
+                                        Seleccioná una actividad para comenzar.
+                                    </p>
 
-                                </select>
+                                </div>
 
                                 
 
@@ -270,88 +284,92 @@
 
                     </section>
 
+
+
+
+                    <!-- Plan diario/semanal para alcanzar OBJETIVO- 1)EXAMEN 2)ENTREGA-->
+                    
+                    <section id="plan" class="section">
+                        <h2>Planificador de tareas diarias</h2>
+                        <p>Organiza y programa tus tareas diarias de manera eficiente.</p>
+
+                        <div class="form-tarea">
+                                <input
+                                    type="text"
+                                    id="tituloTarea"
+                                    placeholder="Nueva tarea">
+                                <select id="prioridadTarea">
+                                    <option value="">Seleccionar prioridad</option>
+                                    <option value="Alta">Alta</option>
+                                    <option value="Media">Media</option>
+                                    <option value="Baja">Baja</option>
+                                </select>
+
+                                <input
+                                    type="date"
+                                    id="fechaTarea">
+
+                                <button id="agregarTarea">
+                                    Agregar
+                                </button>
+                                <div id="listaTareas"></div>
+                        </div> 
+
+                        <botton class="btn">⚙️ Organizar prioridades</botton>
+                            <!-- Complementos visuales de la organización del DIA/SEMANA-->
+                            <p>Se despliega la matriz</p>
+                            <div id="matriz" class="section">
+                                <h2> Matrix de Eisenhower </h2>
+                                <p>Poner estructura de matriz y descripción además, opción de actividades por hacer y el sistema organiza según el criterio adecuado </p>
+                                
+                            </div>
+
+                    </section>  
+                
+
+
+
+                   
+
+
                 </section>
 
 
 
 
 
-                <!-- Base de la organización -->
-                <section id="planDiario" class="section">
-                    <h2>Planificador de tareas diarias</h2>
-                    <p>Organiza y programa tus tareas diarias de manera eficiente.</p>
-
-                    <div class="form-tarea">
-                            <input
-                                type="text"
-                                id="tituloTarea"
-                                placeholder="Nueva tarea">
-                            <select id="prioridadTarea">
-                                <option value="">Seleccionar prioridad</option>
-                                <option value="Alta">Alta</option>
-                                <option value="Media">Media</option>
-                                <option value="Baja">Baja</option>
-                            </select>
-
-                            <input
-                                type="date"
-                                id="fechaTarea">
-
-                            <button id="agregarTarea">
-                                Agregar
-                            </button>
-                             <div id="listaTareas"></div>
-                    </div>
-                </section>  
-               
-
-
-
-                    <!-- Complementos visuales de la organización -->
-                    <section id="matriz" class="section">
-                        <h2> Matrix de Eisenhower </h2>
-                        <p>Poner estructura de matriz y descripción además, opción de actividades por hacer y el sistema organiza según el criterio adecuado </p>
-                    </section>
+                
                    
-                    <section id="examenes" class="section">
-                        <h2>Preparador de exámenes</h2>
-                        <div class="form-examen">
-
-                            <input
-                                type="text"
-                                id="materiaExamen"
-                                placeholder="Materia">
-
-                            <input
-                                type="date"
-                                id="fechaExamen">
-
-                            <button id="crearExamen">
-                                Crear examen
-                            </button>
-
-                        </div>
-                        <div id="listaExamenes"></div>
-                    </section>
+                
 
                 
 
-                <!-- Reforzadores de la organización - Tus resultados te recuerdan hacia donde vas -->
+                <!-- ESTADISTICAS Reforzadores de la organización - 
+                    ├── Tiempo
+                    ├── Ranking
+                    ├── Informe
+                    └── Progreso
+                    Tus resultados te recuerdan hacia donde vas -->
                 <section id="estadisticas" class="section">
                     <h2>Estadísticas</h2>
                     <div class="estadisticas-grid">
+                        <article id="tiempo" class="section"> 
+                            <h2>Tiempo estudiado esta semana </h2> <!--/en un futoro puede guardar esto como los celudares con el tiempo en pantalla-->
+                            <p>Materias enseñadas como tops u otra distribución</p>
+                        </article>
                         <article id="ranking" class="section"> 
                             <h2>Tu ranking de materias</h2>
                             <p>Materias en el ranking</p>
                         </article>
-                        <article id="desempeño" class="section">
+                        <article id="informe" class="section">
                             <h2>Informe de tu desempeño</h2>
                             <p>Estudiaste 40min de Materia 1 Hoy</p>
                         </article>
-                        <article id="semaforo" class="section">
-                            <h2>Semaforo de actividades</h2>
-                            <p>Rojo (urgente) Amarillo (importante) Verde (normal)  </p>
+                        <article id="progreso" class="section"> 
+                            <h2>Progreso</h2>
+                            <p>Progreso de avance de las materias </p>
                         </article>
+
                     </div>
 
 
@@ -377,19 +395,27 @@
                 </div>
                 -->
 
-            </div>
+            </div> <!-- fin CONTENDIO DEL DASHBOARD //Jerarquía propuesta en base a la utilidad-->
+            
 
-        </section>
+        </section><!--fin de dashboard-->
 
     
     </main>
-    <!-- Footer Section  -->
-    <footer class="footer">
-        <p>&copy; 2026 Stop the loop. Todos los derechos reservados.</p>
-    
 
-    <script src="organizate.js"></script>
+  
+    <footer class="footer">
+        <div class="footer-grid">
+            <a class="logo footer-logo" href="#inicio">
+                <span><strong>STOP THE LOOP</strong> </span>
+            </a>
+        </div>
+        <p>&copy; 2026 Stop the loop.</p> 
+
+         <script src="organizate.js"></script>
+
     </footer>
+
 </body>
 
 </html>

@@ -379,13 +379,20 @@ body {
   margin-bottom: 10px;
 }
 
-.footer{
+.footer {
   text-align: center;
-  padding: 20px;
+  padding: 24px;
+  font-size: 0.85rem;
   background-color: var(--gris-oscuro);
   color: var(--blanco);
   border-radius:  18px 18px 0 0;
 }
+.footer-grid {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
 
 
 /*=====================================================================================================
@@ -522,13 +529,13 @@ html{
 ============================================================================== */
 
 /* Estilos para el encabezado del horario y calendario académico */
-.encabezado-calendario {
+.encabezado-planificador {
   justify-content: center;
   text-align: center;
     font-size: 1.5rem;
     margin-bottom: 10px;
 }
-.encabezado-calendario + p {
+.encabezado-planificador + p {
   text-align: center;
   font-size: 1rem;
   margin-bottom: 20px;

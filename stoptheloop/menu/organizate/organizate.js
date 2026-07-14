@@ -183,22 +183,16 @@ function obtenerOCrearMateria(nombre){
 
 function cargarMateriasEnFormulario() {
 
-    const select = document.getElementById("materiaFormulario");
+    const lista = document.getElementById("listaMaterias");
 
-    if (!select) return;
+    if (!lista) return;
 
-    select.innerHTML = `
-        <option value="">
-            Seleccioná una materia
-        </option>
-    `;
+    lista.innerHTML = "";
 
     organizacion.materias.forEach(materia => {
 
-        select.innerHTML += `
-            <option value="${materia.id}">
-                ${materia.nombre}
-            </option>
+        lista.innerHTML += `
+            <option value="${materia.nombre}">
         `;
 
     });
@@ -331,7 +325,7 @@ BLOQUE 4: TODAS LAS FUNCIONES QUE RENDERIZAN
 =========================================================*/
 
 
-/* ==============HORARIO SEMANAL=========================================================script para generar el horario semanal dinámicamente y permitir al usuario agregar actividades a cada celda del horario============ */
+/* ==============HORARIO SEMANAL=====================script para generar el horario semanal dinámicamente y permitir al usuario agregar actividades a cada celda del horario============ */
 
 function generarHorario() {
     horario.innerHTML = '';
@@ -585,6 +579,8 @@ function renderizarTareas() {
 
 
 /*======================formulario para el examen================== */
+
+
 function crearFormularioExamen() {
 
     return `
@@ -594,12 +590,14 @@ function crearFormularioExamen() {
             <h3>📚 Crear examen</h3>
 
             <label>Materia</label>
+            <input
+                type="text"
+                id="materiaFormulario"
+                list="listaMaterias"
+                placeholder="Ej: Matemática">
 
-            <select id="materiaFormulario">
-                <option value="">
-                    Seleccioná una materia
-                </option>
-            </select>
+            <datalist id="listaMaterias"></datalist>
+
 
             <label>Título</label>
 
@@ -607,6 +605,7 @@ function crearFormularioExamen() {
                 type="text"
                 id="tituloFormulario"
                 placeholder="Ej: Parcial 1">
+
 
             <label>Fecha</label>
 
@@ -626,6 +625,12 @@ function crearFormularioExamen() {
 
 }
 
+function guardarFormularioExamen(){
+
+    console.log("Crear examen");
+
+}
+
 function mostrarFormulario(tipo){
 
     const contenedor=document.getElementById("formularioDinamico");
@@ -635,6 +640,12 @@ function mostrarFormulario(tipo){
         case "examen":
 
             contenedor.innerHTML=crearFormularioExamen();
+
+            cargarMateriasEnFormulario();
+
+            document
+                .getElementById("guardarFormulario")
+                .addEventListener("click", guardarFormularioExamen);
 
             break;
 
@@ -665,6 +676,8 @@ function mostrarFormulario(tipo){
     }
 
 }
+
+
 
 /*=========================================================
 BLOQUE 5: TODOS LOS EVENTOS
