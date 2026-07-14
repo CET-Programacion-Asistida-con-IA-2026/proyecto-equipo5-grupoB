@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienestar | Stop the Loop</title>
+  <link rel="stylesheet" href="bienestar.css">
+</head>
+<body>
+    <!-- HEADER / MENÚ --->
+    <header class="site-header" id="inicio">
+    <nav class="navbar">
+      <a class="logo" href="../../stoptheloop.html" aria-label="Volver al inicio">
+        <img src="../../stoptheloop.svg" alt="Logo de Stop the Loop">
+      </a>
+  
+      <ul class="nav-links">
+        <li><a href="../aprende/aprende.html">Aprendé</a></li>
+        <li><a href="../organizate/organizate.html">Organizate</a></li>
+        <li><a href="../bienestar/bienestar.html">Bienestar</a></li>
+        <li><a href="../comunidad/comunidad.html">Comunidad</a></li>
+      </ul>
+      <a href="../registro/registro.html" class="btn btn-nav">Registrate</a>
+    </nav>
+  </header>
+  <main>
+    <!----- SECCIÓN PRINCIPAL BIENESTAR -->
+    <section class="seccion-bienestar section-border" id="bienestar">
+      <img src="nubes.svg" alt="" class="nube-decorativa">
+      <div class="bienestar-contenido">
+        <div class="bienestar-texto">
+          <span class="etiqueta">BIENESTAR</span>
+        <h1>Cuidarte también es parte de estudiar.</h1>
+        <p>Un espacio para registrar cómo te sentís, calmar los nervios antes de un examen y construir pequeños hábitos que te ayudarán a sostener tu rutina.</p>
+        </div>
+      <img src="salud-mental.png" alt="Cerebro meditando" class="imagen-principal-bienestar">
+      </div>
+
+    </section>
+
+    <!---- SECCIÓN MOOD TRACKER -->
+    <section class="seccion-mood-tracker section-border" id="mood-tracker">
+      <div class="encabezado-mood">
+        <span class="etiqueta">MOOD TRACKER</span>
+        <h2>¿Cómo te sentís hoy?</h2>
+      </div>
+      <div class="contenedor-mood">
+        <article class="tarjeta-mood tarjeta-puntaje">
+          <h3>Tu bienestar emocional</h3>
+
+          <div class="circulo-puntaje">
+            <span id="porcentaje-bienestar">0%</span>
+          </div>
+          <p id="mensaje-puntaje" class="mensaje-puntaje">
+            Todavía no hay registros. Elegí cómo te sentís hoy para empezar.
+          </p>
+
+          <div class="selector-moods">
+            <button class="boton-mood mood-motivado" data-mood="motivado" aria-label="Motivado/a">
+              <img src="motivado.svg" alt="Mood motivado" class="icono-mood">
+              <strong>Motivado/a</strong>
+            </button>
+            
+            <button class="boton-mood mood-tranquilo" data-mood="tranquilo" aria-label="Tranquilo/a">
+              <img src="tranquilo.svg" alt="Mood tranquilo" class="icono-mood">
+              <strong>Tranquilo/a</strong>
+            </button>
+
+            <button class="boton-mood mood-cansado" data-mood="cansado" aria-label="Cansado/a">
+              <img src="cansado.svg" alt="Mood cansado" class="icono-mood">
+              <strong>Cansado/a</strong>
+            </button>
+
+            <button class="boton-mood mood-nervioso" data-mood="nervioso" aria-label="Nervioso/a">
+              <img src="nervioso.svg" alt="Mood nervioso" class="icono-mood">
+              <strong>Nervioso/a</strong>
+            </button>
+
+            <button class="boton-mood mood-saturado" data-mood="saturado" aria-label="Saturado/a">
+              <img src="saturado.svg" alt="Mood saturado" class="icono-mood">
+              <strong>Saturado/a</strong>
+            </button>
+          </div>
+
+          <div class="caja-consejo">
+            <h4>Consejo para hoy</h4>
+            <p id="consejo-mood">
+              Seleccioná tu estado de ánimo.
+            </p>
+          </div>
+        </article>
+
+        <article class="tarjeta-mood tarjeta-calendario">
+          <div class="calendario-header">
+            <button id="mes-anterior" class="boton-mes">‹</button>
+            <h3 id="titulo-calendario">Mes actual</h3>
+            <button id="mes-siguiente" class="boton-mes">›</button>
+          </div>
+
+          <div class="dias-semana">
+            <span>Dom</span>
+            <span>Lun</span>
+            <span>Mar</span>
+            <span>Mié</span>
+            <span>Jue</span>
+            <span>Vie</span>
+            <span>Sáb</span>
+          </div>
+
+          <div id="calendario-moods" class="calendario-moods">
+            <!-- El calendario se genera con JavaScript -->
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!---- SECCIÓN MEDITACIÓN (RESPIRACIÓN GUIADA)-->
+    <section class="seccion-calma section-border" id="respiracion">
+      <div class="contenedor-calma">
+        <h2>Pausa, respirá, seguí</h2>
+        <button class="btn-calma-grande" id="btn-calmarme">Necesito calmarme</button>
+      </div>
+    </section>
+
+    <!-- HABIT TRACKER -->
+     <section class="grilla-habitos section-border" id="habitos">
+      <article class="tarjeta tracker-habitos">
+        <span class="etiqueta etiqueta-secundaria">TRACKER DE HÁBITOS</span>
+        <h2>Mis hábitos de hoy</h2>
+        <p>Agregá los hábitos que quieras sostener, organizados por ámbito.</p>
+
+        <div class="formulario-habito">
+          <select id="select-ambito">
+            <option value="salud">Salud</option>
+            <option value="ocio">Ocio</option>
+            <option value="educacion">Educación</option>
+          </select>
+          <input type="text" id="input-nuevo-habito" placeholder="Ej: Tomar agua">
+          <button id="btn-agregar-habito" class="btn btn-secundario">Agregar</button>
+        </div>
+
+        <div id="lista-habitos-por-ambito">
+          <!-- Acá vamos a generar con JS los hábitos, agrupados por ámbito -->
+        </div>
+
+        <button id="btn-borrar-habitos" class="btn btn-secundario">Borrar seleccionados</button>
+
+        <div class="progreso-habitos">
+         <p id="contador-habitos">Progreso: 0/0 hábitos</p>
+          <div class="barra-progreso">
+          <div class="barra-completada" id="barra-completada" style="width: 0%;"></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- CIERRE -->
+    <section class="seccion-cierre">
+      <h2>Un pequeño hábito puede cortar el loop.</h2>
+      <p>No hace falta hacer todo perfecto. Elegí una acción simple y empezá por ahí.</p>
+      <a href="#inicio" class="btn btn-principal">Volver arriba</a>
+    </section>
+
+  </main>
+  <div class="overlay-respiracion" id="overlay-respiracion">
+    <button class="btn-cerrar-overlay" id="btn-cerrar-overlay" aria-label="Cerrar">✕</button>
+    <div class="circulo-respiracion-grande" id="circulo-respiracion-grande">
+      <p class="texto-respiracion-grande" id="texto-respiracion-grande">¿Preparado/a?</p>
+    </div>
+  </div>
+
+<footer class="footer">
+    <div class="footer-grid">
+      <a class="logo footer-logo" href="#inicio">
+        <span><strong>STOP THE LOOP</strong> </span>
+      </a>
+    </div>
+    <p>Stop the Loop © 2026</p>
+  </footer>
+
+  <script src="bienestar.js"></script>
+</body>
+</html>

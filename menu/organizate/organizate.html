@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizate</title>
+    <link rel="stylesheet" href="organizate.css">
+</head>
+<body>
+
+        <!-- HEADER / MENÚ --->
+        <header class="site-header" id="inicio">
+            <nav class="navbar">
+            <a class="logo" href="../../stoptheloop.html" aria-label="Volver al inicio">
+                <img src="../../stoptheloop.svg" alt="Logo de Stop the Loop">
+            </a>
+        
+            <!--Menú Principal-->
+            <ul class="nav-links">
+                <li><a href="../aprende/aprende.html">Aprendé</a></li>
+                <li><a href="../organizate/organizate.html">Organizate</a></li>
+                <li><a href="../bienestar/bienestar.html">Bienestar</a></li>
+                <li><a href="../comunidad/comunidad.html">Comunidad</a></li>
+            </ul>
+            <a href="../registro/registro.html" class="btn btn-nav">Registrate</a>
+            </nav>
+        
+        </header>
+
+
+    <!-- Main Content Section  -->
+    <main class="main-conatiner">
+
+        <!--HERO ///// Sección principal organizar/como la de bienestar --> 
+        <section class=" hero section-border" id="hero">
+            <img src="../../../imagenes/nubes2.PNG" alt="nubes de fondo" class="hero-fondo hero-fondo-1"> 
+            <div class="hero-contenido">
+                <div class="hero-texto">
+                <span class="etiqueta">ORGANIZATE</span>
+                <h1>Cada gran objetivo empieza con un pequeño paso.</h1>
+                <p>Planificá tus objetivos, organizá tus tareas y convertí las metas grandes en pequeños pasos.</p>
+                <a href="#dashboardOrganizate" class="hero-boton"> EMPEZAR →</a>
+            </div>
+            <div class="lapiz-container">
+              <img src="../../../imagenes/lapiz.png" alt="Ilustración organizate" class="imagen-principal-hero">
+              <div class="lapiz-base-blur"></div>
+            </div>
+            </div>
+            <img src="../../../imagenes/nubesAA.png" alt="nubes base" class="hero-fondo hero-fondo-2"> 
+        </section>
+
+
+        
+
+
+        <!-- Menu de navegacion para acceder a las secciones de la página de organización -->
+        <section id="dashboardOrganizate" class=" dashboard-organizate"> 
+
+            <aside class="section menu-organizate">
+
+                <a href="#objetivos" class="menu-item activo" data-seccion="objetivos">
+                    🎯 Mis objetivos
+                </a>
+
+                <a href="#calendario" class="menu-item" data-seccion="calendario">
+                    📅 Calendario
+                </a>
+
+                <a href="#planDiario" class="menu-item" data-seccion="tareas">
+                    ✅ Plan diario
+                </a>
+
+                <a href="#matriz" class="menu-item" data-seccion="matriz">
+                    📊 Matriz Eisenhower
+                </a>
+
+                <a href="#examenes" class="menu-item" data-seccion="examenes">
+                    📚 Preparador de exámenes
+                </a>
+
+                <a href="#estadistas" class="menu-item" data-seccion="estadisticas">
+                    📊 Estadisticas
+                </a>
+
+            </aside>
+        
+
+            <!-- CONTENDIO DEL DASHBOARD //Jerarquía propuesta en base a la utilidad-->
+            <div class=" contenido-organizate">
+
+
+                <!-- Bienvenida/renumen diario--> 
+                <section class="section bienvenida-dashboard">
+
+                    <div class="saludo">
+                        <span class="etiqueta">
+                            BIENVENIDA
+                        </span>
+                        <h2>
+                            ¡Hola! 👋
+                        </h2>
+                        <p>
+                            Hoy es un gran día para avanzar un poco más.
+                        </p>
+                    </div>
+
+                    <div class="resumen-dashboard">
+                        <div class="mini-card">
+                            <h3>📅 Eventos</h3>
+                            <span id="cantidadEventos">0</span>
+                        </div>
+                        <div class="mini-card">
+                            <h3>✅ Tareas</h3>
+                            <span id="cantidadTareas">0</span>
+                        </div>
+                        <div class="mini-card">
+                            <h3>📚 Exámenes</h3>
+                            <span id="cantidadExamenes">0</span>
+                        </div>
+                    </div>
+
+                </section>
+
+
+
+
+                <!--objetivos
+                Ahí va a ir después:
+                objetivos grandes
+                progreso
+                metas del semestre
+                entregas principales
+                Ese bloque va a ser el cerebro de toda la organización.-->
+                <section id="objetivos" class="section">
+                <h2>OBJETIVOS</h2>
+                </section>
+              
+
+
+
+                <!-- Horario y Calendario como protagonistas -->
+                <section id="calendario" class="section calendario-academico">
+                    <h2 class="encabezado-calendario">📅 Calendario Académico</h2>
+                    <p >Organiza tus materias, sesiones de estudio, descansos y fechas importantes.</p>
+                    
+                    <!-- Contenedor para el horario semanal y el calendario mensual -->
+                    <section class="calendario-layout">
+
+                        <!-- Horario semanal -->
+                        <div class="horario-semanal">
+                            <h3>Horario semanal</h3>
+
+                                <!-- Editor de horario -->
+                                <section class="editor-horario">
+                                    <h4>➕ Actividad </h4>
+
+                                    <div class="editor-formulario">
+
+                                        <input
+                                            type="text"
+                                            id="actividadInput"
+                                            placeholder="Nombre de la actividad"
+                                        >
+
+                                        <select id="tipoInput">
+                                            <option value="">Selecciona una opción</option>
+                                            <option value="1">Clase</option>
+                                            <option value="2">Estudio</option>
+                                            <option value="3">Descanso</option>
+                                        </select>
+
+                                        <button id="guardarActividad" type="button">Guardar actividad</button>
+                                        <button id="eliminarActividad" type="button">Eliminar actividad</button>
+
+                                    </div>
+
+                                    <p class="info-seleccion">Haz clic en una celda del horario para seleccionarla. Puedes seleccionar varias celdas y luego guardar o eliminar la actividad en todas ellas.</p>
+
+                                </section>
+
+                                
+                                <div id="horario" class="horario" ></div>
+                    
+                                <div class="leyenda-horario">
+                                    <div><span class="color clase"></span> Clase</div>
+                                    <div><span class="color estudio"></span> Estudio</div>
+                                    <div><span class="color descanso"></span> Descanso</div>
+                                    <div><span class="color libre"></span> Tiempo libre</div>
+                                </div>
+
+                        </div>
+
+                        <!-- Calendario mensual -->
+                        <div class="calendario-mensual">
+                            <h3>Centro de organización</h3>
+
+
+                            <div class="centro-organizacion">
+
+                                <h4>➕ Actividad </h4>
+
+                                <div class="opciones-creacion">
+
+                                    <button class="tipo-card activo" data-tipo="examen">
+                                        <span>📋</span>
+                                        <h4>Examen</h4>
+                                        <p>Crear un examen con plan de estudio.</p>
+                                    </button>
+
+                                    <button class="tipo-card" data-tipo="entrega">
+                                        <span>📑</span>
+                                        <h4>Entrega</h4>
+                                        <p>Registrar una entrega importante.</p>
+                                    </button>
+
+                                    <button class="tipo-card" data-tipo="actividad">
+                                        <span>📝</span>
+                                        <h4>Actividad</h4>
+                                        <p>Clase, práctica o estudio.</p>
+                                    </button>
+
+                                    <button class="tipo-card" data-tipo="evento">
+                                        <span>🎉</span>
+                                        <h4>Evento</h4>
+                                        <p>Algo personal.</p>
+                                    </button>
+
+                                    <button class="tipo-card" data-tipo="seminario">
+                                        <span>🎤</span>
+                                        <h4>Seminario</h4>
+                                        <p>Curso o charla.</p>
+                                    </button>
+
+                                </div>
+
+                                <select id="materiaFormulario">
+
+                                    <option value="">
+                                        Cargando materias...
+                                    </option>
+                                    <button id="guardarFormulario">Guardar</button>
+
+                                </select>
+
+                                
+
+                            </div>
+                            
+
+                            <div class="cabecera-calendario">
+                                <button id="mesAnterior">◀</button>
+                                <h4 id="tituloMes"></h4>
+                                <button id="mesSiguiente">▶</button>
+                            </div>
+
+                            <div id="calendarioGrid"></div>
+
+                            <div id="listaFechas"></div>
+
+                            <div class="leyenda-categorias">
+                                <div><span class="color-leyenda Examen"></span> Examen</div>
+                                <div><span class="color-leyenda Final"></span> Final</div>
+                                <div><span class="color-leyenda Seminario"></span> Seminario</div>
+                                <div><span class="color-leyenda Entrega"></span> Entrega</div>
+                                <div><span class="color-leyenda Actividad"></span> Actividad</div>
+                                <div><span class="color-leyenda Proyecto"></span> Proyecto</div>
+                            </div>             
+
+                        </div>
+
+                    </section>
+
+                </section>
+
+
+
+
+
+                <!-- Base de la organización -->
+                <section id="planDiario" class="section">
+                    <h2>Planificador de tareas diarias</h2>
+                    <p>Organiza y programa tus tareas diarias de manera eficiente.</p>
+
+                    <div class="form-tarea">
+                            <input
+                                type="text"
+                                id="tituloTarea"
+                                placeholder="Nueva tarea">
+                            <select id="prioridadTarea">
+                                <option value="">Seleccionar prioridad</option>
+                                <option value="Alta">Alta</option>
+                                <option value="Media">Media</option>
+                                <option value="Baja">Baja</option>
+                            </select>
+
+                            <input
+                                type="date"
+                                id="fechaTarea">
+
+                            <button id="agregarTarea">
+                                Agregar
+                            </button>
+                             <div id="listaTareas"></div>
+                    </div>
+                </section>  
+               
+
+
+
+                    <!-- Complementos visuales de la organización -->
+                    <section id="matriz" class="section">
+                        <h2> Matrix de Eisenhower </h2>
+                        <p>Poner estructura de matriz y descripción además, opción de actividades por hacer y el sistema organiza según el criterio adecuado </p>
+                    </section>
+                   
+                    <section id="examenes" class="section">
+                        <h2>Preparador de exámenes</h2>
+                        <div class="form-examen">
+
+                            <input
+                                type="text"
+                                id="materiaExamen"
+                                placeholder="Materia">
+
+                            <input
+                                type="date"
+                                id="fechaExamen">
+
+                            <button id="crearExamen">
+                                Crear examen
+                            </button>
+
+                        </div>
+                        <div id="listaExamenes"></div>
+                    </section>
+
+                
+
+                <!-- Reforzadores de la organización - Tus resultados te recuerdan hacia donde vas -->
+                <section id="estadisticas" class="section">
+                    <h2>Estadísticas</h2>
+                    <div class="estadisticas-grid">
+                        <article id="ranking" class="section"> 
+                            <h2>Tu ranking de materias</h2>
+                            <p>Materias en el ranking</p>
+                        </article>
+                        <article id="desempeño" class="section">
+                            <h2>Informe de tu desempeño</h2>
+                            <p>Estudiaste 40min de Materia 1 Hoy</p>
+                        </article>
+                        <article id="semaforo" class="section">
+                            <h2>Semaforo de actividades</h2>
+                            <p>Rojo (urgente) Amarillo (importante) Verde (normal)  </p>
+                        </article>
+                    </div>
+
+
+                </section>
+
+
+                <!--  
+                
+                ----esto va con idea de ia colaborativa /////La linea de flujo temina acá y el estudiante finalmente decide qué estudiar y lo motivamos 
+                <div class="section ">
+                    <label for="subject-select">¿Qué vas a estudiar hoy?</label>
+                    <select id="subject-select" onchange="handleSubjectSelection()">
+                        <option value="">Selecciona una opción</option>
+                        <option value="opcion1">Materia 1</option>
+                        <option value="opcion2">Materia 2</option>
+                        <option value="opcion3">Materia 3</option>
+                        <option value="opcion4">Materia 4</option>
+                    </select>
+                </div>
+                <div class="section ">
+                <h2>¡Motívate!</h2>
+                    <p id="motivational-text">**Texto de Mensaje Motivador**</p>
+                </div>
+                -->
+
+            </div>
+
+        </section>
+
+    
+    </main>
+    <!-- Footer Section  -->
+    <footer class="footer">
+        <p>&copy; 2026 Stop the loop. Todos los derechos reservados.</p>
+    
+
+    <script src="organizate.js"></script>
+    </footer>
+</body>
+
+</html>
