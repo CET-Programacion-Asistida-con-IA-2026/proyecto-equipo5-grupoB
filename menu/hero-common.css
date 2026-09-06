@@ -1,0 +1,145 @@
+/* =================================================
+   HERO COMUN DEL MENU
+   Base compartida para Aprende, Organizate,
+   Bienestar y Comunidad.
+   ================================================= */
+
+.menu-hero {
+    position: relative;
+    padding: 60px 56px 48px;
+    overflow: hidden;
+    border-bottom: var(--borde-suave);
+}
+
+.menu-hero__content {
+    width: 100%;
+    max-width: 1280px;
+    min-height: 330px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+    align-items: center;
+    gap: 56px;
+}
+
+.menu-hero__text {
+    position: relative;
+    z-index: 2;
+    margin-left: 0;
+}
+
+.menu-hero__text h1 {
+    max-width: 760px;
+    margin: 0;
+    color: var(--negro);
+    font-size: clamp(3rem, 5.5vw, 5rem);
+    line-height: 0.98;
+    letter-spacing: -1px;
+    font-weight: 800;
+}
+
+.menu-hero__text p {
+    max-width: 700px;
+    margin: 18px 0 0;
+    color: var(--gris-oscuro);
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.15;
+    font-weight: 700;
+}
+
+.menu-hero__media {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+}
+
+.menu-hero__media img {
+    display: block;
+    width: min(34vw, 370px);
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.menu-hero--aprende .menu-hero__content {
+    display: block;
+}
+
+.menu-hero--aprende .menu-hero__text {
+    max-width: 760px;
+}
+
+.menu-hero--organizate {
+    background-color: transparent;
+}
+
+.menu-hero--bienestar {
+    background-color: transparent;
+}
+
+.menu-hero--comunidad {
+    background-color: transparent;
+}
+
+@media (max-width: 900px) {
+
+    /* Tablet: una columna visual y texto centrado */
+    .menu-hero {
+        padding: 48px 32px 40px;
+    }
+
+    .menu-hero__content {
+        grid-template-columns: 1fr;
+        min-height: 0;
+        gap: 32px;
+        text-align: center;
+    }
+
+    .menu-hero__text {
+        margin: 0 auto;
+    }
+
+    .menu-hero__text h1,
+    .menu-hero__text p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .menu-hero__media {
+        order: 2;
+    }
+
+    .menu-hero--organizate .menu-hero__media {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+
+    /* Movil: espacios reducidos e imagen adaptable */
+    .menu-hero {
+        padding: 36px 20px 34px;
+    }
+
+    .menu-hero__content {
+        gap: 24px;
+    }
+
+    .menu-hero__text h1 {
+        font-size: clamp(2.45rem, 13vw, 3.2rem);
+        line-height: 1;
+    }
+
+    .menu-hero__text p {
+        font-size: 1.02rem;
+        line-height: 1.25;
+    }
+
+    .menu-hero__media img {
+        width: min(72vw, 300px);
+    }
+}

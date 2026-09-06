@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bienestar | Stop the Loop</title>
   <link rel="stylesheet" href="bienestar.css">
+  <link rel="stylesheet" href="../hero-common.css">
 </head>
+
 <body>
-    <!-- HEADER--->
-    <header class="site-header" id="inicio">
+  <!-- HEADER--->
+  <header class="site-header" id="inicio">
     <nav class="navbar">
       <a class="logo" href="../../index.html" aria-label="Volver al inicio">
         <img src="../../stoptheloop.svg" alt="Logo de Stop the Loop">
       </a>
-      
+
       <!--Menú (NAVBAR) Principal-->
       <ul class="nav-links" id="nav-links">
         <li><a href="../aprende/aprende.html">Aprendé</a></li>
@@ -30,19 +33,22 @@
     </nav>
   </header>
 
-  <!-- MAIN  --> 
+  <!-- MAIN  -->
   <main>
 
     <!----- HERO / SECCIÓN PRINCIPAL BIENESTAR -->
-    <section class="seccion-bienestar section-border" id="bienestar">
+    <section class="seccion-bienestar section-border menu-hero menu-hero--bienestar" id="bienestar">
       <img src="nubes.svg" alt="" class="nube-decorativa">
-      <div class="bienestar-contenido">
-        <div class="bienestar-texto">
+      <div class="bienestar-contenido menu-hero__content">
+        <div class="bienestar-texto menu-hero__text">
           <span class="etiqueta">BIENESTAR</span>
-        <h1>Cuidarte también es parte de estudiar.</h1>
-        <p>Un espacio para registrar cómo te sentís, calmar los nervios antes de un examen y construir pequeños hábitos que te ayudarán a sostener tu rutina.</p>
+          <h1>Cuidarte también es parte de estudiar.</h1>
+          <p>Un espacio para registrar cómo te sentís, calmar los nervios antes de un examen y construir pequeños
+            hábitos que te ayudarán a sostener tu rutina.</p>
         </div>
-      <img src="salud-mental.png" alt="Cerebro meditando" class="imagen-principal-bienestar">
+        <div class="menu-hero__media">
+          <img src="salud-mental.png" alt="Cerebro meditando" class="imagen-principal-bienestar">
+        </div>
       </div>
 
     </section>
@@ -69,7 +75,7 @@
               <img src="motivado.svg" alt="Mood motivado" class="icono-mood">
               <strong>Motivado/a</strong>
             </button>
-            
+
             <button class="boton-mood mood-tranquilo" data-mood="tranquilo" aria-label="Tranquilo/a">
               <img src="tranquilo.svg" alt="Mood tranquilo" class="icono-mood">
               <strong>Tranquilo/a</strong>
@@ -133,7 +139,7 @@
     </section>
 
     <!-- HABIT TRACKER -->
-     <section class="grilla-habitos section-border" id="habitos">
+    <section class="grilla-habitos section-border" id="habitos">
       <article class="tarjeta tracker-habitos">
         <span class="etiqueta etiqueta-secundaria">TRACKER DE HÁBITOS</span>
         <h2>Mis hábitos de hoy</h2>
@@ -156,9 +162,9 @@
         <button id="btn-borrar-habitos" class="btn btn-secundario">Borrar seleccionados</button>
 
         <div class="progreso-habitos">
-         <p id="contador-habitos">Progreso: 0/0 hábitos</p>
+          <p id="contador-habitos">Progreso: 0/0 hábitos</p>
           <div class="barra-progreso">
-          <div class="barra-completada" id="barra-completada" style="width: 0%;"></div>
+            <div class="barra-completada" id="barra-completada" style="width: 0%;"></div>
           </div>
         </div>
       </article>
@@ -179,15 +185,16 @@
     </div>
   </div>
 
-<footer class="footer">
+  <footer class="footer">
     <div class="footer-grid">
       <a class="logo footer-logo" href="#inicio">
         <span><strong>STOP THE LOOP</strong> </span>
       </a>
     </div>
-    <p>Stop the Loop © 2026</p>
+    <p>Stop the Loop &copy; 2026</p>
   </footer>
 
   <script src="bienestar.js"></script>
 </body>
+
 </html>

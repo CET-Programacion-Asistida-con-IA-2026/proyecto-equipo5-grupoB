@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Courier+Prime&display=swap');
+
+/* ── VARIABLES (colores del moodboard) ──────── */
 :root {
   --lila: #E7A8F8;
   --azul: #87BBFF;
@@ -12,6 +15,38 @@
   --borde-suave: 1px solid #54565459;
 }
 
+/* ── RESET BÁSICO ───────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--fondo);
+  color: var(--gris-oscuro);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ── HEADER / NAVBAR (MENÚ PRINCIPAL) ─────────────────────────────────── */
 .site-header {
   background-color: var(--fondo);
   border-bottom: var(--borde-suave);
@@ -33,6 +68,7 @@
 .logo {
   display: flex;
   align-items: center;
+  /*opacity: 0.65;*/
 }
 
 .logo img {
@@ -63,68 +99,135 @@
   color: #87BBFF
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/*Homogenneizamos el nav para cada sección /HAMBURGUESA*/
+/* ── BOTÓN HAMBURGUESA ──────────────────────── */
+.nav-derecha {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  order: 3;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: none;
+  border-bottom: var(--borde-suave);
+  cursor: pointer;
+  z-index: 101;
 }
 
-button {
-  font-family: inherit;
+.menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background-color: var(--negro);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-html {
-  scroll-behavior: smooth;
+.menu-toggle.abierto span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
 }
 
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.menu-toggle.abierto span:nth-child(2) {
+  opacity: 0;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--fondo);
-  color: var(--gris-oscuro);
+.menu-toggle.abierto span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
+/*--- BOTONES GENERALES ------------------------ */
+/* BOTONES */
+
+
+
+/* ── MAIN ───────────────────────────────────── */
 #foro {
   padding: 56px 24px 90px;
 }
 
+/* ── SECCION CON BORDE ─────────────────────────── */
+.section-border {
+  border-bottom: var(--borde-suave);
+}
+
+/*--- ETIQUETAS --------------------------------*/
 .etiqueta {
   display: inline-block;
   background-color: var(--amarillo);
   color: var(--gris-oscuro);
   border-radius: 999px;
   padding: 8px 22px;
+  margin-bottom: 15px;
   font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: 800;
   box-shadow: var(--sombra-suave);
 }
 
+
+
+/*hero*/
+.seccion-comunidad {
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 48px;
+  overflow: hidden;
+  max-width: 100%;
+} 
+
 .section-heading {
-  max-width: 640px;
-  margin: 18px auto 40px;
-  text-align: center;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto ;
+
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  align-items: center;
+  gap: 56px;
+
+  position: relative;
+  z-index: 2;
+
+}
+.hero-texto {
+  position: relative;
+  z-index: 3;
+  margin-left: 30px;
 }
 
-.section-heading h2 {
-  font-size: 2.2rem;
+.section-heading h1 {
+  max-width: 760px;
+  font-size: clamp(3rem, 5.5vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: -1px;
   font-weight: 800;
-  color: var(--gris-oscuro);
-  margin-bottom: 10px;
+  color: var(--negro);
 }
 
 .section-heading p {
-  font-family: 'Courier Prime', monospace;
-  font-size: 1.05rem;
+  max-width: 700px;
+  margin-top: 18px;
+
+  font-family: 'Courier Prime';
+  font-size: clamp(1.10rem, 2vw, 1.40rem);
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--gris-oscuro);
+}
+.subtitulo-foro {
+  max-width: 760px;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  font-weight: 700;
+  color: var(--lila);
+  text-align: center;
 }
 
 .tarjeta-pseudonimo {
@@ -153,22 +256,22 @@ body {
   font-size: 0.95rem;
 }
 
-.btn-nav {
-  background-color: var(--blanco);
-  color: var(--negro);
-  border: var(--borde-suave);
-  border-radius: 999px;
-  padding: 12px 26px;
-  font-weight: 700;
-  cursor: pointer;
-  font-family: 'Poppins', sans-serif;
-}
+
 
 #pseudonimo-actual {
   margin-top: 12px;
   font-weight: 600;
   min-height: 24px;
   text-align: center;
+}
+
+.btn-nav {
+  background-color: var(--blanco);
+  color: var(--negro);
+  border: var(--borde-suave);
+  border-radius: 999px;
+  padding: 12px 26px;
+  box-shadow: var(--sombra-suave);
 }
 
 .nota-anonima {
@@ -178,6 +281,8 @@ body {
   margin-bottom: 14px;
 }
 
+
+/* ---- HERO / SECCION PRINCIPAL COMUNIDAD --------------------*/
 .hero-comunidad {
   text-align: center;
   margin-top: 8px;
@@ -311,6 +416,16 @@ body {
   border-bottom: var(--borde-suave);
 }
 
+.texto-nuevo-posteo {
+  width: 100%;
+  min-height: 100px;
+  border: none;
+  resize: vertical;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: var(--negro);
+}
+
 .titulo-nuevo-posteo:focus {
   outline: none;
 }
@@ -327,14 +442,6 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 0.95rem;
   color: var(--gris-oscuro);
-}
-
-.texto-nuevo-posteo:focus {
-  outline: none;
-}
-
-.texto-nuevo-posteo::placeholder {
-  color: var(--gris-claro);
 }
 
 .acciones-posteo {
@@ -536,45 +643,6 @@ body {
   margin-bottom: 16px;
 }
 
-/* ── BOTÓN HAMBURGUESA ──────────────────────── */
-.nav-derecha {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 34px;
-  height: 34px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 101;
-}
-
-.menu-toggle span {
-  width: 100%;
-  height: 3px;
-  background-color: var(--negro);
-  border-radius: 2px;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-.menu-toggle.abierto span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.menu-toggle.abierto span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.abierto span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
 
 /* =================================================
   RESPONSIVE
@@ -626,6 +694,12 @@ body {
     padding: 16px 24px;
   }
 
+   .section-heading {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 28px;
+  }
+
   #foro {
     padding: 40px 20px 70px;
   }
@@ -647,9 +721,7 @@ body {
     justify-content: center;
   }
 
-  .nav-derecha {
-    order: 3;
-  }
+
 }
 
 /* Móvil: tarjetas, buscador y acciones del foro */

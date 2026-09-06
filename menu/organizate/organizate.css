@@ -1,3 +1,7 @@
+/* =============================================
+   Stop the Loop — organizate.css
+   Tipografías: Poppins + Courier Prime
+   ============================================= */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Courier+Prime&display=swap');
 
 /* ── VARIABLES (colores del moodboard) ──────── */
@@ -15,8 +19,6 @@
   --sombra-fuerte: 0 8px 22px #00000035;
   --borde-suave: 1px solid #54565459;
 }
-
-
 
 /* ── RESET BÁSICO ───────────────────────────── */
 * {
@@ -75,7 +77,7 @@ input {
 .logo {
   display: flex;
   align-items: center;
-  opacity: 0.65;
+  /*opacity: 0.65;*/
 }
 
 .logo img {
@@ -197,6 +199,7 @@ main section {
   color: var(--gris-oscuro);
   border-radius: 999px;
   padding: 8px 22px;
+  margin-bottom: 15px;
   font-size: 0.82rem;
   font-weight: 800;
   box-shadow: var(--sombra-suave);
@@ -210,10 +213,10 @@ main section {
   padding-top: 60px;
   padding-bottom: 48px;
   overflow: hidden;
-  background-color: var(--blanco);
+  /*background-color: var(--blanco);
   border: var(--borde-suave);
   border-radius: 0 0 18px 18px;
-  box-shadow: var(--sombra-suave);
+  box-shadow: var(--sombra-suave); */
   max-width: 100%;
 }
 
@@ -256,7 +259,7 @@ main section {
   /*no pongo relative pq no existe*/
   width: 95%;
   margin: 0 auto;
-
+  
   display: grid;
   grid-template-columns: 1.3fr 0.7fr;
   align-items: center;
@@ -1336,14 +1339,6 @@ MODAL DEL PLANIFICADOR
 
 
 
-/* ========================================================== */
-
-
-
-
-
-
-
 /* =========================================================
   RESPONSIVE
   Orden: tablet, móvil y header.
@@ -1351,6 +1346,11 @@ MODAL DEL PLANIFICADOR
 
 /* Tablet: hero apilado */
 @media (max-width: 900px) {
+
+  .hero {
+  padding-bottom: 30px;
+  }
+
   .hero-contenido {
     display: flex;
     flex-direction: column;
@@ -1395,13 +1395,8 @@ MODAL DEL PLANIFICADOR
 
   }
 
-  .hero {
-    padding-bottom: 80px;
-  }
+
 }
-
-
-
 
 /* Tablet horizontal: dashboard en una columna */
 @media (max-width: 1024px) {

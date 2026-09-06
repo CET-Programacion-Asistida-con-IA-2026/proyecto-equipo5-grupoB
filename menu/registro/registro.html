@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro | Stop the Loop</title>
+  <link rel="stylesheet" href="registro.css">
+</head>
+<body>
+    <header class="site-header" id="inicio">
+      <nav class="navbar">
+        <a class="logo" href="../../index.html" aria-label="Volver al inicio">
+          <img src="../../stoptheloop.svg" alt="Logo de Stop the Loop">
+        </a>
+        
+        <ul class="nav-links" id="nav-links">
+          <li><a href="../aprende/aprende.html">Aprendé</a></li>
+          <li><a href="../organizate/organizate.html">Organizate</a></li>
+          <li><a href="../bienestar/bienestar.html">Bienestar</a></li>
+          <li><a href="../comunidad/comunidad.html">Comunidad</a></li>
+        </ul>
+
+        <div class="nav-derecha">
+          <a href="../registro/registro.html" class="btn btn-nav">Registrate</a>
+          <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main>
+        <!-- HERO / SECCIÓN PRINCIPAL REGISTRO -->
+        <section class="seccion-registro section-border" id="registro">
+            <div class="registro-contenido">
+                <div class="registro-texto">
+                    <span class="etiqueta">REGISTRO</span>
+                    <h1>Registrate para acceder a la comunidad.</h1>
+                    <p>Completa el formulario para crear tu cuenta y unirte a nuestra comunidad.</p>
+                </div>
+                <img src="registro.png" alt="Ilustración de registro" class="imagen-principal-registro">
+            </div>
+        </section>
+        
+        <!-- SECCIÓN FORMULARIO DE REGISTRO -->
+        <section class="seccion-formulario">
+            <h2>Crear cuenta</h2>
+            <form>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+            </form>
+        </section>
+
+        
+    </main>
+    <footer class="site-footer">
+      <div class="footer-logo">
+        <a href="../../index.html" aria-label="Volver al inicio">
+          <span><strong>STOP THE LOOP</strong> </span>
+        </a>
+      </div>
+      <p>Stop the Loop &copy; 2026</p>
+    
+</html>
