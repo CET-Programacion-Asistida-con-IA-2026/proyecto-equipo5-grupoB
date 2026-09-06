@@ -2,6 +2,27 @@
 BLOQUE 1: CONFIGURACIÓN
 =========================================================*/
 
+document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function () {
+            const abierto = navLinks.classList.toggle('activo');
+            menuToggle.classList.toggle('abierto', abierto);
+            menuToggle.setAttribute('aria-expanded', abierto);
+        });
+
+        navLinks.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                navLinks.classList.remove('activo');
+                menuToggle.classList.remove('abierto');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+});
+
 
 /*============ 1 TODOS LOS DATOS GUARDADOS=================*/
 let horarioGuardado = JSON.parse( //Guardar el horario en localStorage para que no se pierda al recargar la página
@@ -118,7 +139,7 @@ let organizacion = JSON.parse(localStorage.getItem("organizacion")) || {
 
 };
 
-function guardarOrganizacion(){ 
+function guardarOrganizacion() {
 
     localStorage.setItem(
 
@@ -137,7 +158,7 @@ BLOQUE 3: API INTERNA
 /*------------- GESTOR DE MATERIAS-----------*/
 
 //función que normaliza inputs
-function normalizarTexto(texto){
+function normalizarTexto(texto) {
 
     return texto
         .trim()
@@ -181,7 +202,7 @@ function crearMateria(nombre) {
 
 }
 
-function obtenerMateria(nombre){
+function obtenerMateria(nombre) {
 
     return organizacion.materias.find(
 
@@ -193,11 +214,11 @@ function obtenerMateria(nombre){
 
 }
 
-function obtenerOCrearMateria(nombre){
+function obtenerOCrearMateria(nombre) {
 
     let materia = obtenerMateria(nombre);
 
-    if(!materia){
+    if (!materia) {
 
         materia = crearMateria(nombre);
 
@@ -244,7 +265,7 @@ function cargarMateriasEnFormulario() {
 
 
 /*--------REGISTRO DE ACTIVIDADES---------*/
-function registrarActividad(datos){
+function registrarActividad(datos) {
 
     const materia = obtenerOCrearMateria(datos.materia);
 
@@ -272,12 +293,12 @@ function registrarActividad(datos){
 
     organizacion.actividades.push(actividad);
 
-    if(
+    if (
         datos.tipo === "examen" ||
         datos.tipo === "final" ||
         datos.tipo === "entrega" ||
         datos.tipo === "proyecto"
-    ){
+    ) {
 
         obtenerOCrearObjetivo({
 
@@ -302,7 +323,7 @@ function obtenerActividades() {
 
 /*--------GESTOR DE OBJETIVOS---------*/
 
-function crearObjetivo(datos){
+function crearObjetivo(datos) {
 
     const objetivo = {
 
@@ -330,7 +351,7 @@ function crearObjetivo(datos){
 
 }
 
-function obtenerObjetivoPorTitulo(titulo){
+function obtenerObjetivoPorTitulo(titulo) {
 
     return organizacion.objetivos.find(
 
@@ -343,11 +364,11 @@ function obtenerObjetivoPorTitulo(titulo){
 
 }
 
-function obtenerOCrearObjetivo(datos){
+function obtenerOCrearObjetivo(datos) {
 
     let objetivo = obtenerObjetivoPorTitulo(datos.titulo);
 
-    if(!objetivo){
+    if (!objetivo) {
 
         objetivo = crearObjetivo(datos);
 
@@ -456,9 +477,9 @@ function abrirMenuCalendario() {
     const botonesModal =
         document.querySelectorAll(".opcion-modal");
 
-    botonesModal.forEach(boton=>{
+    botonesModal.forEach(boton => {
 
-        boton.addEventListener("click",()=>{
+        boton.addEventListener("click", () => {
 
             abrirFormulario(
 
@@ -477,32 +498,32 @@ function abrirMenuCalendario() {
 
 
 
-function abrirFormulario(tipo){
+function abrirFormulario(tipo) {
 
-    switch(tipo){
+    switch (tipo) {
 
         case "examen":
 
             contenidoModal.innerHTML =
                 crearFormularioExamen();
 
-             cargarMateriasEnFormulario();
+            cargarMateriasEnFormulario();
 
-                const selectMateria =
-                    document.getElementById("materiaFormulario");
+            const selectMateria =
+                document.getElementById("materiaFormulario");
 
-                selectMateria.addEventListener("change", () => {
+            selectMateria.addEventListener("change", () => {
 
-                    if (selectMateria.value === "nueva") {
+                if (selectMateria.value === "nueva") {
 
-                        abrirFormularioNuevaMateria();
+                    abrirFormularioNuevaMateria();
 
-                    }
+                }
 
-                });
+            });
 
 
-             document
+            document
                 .getElementById("guardarFormulario")
                 .addEventListener("click", guardarExamen);
 
@@ -541,20 +562,20 @@ function abrirFormulario(tipo){
 }
 
 
-function guardarExamen(){
+function guardarExamen() {
 
     const materiaSelect =
         document.getElementById("materiaFormulario");
 
     const titulo =
         document.getElementById("tituloFormulario")
-        .value
-        .trim();
+            .value
+            .trim();
 
-    if(
+    if (
         !materiaSelect.value ||
         !titulo
-    ){
+    ) {
 
         alert("Completá todos los campos.");
 
@@ -575,21 +596,21 @@ function guardarExamen(){
 
         titulo,
 
-        tipo:"examen",
+        tipo: "examen",
 
-        fecha:fechaSeleccionada,
+        fecha: fechaSeleccionada,
 
-        categoria:"Examen"
+        categoria: "Examen"
 
     });
 
     fechasGuardadas.push({
 
-        fecha:fechaSeleccionada,
+        fecha: fechaSeleccionada,
 
-        evento:titulo,
+        evento: titulo,
 
-        categoria:"Examen"
+        categoria: "Examen"
 
     });
 
@@ -611,7 +632,7 @@ function guardarExamen(){
 
 
 //mini form para introducir nueva maateria que no se tiene en el horario
-function abrirFormularioNuevaMateria(){
+function abrirFormularioNuevaMateria() {
 
     contenidoModal.innerHTML = `
 
@@ -721,8 +742,8 @@ function mostrarFechas(fecha = null) {
     const fechaFiltro = fecha || fechaSeleccionada;
 
     const fechasAMostrar = fechaFiltro
-        ? fechasGuardadas.map((item, index) => ({...item, index})).filter(item => item.fecha === fechaFiltro)
-        : fechasGuardadas.map((item, index) => ({...item, index})).filter(item => {
+        ? fechasGuardadas.map((item, index) => ({ ...item, index })).filter(item => item.fecha === fechaFiltro)
+        : fechasGuardadas.map((item, index) => ({ ...item, index })).filter(item => {
             const itemFecha = new Date(item.fecha);
             return itemFecha.getFullYear() === fechaActual.getFullYear() &&
                 itemFecha.getMonth() === fechaActual.getMonth();
@@ -755,7 +776,7 @@ function mostrarFechas(fecha = null) {
 
 // Renderizar el calendario mensual
 function renderizarCalendario() {
-    
+
 
     calendarioGrid.innerHTML = "";
 
@@ -777,7 +798,7 @@ function renderizarCalendario() {
             </div>
         `;
 
-    }); 
+    });
 
     const meses = [
         "Enero",
@@ -814,7 +835,7 @@ function renderizarCalendario() {
         desplazamiento = 6;
     }
 
-    for(let i = 0; i < desplazamiento; i++){
+    for (let i = 0; i < desplazamiento; i++) {
 
         calendarioGrid.innerHTML += `
             <div class="dia-vacio"></div>
@@ -825,16 +846,16 @@ function renderizarCalendario() {
     const fechaHoy = new Date();
     const fechaHoyStr = `${fechaHoy.getFullYear()}-${String(fechaHoy.getMonth() + 1).padStart(2, "0")}-${String(fechaHoy.getDate()).padStart(2, "0")}`;
 
-    for(let dia = 1; dia <= diasMes; dia++){
+    for (let dia = 1; dia <= diasMes; dia++) {
         const fechaCompleta =
             `${año}-${String(mes + 1).padStart(2, "0")}-${String(dia).padStart(2, "0")}`;
 
         //const tieneEvento = fechasGuardadas.some(item => item.fecha === fechaCompleta);
 
         const eventosDelDia = fechasGuardadas.filter(item => item.fecha === fechaCompleta);
-    
+
         const tieneEvento = eventosDelDia.length > 0;
-   
+
         const nombreEvento = eventosDelDia.map(item => item.evento).join(", ");
 
         const esHoy = fechaCompleta === fechaHoyStr;
@@ -845,22 +866,20 @@ function renderizarCalendario() {
           
             <div class="dia-calendario" data-fecha="${fechaCompleta}"  title="${nombreEvento}">
                 ${dia}
-                ${
-                    eventosDelDia.length > 0
-                    ? `<div class="contenedor-puntos">
-                            ${
-                                eventosDelDia
-                                    .map(item =>
-                                        `<div class="punto-evento ${item.categoria}"></div>`
-                                    )
-                                    .join("")
-                            }
-                        </div>`
-                    : ""
+                ${eventosDelDia.length > 0
+                ? `<div class="contenedor-puntos">
+                            ${eventosDelDia
+                    .map(item =>
+                        `<div class="punto-evento ${item.categoria}"></div>`
+                    )
+                    .join("")
                 }
+                        </div>`
+                : ""
+            }
             </div>
         `;
-        
+
     }
 }
 
@@ -970,21 +989,21 @@ function crearFormularioExamen() {
 
 }
 
-function guardarFormularioExamen(){
+function guardarFormularioExamen() {
 
     console.log("Crear examen");
 
 }
 
-function mostrarFormulario(tipo){
+function mostrarFormulario(tipo) {
 
-    const contenedor=document.getElementById("formularioDinamico");
+    const contenedor = document.getElementById("formularioDinamico");
 
-    switch(tipo){
+    switch (tipo) {
 
         case "examen":
 
-            contenedor.innerHTML=crearFormularioExamen();
+            contenedor.innerHTML = crearFormularioExamen();
 
             cargarMateriasEnFormulario();
 
@@ -996,25 +1015,25 @@ function mostrarFormulario(tipo){
 
         case "entrega":
 
-            contenedor.innerHTML=crearFormularioEntrega();
+            contenedor.innerHTML = crearFormularioEntrega();
 
             break;
 
         case "actividad":
 
-            contenedor.innerHTML=crearFormularioActividad();
+            contenedor.innerHTML = crearFormularioActividad();
 
             break;
 
         case "evento":
 
-            contenedor.innerHTML=crearFormularioEvento();
+            contenedor.innerHTML = crearFormularioEvento();
 
             break;
 
         case "seminario":
 
-            contenedor.innerHTML=crearFormularioSeminario();
+            contenedor.innerHTML = crearFormularioSeminario();
 
             break;
 
@@ -1140,9 +1159,9 @@ function iniciarEventosHorario() {
             }
 
             //Añado esto por la nueva api
-            
 
-            if(tipo === "1"){
+
+            if (tipo === "1") {
 
                 registrarActividad({
 
@@ -1248,7 +1267,7 @@ calendarioGrid.addEventListener("click", event => {
 });
 
 
- 
+
 listaFechas.addEventListener("click", event => {
     const eliminarBtn = event.target.closest(".eliminar-fecha");
     if (!eliminarBtn) return;

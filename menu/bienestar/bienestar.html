@@ -7,24 +7,33 @@
   <link rel="stylesheet" href="bienestar.css">
 </head>
 <body>
-    <!-- HEADER / MENÚ --->
+    <!-- HEADER--->
     <header class="site-header" id="inicio">
     <nav class="navbar">
       <a class="logo" href="../../index.html" aria-label="Volver al inicio">
         <img src="../../stoptheloop.svg" alt="Logo de Stop the Loop">
       </a>
-  
-      <ul class="nav-links">
+      
+      <!--Menú (NAVBAR) Principal-->
+      <ul class="nav-links" id="nav-links">
         <li><a href="../aprende/aprende.html">Aprendé</a></li>
         <li><a href="../organizate/organizate.html">Organizate</a></li>
         <li><a href="../bienestar/bienestar.html">Bienestar</a></li>
         <li><a href="../comunidad/comunidad.html">Comunidad</a></li>
       </ul>
-      <a href="../registro/registro.html" class="btn btn-nav">Registrate</a>
+      <div class="nav-derecha">
+        <a href="../registro/registro.html" class="btn btn-nav">Registrate</a>
+        <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
   </header>
+
+  <!-- MAIN  --> 
   <main>
-    <!----- SECCIÓN PRINCIPAL BIENESTAR -->
+
+    <!----- HERO / SECCIÓN PRINCIPAL BIENESTAR -->
     <section class="seccion-bienestar section-border" id="bienestar">
       <img src="nubes.svg" alt="" class="nube-decorativa">
       <div class="bienestar-contenido">

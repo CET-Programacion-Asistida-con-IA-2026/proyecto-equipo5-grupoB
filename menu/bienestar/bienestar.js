@@ -2,6 +2,27 @@
 // MOOD TRACKER - Stop the Loop
 // =============================================
 
+document.addEventListener('DOMContentLoaded', function () {
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function () {
+      const abierto = navLinks.classList.toggle('activo');
+      menuToggle.classList.toggle('abierto', abierto);
+      menuToggle.setAttribute('aria-expanded', abierto);
+    });
+
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('activo');
+        menuToggle.classList.remove('abierto');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+});
+
 // 1. Moods disponibles
 const moods = {
   tranquilo: {
@@ -69,7 +90,7 @@ function guardarMood(moodElegido) {
 
   consejoMood.textContent = moods[moodElegido].consejo;
 
-  botonesMood.forEach(function(boton) {
+  botonesMood.forEach(function (boton) {
     boton.classList.remove("activo");
   });
 
@@ -128,7 +149,7 @@ function crearCalendario() {
       const imagenMood = document.createElement("img");
       imagenMood.src = moods[moodDelDia].imagen;
       imagenMood.classList.add("icono-mood-calendario");
-  
+
       celdaDia.appendChild(imagenMood);
     }
     calendarioMoods.appendChild(celdaDia);
@@ -186,15 +207,15 @@ function calcularBienestar() {
 }
 
 // 9. Botones de mood
-botonesMood.forEach(function(boton) {
-  boton.addEventListener("click", function() {
+botonesMood.forEach(function (boton) {
+  boton.addEventListener("click", function () {
     const moodElegido = boton.dataset.mood;
     guardarMood(moodElegido);
   });
 });
 
 // 10. Cambiar de mes
-botonMesAnterior.addEventListener("click", function() {
+botonMesAnterior.addEventListener("click", function () {
   mesMostrado--;
 
   if (mesMostrado < 0) {
@@ -205,7 +226,7 @@ botonMesAnterior.addEventListener("click", function() {
   crearCalendario();
 });
 
-botonMesSiguiente.addEventListener("click", function() {
+botonMesSiguiente.addEventListener("click", function () {
   mesMostrado++;
 
   if (mesMostrado > 11) {
@@ -221,14 +242,14 @@ crearCalendario();
 calcularBienestar();
 
 // RESPIRACIÓN
-const btnCalmarme = document.getElementById("btn-calmarme"); 
-const overlayRespiracion = document.getElementById("overlay-respiracion"); 
-const circuloRespiracionGrande = document.getElementById("circulo-respiracion-grande"); 
+const btnCalmarme = document.getElementById("btn-calmarme");
+const overlayRespiracion = document.getElementById("overlay-respiracion");
+const circuloRespiracionGrande = document.getElementById("circulo-respiracion-grande");
 
-btnCalmarme.addEventListener("click", function() {  
+btnCalmarme.addEventListener("click", function () {
   overlayRespiracion.style.display = "flex";
   overlayRespiracion.style.opacity = "1";
-  circuloRespiracionGrande.classList.add("respirando"); 
+  circuloRespiracionGrande.classList.add("respirando");
   cicloDeTexto();
   intervaloRespiracion = setInterval(cicloDeTexto, 15000);
 });
@@ -236,7 +257,7 @@ btnCalmarme.addEventListener("click", function() {
 const btnCerrarOverlay = document.getElementById("btn-cerrar-overlay");
 const textoRespiracionGrande = document.getElementById("texto-respiracion-grande");
 
-btnCerrarOverlay.addEventListener("click", function() {  
+btnCerrarOverlay.addEventListener("click", function () {
   cerrarOverlay();
 });
 
@@ -269,9 +290,9 @@ function cicloDeTexto() {
   }, 10000);
 
   if (contadorCiclos >= 4) {
-  clearInterval(intervaloRespiracion);
-  cerrarOverlay();
-  contadorCiclos = 0;
+    clearInterval(intervaloRespiracion);
+    cerrarOverlay();
+    contadorCiclos = 0;
   }
 }
 
@@ -295,7 +316,7 @@ let habitos = JSON.parse(localStorage.getItem("habitos")) || {
   educacion: []
 };
 
-btnAgregarHabito.addEventListener("click", function() {
+btnAgregarHabito.addEventListener("click", function () {
   const ambitoElegido = selectAmbito.value;
   const nuevoHabito = inputNuevoHabito.value;
   if (nuevoHabito.trim() === "") {
@@ -361,7 +382,7 @@ function dibujarHabitos() {
     tituloAmbito.classList.add("titulo-ambito");
     contenedorHabitos.appendChild(tituloAmbito);
 
-    habitos[ambito].forEach(function(habito, indice) {
+    habitos[ambito].forEach(function (habito, indice) {
       totalHabitos++;
 
       const fechaHoy = obtenerFechaHoy();
@@ -398,13 +419,13 @@ function dibujarHabitos() {
       infoHabito.appendChild(nombreHabitoEl);
       infoHabito.appendChild(rachaHabitoEl);
 
-      checkbox.addEventListener("change", function() {
+      checkbox.addEventListener("change", function () {
         if (checkbox.checked) {
           if (!habito.fechasCumplidas.includes(fechaHoy)) {
             habito.fechasCumplidas.push(fechaHoy);
           }
         } else {
-          habito.fechasCumplidas = habito.fechasCumplidas.filter(function(fecha) {
+          habito.fechasCumplidas = habito.fechasCumplidas.filter(function (fecha) {
             return fecha !== fechaHoy;
           });
         }
@@ -420,15 +441,15 @@ function dibujarHabitos() {
       btnBorrarEste.textContent = "✕";
       btnBorrarEste.type = "button"; // para que no envíe ningún formulario sin querer
 
-      btnBorrarEste.addEventListener("click", function() {
+      btnBorrarEste.addEventListener("click", function () {
         fila.classList.toggle("seleccionado-borrar");
 
-        const yaEstaEnLaLista = habitosParaBorrar.some(function(item) {
+        const yaEstaEnLaLista = habitosParaBorrar.some(function (item) {
           return item.ambito === ambito && item.indice === indice;
         });
 
         if (yaEstaEnLaLista) {
-          habitosParaBorrar = habitosParaBorrar.filter(function(item) {
+          habitosParaBorrar = habitosParaBorrar.filter(function (item) {
             return !(item.ambito === ambito && item.indice === indice);
           });
         } else {
@@ -447,13 +468,13 @@ function dibujarHabitos() {
   barraCompletada.style.width = porcentaje + "%";
 }
 
-btnBorrarHabitos.addEventListener("click", function() {
+btnBorrarHabitos.addEventListener("click", function () {
   for (const ambito in habitos) {
     const indicesABorrar = habitosParaBorrar
       .filter(item => item.ambito === ambito)
       .map(item => item.indice);
 
-    habitos[ambito] = habitos[ambito].filter(function(habito, indice) {
+    habitos[ambito] = habitos[ambito].filter(function (habito, indice) {
       return !indicesABorrar.includes(indice);
     });
   }

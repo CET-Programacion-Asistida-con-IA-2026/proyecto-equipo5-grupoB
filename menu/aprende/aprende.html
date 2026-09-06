@@ -9,25 +9,34 @@
 </head>
 <body>
 
-  <!-- NAVBAR (igual que index.html) -->
-  <header class="site-header">
+    <!-- HEADER--->
+  <header class="site-header" id="inicio">
     <nav class="navbar">
-      <a class="logo" href="../../index.html" aria-label="Ir al inicio">
-        <img src="../../stoptheloop.svg" alt="Stop the Loop">
+      <a class="logo" href="../../index.html" aria-label="Volver al inicio">
+        <img src="../../stoptheloop.svg" alt="Logo de Stop the Loop">
       </a>
-      <ul class="nav-links">
+
+      <!--Menú (NAVBAR) Principal-->
+      <ul class="nav-links" id="nav-links">
         <li><a href="../aprende/aprende.html">Aprendé</a></li>
         <li><a href="../organizate/organizate.html">Organizate</a></li>
         <li><a href="../bienestar/bienestar.html">Bienestar</a></li>
         <li><a href="../comunidad/comunidad.html">Comunidad</a></li>
       </ul>
-      <a href="../registro/registro.html" class="btn btn-nav">Registrate</a>
+
+      <div class="nav-derecha">
+        <a href="../registro/registro.html" class="btn btn-nav">Registrate</a>
+        <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
   </header>
 
+  <!-- MAIN  -->
   <main>
 
-    <!-- HERO DE SECCIÓN -->
+    <!-- HERO /SECCIÓN PRINCIPAL APRENDÉ -->
     <section class="aprende-hero">
       <div class="aprende-hero-content">
         <span class="mini-pill">APRENDÉ</span>
@@ -41,7 +50,7 @@
       <div class="section-intro">
         <span class="mini-pill">TÉCNICAS DE ESTUDIO</span>
         <h2>Encontrá el método que funciona para vos.</h2>
-        <p>No existe un único método de estudio. Probá estos y quedarte con el que mejor te funcione.</p>
+        <p>No existe un único método de estudio. Probá estos y quedate con los que mejor te funcionen.</p>
       </div>
 
       <div class="tecnicas-grid">
