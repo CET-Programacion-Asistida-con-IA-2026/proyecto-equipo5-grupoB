@@ -173,7 +173,7 @@ button {
 
 
 /*hero*/
-.seccion-comunidad {
+.hero-comunidad {
   position: relative;
   padding-top: 60px;
   padding-bottom: 48px;
@@ -220,6 +220,14 @@ button {
   font-weight: 700;
   color: var(--gris-oscuro);
 }
+
+.imagen-principal-foro {
+  position: relative;
+  opacity: 1;
+  pointer-events: none;
+  z-index: .88;
+}
+
 .subtitulo-foro {
   max-width: 760px;
   font-size: clamp(1.25rem, 3vw, 1.5rem);
