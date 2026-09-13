@@ -230,6 +230,7 @@ main section {
 /* ── SECCIÓN TÉCNICAS ───────────────────────── */
 .tecnicas {
   padding: 72px 56px 80px;
+  
 }
 
 .tecnicas-grid {
@@ -249,6 +250,7 @@ main section {
   box-shadow: var(--sombra-suave);
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  perspective: 1200px;
 }
 
 .tecnica-card:hover {
@@ -300,6 +302,30 @@ main section {
   color: var(--gris-oscuro);
   margin-bottom: 12px;
 }
+
+/* acá aranca lo de girar */
+.tecnica-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d; 
+}
+
+.tecnica-card.girada .tecnica-flip-inner {
+  transform: rotateY(180deg); /* acá ocurre el giro */
+}
+
+.tecnica-cara {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden; /
+}
+
+.tecnica-dorso {
+  transform: rotateY(180deg); 
+}
+/* termina lo de girar */
 
 .tecnica-pasos {
   margin: 16px 0;
