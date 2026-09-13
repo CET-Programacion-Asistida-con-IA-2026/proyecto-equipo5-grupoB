@@ -52,7 +52,6 @@
 
     <!-- TÉCNICAS DE ESTUDIO -->
     <section class="tecnicas section-border" id="tecnicas">
-      <img src="nubes.svg" alt="" class="nube-decorativa">
       <div class="section-intro">
         <span class="mini-pill">TÉCNICAS DE ESTUDIO</span>
         <h2>Encontrá el método que funciona para vos.</h2>
@@ -212,6 +211,119 @@
         </article>
 
       </div>
+    </section>
+
+    <!-- RECOMENDACIÓN DE MÉTODOS -->
+    <section class="recomendacion-metodos section-border" id="recomendacion">
+      <div class="section-intro">
+        <span class="mini-pill">RECOMENDACIÓN DE MÉTODOS</span>
+        <h2>Descubrí qué técnica te funciona mejor</h2>
+        <p>Completa este breve cuestionario para recibir recomendaciones personalizadas según tu estilo de aprendizaje.
+        </p>
+       </div>
+      <!--Furmulario nativo de recomendación-->
+      <div>
+        <form class="recomendacion-form" id="recomendacion-form">
+
+          <!-- Pregunta 1: nos da info de tu nivel de estudio y las necesidades de acuerdo el plan de esudio aproximado que tenes   -->
+          <div class="form-group">
+            <label for="nivel-estudio">¿En qué nivel de estudio te encontrás actualmente?</label>
+            <select id="nivel-estudio" name="nivel-estudio" required>
+              <option value="">Soy estudiante de...</option>
+              <option value="secundaria">Secundaria</option>
+              <option value="universidad">Universidad</option>
+              <option value="posgrado">Posgrado</option>
+              <optgroup label="Otros">
+                <option value="autodidacta">Autodidacta</option>
+                <option value="cursos-online">Cursos online</option>
+                <option value="formacion-profesional">Formación profesional</option>
+              </optgroup>
+            </select>
+          </div> 
+          
+          <!-- Pregunta 2: nos da info de tu estilo de aprendizaje y las necesidades de acuerdo a tu estilo de aprendizaje predominante  -->  
+          <!-- No me convence del todo esta pregunta, porque el estilo de aprendizaje no es tan determinante como se pensaba. Podría ser mejor preguntar sobre cómo prefieren estudiar o qué técnicas han probado antes. -->
+          <!--
+          <div class="form-group">
+            <label for="estilo-aprendizaje">¿Cuál es tu estilo de aprendizaje predominante?</label>
+            <select id="estilo-aprendizaje" name="estilo-aprendizaje" required>
+              <option value="">Predomina...</option>
+              <option value="visual">Visual</option>
+              <option value="auditivo">Auditivo</option>
+              <option value="lectura-escritura">Lectura/Escritura</option>
+              <option value="kinestesico">Kinestésico</option>
+            </select>
+          </div>
+          -->
+
+          <!-- Pregunta 2: nos da info sobre tu objetivo principal al estudiar - debería estar puesto este objetivo de la sección de organizate y salir de alli o proponer incluirlo aqui (o viceveresa)  -->
+          <div class="form-group">
+            <label for="objetivo-estudio">¿Cuál es tu objetivo principal al estudiar?</label>
+            <select id="objetivo-estudio" name="objetivo-estudio" required>
+              <option value="">Mi objetivo es...</option>
+              <option value="aprobar-examen">Aprobar un examen</option>
+              <option value="aprender-nuevo-conocimiento">Aprender un nuevo conocimiento</option>
+              <option value="desarrollar-habilidad">Desarrollar una habilidad</option>
+            </select>
+          </div>
+
+          <!-- Pregunta 2.1: nos da info sobre que tan intensivo debe ser tu estudio dependiendo de tu objetivo y la fecha límite-->
+          <div class="form-group">
+            <label for="intensidad-estudio">¿Qué tan intensivo debe ser tu estudio?</label>
+            <select id="intensidad-estudio" name="intensidad-estudio" required>
+              <option value="">Mi estudio debe ser...</option>
+              <option value="intensivo">Intensivo (poco tiempo para prepararme)</option>
+              <option value="moderado">Moderado (tiempo suficiente para prepararme)</option>
+              <option value="relajado">Relajado (tiempo amplio para prepararme)</option>
+            </select>
+          </div>
+
+          
+          <!-- Pregunta 3: nos da info sobre el tiempo que puedes dedicar al estudio  -->
+          <div class="form-group">
+            <label for="tiempo-estudio">¿Cuánto tiempo podés dedicar al estudio en una sesión?</label>
+            <select id="tiempo-estudio" name="tiempo-estudio" required>
+              <option value="">Puedo dedicar...</option>
+              <option value="menos-de-30-minutos">Menos de 30 minutos</option>
+              <option value="30-60-minutos">30-60 minutos</option>
+              <option value="mas-de-60-minutos">Más de 60 minutos</option>
+            </select>
+          </div>
+          <!-- Pregunta 4: nos da info sobre los hábitos de estudio que tienes actualmente  -->
+          <div class="form-group">
+            <label for="habito-estudio-actual">¿Qué hábitos de estudio realizas mejor actualmente?</label>
+            <select id="habito-estudio-actual" name="habito-estudio-actual" required>
+              <option value="">Actualmente...</option>
+              <option value="leer">Leo y releo</option>
+              <option value="escuchar">Escucho o veo videos</option>
+              <option value="resumir">Resumo</option>
+              <option value="sintizar">Hago síntesis</option>
+              <option value="practicar">Hago los ejercicios prácticos</option>
+              <option value="enseñar">Enseño a otros</option>
+            </select>
+          </div>
+
+          <!-- Pregunta 5  -->
+          <div class="form-group">
+            <label for="preferencias">¿Tienes alguna preferencia del ambiente donde estudias?</label>
+            <select id="preferencias" name="preferencias" required>
+              <option value="">El ambiente...</option>
+              <option value="silencioso">Silencioso</option>
+              <option value="animado">Animado</option>
+              <option value="musica">Con música</option>
+              <optgroup label="Otros">
+                <option value="cafe">Café</option>
+                <option value="biblioteca">Biblioteca</option>
+                <option value="exterior">Al aire libre</option>
+            </select>
+          </div>
+          <!-- Pregunta 6  -->
+          
+          <!-- Botón de envío -->
+          <button type="submit" class="btn btn-form">Enviar</button>
+        </form>
+      </div>
+        
     </section>
 
     <!-- TIPS DE PROFESIONALES -->
