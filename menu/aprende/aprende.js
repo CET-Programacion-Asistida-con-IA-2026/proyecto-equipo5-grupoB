@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+/*voltear la tarjeta*/ 
+
+
+
 
 /* Forms desplegable ------------------------------------- */
 
