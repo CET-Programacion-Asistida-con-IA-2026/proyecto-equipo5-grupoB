@@ -23,6 +23,63 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+
+/* Forms desplegable ------------------------------------- */
+
+// Seleccionamos los elementos usando los IDs exactos de tu HTML
+const modal = document.getElementById('modalFormulario');
+const btnAbrir = document.getElementById('btnAbrirFormulario');
+const btnCerrar = document.getElementById('btnCerrarFormulario');
+const formulario = document.getElementById('recomendacion-form');
+
+// 1. Abrir el formulario al hacer clic en "Completá el cuestionario"
+btnAbrir.addEventListener('click', () => {
+  modal.classList.add('mostrar');
+});
+
+// 2. Cerrar el formulario al hacer clic en la "X"
+btnCerrar.addEventListener('click', () => {
+  modal.classList.remove('mostrar');
+});
+
+// 3. Cerrar si el usuario hace clic fuera del cuadro del cuestionario
+window.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.classList.remove('mostrar');
+  }
+});
+
+// 4. Procesar las respuestas cuando se envía el formulario
+formulario.addEventListener('submit', (e) => {
+  e.preventDefault(); // Evita que la página se recargue por defecto
+
+  // Aquí capturamos las respuestas que el usuario seleccionó
+  const respuestas = {
+    nivelEstudio: document.getElementById('nivel-estudio').value,
+    objetivoEstudio: document.getElementById('objetivo-estudio').value,
+    intensidadEstudio: document.getElementById('intensidad-estudio').value,
+    tiempoEstudio: document.getElementById('tiempo-estudio').value,
+    habitoEstudio: document.getElementById('habito-estudio-actual').value,
+    preferencias: document.getElementById('preferencias').value
+  };
+
+  console.log("Respuestas del usuario:", respuestas);
+  
+  alert('¡Cuestionario enviado con éxito! Analizando tus respuestas...');
+  
+  // Cerramos el modal y limpiamos el formulario para la próxima vez
+  modal.classList.remove('mostrar');
+  formulario.reset();
+});
+
+
+
+/* Fin Forms desplegable ------------------------------------- */
+
+
+
+
+
 // 1. Buscamos todos los botones de filtro y todas las tarjetas de artículos
 const botonesFiltro = document.querySelectorAll('.filtro-btn');
 const tarjetasArticulo = document.querySelectorAll('.articulo-card');
