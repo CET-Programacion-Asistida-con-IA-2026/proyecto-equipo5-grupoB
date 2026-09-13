@@ -7,27 +7,29 @@
   <link rel="stylesheet" href="registro.css">
 </head>
 <body>
-    <header class="site-header" id="inicio">
-      <nav class="navbar">
-        <a class="logo" href="../../index.html" aria-label="Volver al inicio">
-          <img src="../../stoptheloop.svg" alt="Logo de Stop the Loop">
-        </a>
-        
-        <ul class="nav-links" id="nav-links">
-          <li><a href="../aprende/aprende.html">Aprendé</a></li>
-          <li><a href="../organizate/organizate.html">Organizate</a></li>
-          <li><a href="../bienestar/bienestar.html">Bienestar</a></li>
-          <li><a href="../comunidad/comunidad.html">Comunidad</a></li>
-        </ul>
+      <!-- HEADER--->
+  <header class="site-header" id="inicio">
+    <nav class="navbar">
+      <a class="logo" href="../../index.html" aria-label="Volver al inicio">
+        <img src="../../stoptheloop.svg" alt="Logo de Stop the Loop">
+      </a>
 
-        <div class="nav-derecha">
-          <a href="../registro/registro.html" class="btn btn-nav">Registrate</a>
-          <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </nav>
-    </header>
+      <!--Menú (NAVBAR) Principal-->
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../aprende/aprende.html">Aprendé</a></li>
+        <li><a href="../organizate/organizate.html">Organizate</a></li>
+        <li><a href="../bienestar/bienestar.html">Bienestar</a></li>
+        <li><a href="../comunidad/comunidad.html">Comunidad</a></li>
+      </ul>
+
+      <div class="nav-derecha">
+        <a href="../registro/registro.html" class="btn btn-nav">Registrate</a>
+        <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
     <main>
         <!-- HERO / SECCIÓN PRINCIPAL REGISTRO -->
         <section class="seccion-registro section-border" id="registro">
@@ -42,33 +44,84 @@
         </section>
         
         <!-- SECCIÓN FORMULARIO DE REGISTRO -->
-        <section class="seccion-formulario">
-            <h2>Crear cuenta</h2>
-            <form>
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Registrarse</button>
+        
+        <!-- Contenedor Principal de Autenticación en Stop the Loop -->
+        <div class="auth-container" style="max-width: 450px; margin: 40px auto; padding: 20px; font-family: sans-serif;">
+
+          <!-- ESTADO A: Formulario para crear la cuenta (Visible por defecto) -->
+          <div id="bloque-registro">
+            <h2 style="margin-bottom: 10px;">Creá tu Perfil de Estudiante</h2>
+            <p style="color: #666; margin-bottom: 20px;">Personalizá tu experiencia en el sitio según tu plan de estudio.</p>
+            
+            <form id="registro-form">
+              <div style="margin-bottom: 15px;">
+                <label for="reg-nombre">Nombre:</label>
+                <input type="text" id="reg-nombre" required placeholder="Ej: Lucía">
+              </div>
+
+              <div style="margin-bottom: 15px;">
+                <label for="reg-nivel" style="display:block; margin-bottom:5px; font-weight:bold;">Nivel de estudio actual:</label>
+                <select id="reg-nivel" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+                  <option value="">Seleccioná tu nivel...</option>
+                  <option value="secundaria">Secundaria</option>
+                  <option value="universidad">Universidad / Terciario</option>
+                  <option value="posgrado">Posgrado</option>
+                  <option value="otro">Otros (Autodidacta / Cursos)</option>
+                </select>
+              </div>
+
+              <div style="margin-bottom: 20px;">
+                <label for="reg-orientacion" style="display:block; margin-bottom:5px; font-weight:bold;">Orientación o Rama de tu Plan:</label>
+                <select id="reg-orientacion" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+                  <option value="">Seleccioná primero tu nivel...</option>
+                  <option value="exactas">Técnica / Ciencias Exactas / Ingeniería</option>
+                  <option value="sociales">Humanidades / Ciencias Sociales / Derecho</option>
+                  <option value="economicas">Economía / Comercial / Administración</option>
+                  <option value="salud">Ciencias de la Salud / Biología</option>
+                  <option value="arte">Arte / Diseño</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn" style="width:100%; padding:12px; cursor:pointer; font-weight:bold;">Crear Cuenta</button>
             </form>
-        </section>
+          </div>
+
+          <!-- ESTADO B: Vista de "Mi Cuenta" (Oculta por defecto, se activa con JS) -->
+          <div id="bloque-mi-cuenta" style="display: none; background: #f9f9f9; padding: 25px; border-radius: 8px; border: 1px solid #eee;">
+            <h2 style="margin-bottom: 5px;">Mi Cuenta</h2>
+            <p style="color: #666; margin-bottom: 20px;">¡Qué bueno verte de nuevo por acá!</p>
+            
+            <div style="background: white; padding: 15px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px;">
+              <p style="margin: 8px 0;"><strong>Estudiante:</strong> <span id="perfil-nombre-vista"></span></p>
+              <p style="margin: 8px 0;"><strong>Nivel:</strong> <span id="perfil-nivel-vista"></span></p>
+              <p style="margin: 8px 0;"><strong>Orientación:</strong> <span id="perfil-orientacion-vista"></span></p>
+            </div>
+
+            <button id="btn-cerrar-sesion" class="btn" style="background-color: #dc3545; color: white; width:100%; padding:10px; border:none; border-radius:5px; cursor:pointer;">Cerrar Sesión</button>
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
 
         
     </main>
-    <footer class="site-footer">
+    <footer class="footer">
       <div class="footer-logo">
         <a href="../../index.html" aria-label="Volver al inicio">
           <span><strong>STOP THE LOOP</strong> </span>
         </a>
       </div>
       <p>Stop the Loop &copy; 2026</p>
+    </footer>
+    <script src="registro.js"></script>
     
 </html>
