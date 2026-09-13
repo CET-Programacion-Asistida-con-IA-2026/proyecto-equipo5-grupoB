@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+<<<<<<< HEAD
 // TECNICAS TECNICAS TESCNICAS 
 // para que las tearjetas giren buscamos todos los botones que disparan el giro (frente y dorso)
 document.querySelectorAll('.tecnica-card .btn-flip').forEach(boton => {
@@ -33,6 +34,12 @@ document.querySelectorAll('.tecnica-card .btn-flip').forEach(boton => {
     tarjeta.classList.toggle('girada');
   });
 });
+=======
+/*voltear la tarjeta*/ 
+
+
+
+>>>>>>> 95bc1566d55165768c40c236e9bebf1accdebd6d
 
 /* Forms desplegable ------------------------------------- */
 

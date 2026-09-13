@@ -370,9 +370,14 @@ main section {
 .recomendacion-metodos {
   padding: 72px 56px 80px;
   background-color: var(--blanco);
-}  
+}
 
 .btn-abrir-formulario {
+  display: block;
+  width: fit-content;
+  max-width: 1280px;
+  margin: 0 auto;
+
   padding: 10px 20px;
   background-color: var(--lila);
   border: var(--borde-suave);
@@ -389,12 +394,14 @@ main section {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Fondo semitransparente */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Asegura que quede por encima de todo */
-  
+  z-index: 1000;
+  /* Asegura que quede por encima de todo */
+
   /* Oculto por defecto */
   opacity: 0;
   pointer-events: none;
@@ -408,8 +415,10 @@ main section {
   border-radius: 10px;
   width: 90%;
   max-width: 500px;
-  max-height: 85vh; /* Evita que se salga de pantallas chicas */
-  overflow-y: auto;  /* Agrega scroll si el formulario es largo */
+  max-height: 85vh;
+  /* Evita que se salga de pantallas chicas */
+  overflow-y: auto;
+  /* Agrega scroll si el formulario es largo */
   position: relative;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
@@ -429,6 +438,7 @@ main section {
   cursor: pointer;
   color: #888;
 }
+
 .cerrar:hover {
   color: #000;
 }
@@ -451,14 +461,15 @@ main section {
   margin-bottom: 20px;
 }
 
-.form-group select{
+.form-group select {
   padding: 5px;
   border: var(--borde-suave);
   border-radius: 100px;
   background-color: var(--azul);
   font-size: 1rem;
 }
-.form-group select:hover{
+
+.form-group select:hover {
   background-color: var(--lila);
 }
 
@@ -473,7 +484,8 @@ main section {
 
 
 /* ── SECCIÓN TIPS DE PROFESIONALES ─────────── */
-.tips-profesionales {
+.tips-profesionales, 
+.consejos-propios {
   padding: 72px 56px 80px;
   background-color: var(--blanco);
 }
@@ -510,7 +522,8 @@ main section {
 }
 
 /* ── GRILLA DE ARTÍCULOS ────────────────────── */
-.articulos-grid {
+.articulos-grid, 
+.consejos-grid {
   max-width: 1280px;
   margin: 0 auto;
   display: grid;
@@ -520,7 +533,8 @@ main section {
 }
 
 /* ── TARJETA DE ARTÍCULO ────────────────────── */
-.articulo-card {
+.articulo-card,
+.consejo-card {
   display: flex;
   gap: 20px;
   background-color: var(--fondo);
@@ -531,16 +545,19 @@ main section {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.articulo-card:hover {
+.articulo-card:hover,
+.consejo-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--sombra-fuerte);
 }
 
-.articulo-card.oculto {
+.articulo-card.oculto,
+.consejo-card.oculto {
   display: none;
 }
 
-.placeholder-foto {
+.placeholder-foto,
+.consejo-foto {
   width: 90px;
   height: 90px;
   border-radius: 50%;
@@ -552,7 +569,8 @@ main section {
   flex-shrink: 0;
 }
 
-.articulo-info {
+.articulo-info,
+.consejo-info {
   flex: 1;
 }
 
@@ -563,7 +581,8 @@ main section {
   margin-bottom: 6px;
 }
 
-.articulo-info h3 {
+.articulo-info h3,
+.consejo-info h3 {
   font-size: 1rem;
   font-weight: 700;
   color: var(--negro);
@@ -571,7 +590,8 @@ main section {
   margin-bottom: 8px;
 }
 
-.articulo-info p {
+.articulo-info p,
+.consejo-info p {
   font-size: 0.88rem;
   line-height: 1.5;
   color: var(--gris-oscuro);
@@ -579,7 +599,7 @@ main section {
 }
 
 /* Categorías de artículos */
-.articulo-categoria {
+.articulo-categoria{
   display: inline-block;
   border-radius: 999px;
   padding: 3px 12px;
@@ -608,7 +628,7 @@ main section {
   color: var(--negro);
 }
 
-/* Botón del artículo */
+/* Botón del artículo / aun no disponible */
 .btn-articulo {
   background: none;
   border: var(--borde-suave);
@@ -621,8 +641,10 @@ main section {
   opacity: 0.6;
 }
 
+/* ── CONSEJOS PROPIOS junto a las ─────────────────────────────────── */
+
 /* ── FOOTER ─────────────────────────────────── */
-.footer {
+.footer-contenedor {
   text-align: center;
   padding: 24px;
   font-size: 0.85rem;
@@ -630,13 +652,25 @@ main section {
   background-color: var(--gris-oscuro);
 }
 
+.footer-grid {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
 .footer-logo {
   display: inline-flex;
+  align-items: center;
   gap: 4px;
   font-size: 1rem;
   font-weight: 700;
   color: var(--blanco);
   margin-bottom: 8px;
+  text-decoration: none;
+}
+
+.footer-contenedor p {
+  margin: 0;
 }
 
 
