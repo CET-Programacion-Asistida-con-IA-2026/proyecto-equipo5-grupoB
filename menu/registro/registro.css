@@ -207,25 +207,16 @@ main section {
 
 
 
+/*Hero*/
 
 
 
+/*Autentificación*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.auth-container{
+  padding: 72px 56px 80px;
+  background-color: var(--blanco);
+}
 
 
 

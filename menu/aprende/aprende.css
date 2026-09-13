@@ -243,7 +243,8 @@ main section {
 }
 
 /* ── TARJETA DE TÉCNICA ─────────────────────── */
-.tecnica-card {
+.tecnica-card,
+.tecnica-dorso {
   background-color: var(--blanco);
   border-radius: 18px;
   border: var(--borde-suave);
@@ -319,16 +320,18 @@ main section {
 .tecnica-cara {
   position: absolute;
   inset: 0;
-  backface-visibility: hidden; /
+  backface-visibility: hidden; 
+  
 }
 
 .tecnica-dorso {
-  transform: rotateY(180deg); 
+  transform: rotateY(180deg);
 }
 /* termina lo de girar */
 
 .tecnica-pasos {
-  margin: 16px 0;
+  padding: 24px;
+  /*margin: 16px 0;*/
 }
 
 .tecnica-pasos h4 {
@@ -372,7 +375,8 @@ main section {
   background-color: var(--blanco);
 }
 
-.btn-abrir-formulario {
+.btn-abrir-formulario,
+.btn-flip {
   display: block;
   width: fit-content;
   max-width: 1280px;
