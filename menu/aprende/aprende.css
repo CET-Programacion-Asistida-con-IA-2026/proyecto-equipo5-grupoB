@@ -351,7 +351,7 @@ main section {
   width: fit-content;
   max-width: 1280px;
   margin: 0 auto;
-  
+
   padding: 10px 20px;
   background-color: var(--lila);
   border: var(--borde-suave);
@@ -458,7 +458,8 @@ main section {
 
 
 /* ── SECCIÓN TIPS DE PROFESIONALES ─────────── */
-.tips-profesionales {
+.tips-profesionales, 
+.consejos-propios {
   padding: 72px 56px 80px;
   background-color: var(--blanco);
 }
@@ -495,7 +496,8 @@ main section {
 }
 
 /* ── GRILLA DE ARTÍCULOS ────────────────────── */
-.articulos-grid {
+.articulos-grid, 
+.consejos-grid {
   max-width: 1280px;
   margin: 0 auto;
   display: grid;
@@ -546,8 +548,7 @@ main section {
   flex: 1;
 }
 
-.articulo-autor,
-.consejo-autor {
+.articulo-autor {
   font-size: 0.8rem;
   font-weight: 600;
   color: #888;
@@ -601,7 +602,7 @@ main section {
   color: var(--negro);
 }
 
-/* Botón del artículo */
+/* Botón del artículo / aun no disponible */
 .btn-articulo {
   background: none;
   border: var(--borde-suave);
@@ -614,11 +615,7 @@ main section {
   opacity: 0.6;
 }
 
-/* ── CONSEJOS PROPIOS ─────────────────────────────────── */
-
-.consejo-card {
-  margin: 24px;
-}
+/* ── CONSEJOS PROPIOS junto a las ─────────────────────────────────── */
 
 /* ── FOOTER ─────────────────────────────────── */
 .footer-contenedor {
