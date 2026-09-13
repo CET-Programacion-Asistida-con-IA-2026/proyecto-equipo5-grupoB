@@ -209,6 +209,109 @@
             <span class="tecnica-tag">Síntesis</span>
           </div>
         </article>
+        <!-- flashcards -->
+        <article class="tecnica-card" id="flashcards">
+          <div class="tecnica-header azul">
+            <span class="tecnica-emoji">🃏</span>
+            <h3>Flashcards</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>Una herramienta efectiva para el aprendizaje espaciado. Consiste en tarjetas con información en un lado y la respuesta en el otro.</p>
+            <p>Útil para memorizar conceptos, términos o definiciones clave.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo hacerlo?</h4>
+              <ol>
+                <li>Crea tarjetas con una pregunta o concepto en un lado y la respuesta en el otro.</li>
+                <li>Revisa las tarjetas regularmente, separando las que conoces bien de las que necesitas practicar más.</li>
+                <li>Usa colores e imágenes para hacerlas más memorables.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Visual</span>
+            <span class="tecnica-tag">Síntesis</span>
+          </div>
+        </article>
+
+        <!-- Metodos de estudio enfocados a tecnología-->
+        <!-- Hacer y romper -->
+        <article class="tecnica-card" id="hacer-romper">
+          <div class="tecnica-header amarillo">
+            <span class="tecnica-emoji">🔧</span>
+            <h3>Hacer y Romper</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>Consiste en escribir código desde cero (o tomar uno ya hecho), que funcione bien y modificarlo a propósito para identificar errores que resulten y entender los errores de sintaxis.</p>
+            <p>Ideal para materias técnicas o de programación.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo aplicarlo?</h4>
+              <ol>
+                <li>Escribí código desde cero o tomá uno ya hecho.</li>
+                <li>Modificá el código a propósito para identificar errores.</li>
+                <li>Analizá los errores y comprendé por qué ocurren.</li>
+                <li>Repetí el proceso para mejorar continuamente.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Práctica</span>
+            <span class="tecnica-tag">Aprendizaje activo</span>
+          </div>
+        </article>
+        
+        <!-- Depuración con el patito de goma -->
+        <article class="tecnica-card" id="patito-de-goma">
+          <div class="tecnica-header lila">
+            <span class="tecnica-emoji">🦆</span>
+            <h3>Depuración con el Patito de Goma</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>Explicá tu código línea por línea a un objeto inanimado (como un patito de goma) para encontrar errores y comprender mejor la lógica detrás de tu código.</p>
+            <p>Es una técnica efectiva para identificar errores lógicos y mejorar la comprensión del código.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo aplicarlo?</h4>
+              <ol>
+                <li>Colocá un objeto inanimado frente a vos (como un patito de goma).</li>
+                <li>Explicá tu código línea por línea al objeto, como si le estuvieras enseñando.</li>
+                <li>Prestá atención a cualquier error o confusión que surja durante la explicación.</li>
+                <li>Revisá y corregí el código según lo que descubriste.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Depuración</span>
+            <span class="tecnica-tag">Comprensión del código</span>
+          </div>
+        </article>
+
+        <!--Modularización-->
+        <article class="tecnica-card" id="modularizacion">
+          <div class="tecnica-header azul">
+            <span class="tecnica-emoji">🧩</span>
+            <h3>Modularización</h3>
+          </div>
+          <div class="tecnica-body">
+            <p>Dividí tu código en módulos o funciones más pequeñas y manejables. Esto facilita la comprensión, el mantenimiento y la reutilización del código.</p>
+            <p>Es especialmente útil en proyectos grandes o complejos.</p>
+            <div class="tecnica-pasos">
+              <h4>¿Cómo aplicarlo?</h4>
+              <ol>
+                <li>Identificá partes de tu código que puedan funcionar de manera independiente.</li>
+                <li>Creá funciones o módulos para esas partes.</li>
+                <li>Usá esos módulos en tu código principal, asegurándote de que cada uno tenga una responsabilidad clara.</li>
+                <li>Mantené tus módulos organizados y documentados para facilitar su uso futuro.</li>
+              </ol>
+            </div>
+            <span class="tecnica-tag">Organización</span>
+            <span class="tecnica-tag">Mantenimiento del código</span>
+          </div>
+
+
+
+      
+    
+    
+      </div> 
+
+
+
+
+
+
 
       </div>
     </section>
@@ -237,6 +340,8 @@
             <label for="recomendacion-form">Completá el siguiente cuestionario:</label>  
           
             <!-- Pregunta 1: nos da info de tu nivel de estudio y las necesidades de acuerdo el plan de esudio aproximado que tenes   -->
+            <!-- Debe ser reemplazada por la info que sale del formulario de resistro-->
+            <!-- 
             <div class="form-group">
               <label for="nivel-estudio">¿En qué nivel de estudio te encontrás actualmente?</label>
               <select id="nivel-estudio" name="nivel-estudio" required>
@@ -251,11 +356,7 @@
                 </optgroup>
               </select>
             </div> 
-            <!-- NUEVO: Contenedor dinámico para la Currícula/Orientación -->
-            <div class="form-group" id="contenedor-curricula" style="display: none;">
-              <!-- JavaScript va a inyectar la pregunta y el select acá adentro -->
-            </div>
-            
+            -->
             <!-- Pregunta 2: nos da info de tu estilo de aprendizaje y las necesidades de acuerdo a tu estilo de aprendizaje predominante  -->  
             <!-- No me convence del todo esta pregunta, porque el estilo de aprendizaje no es tan determinante como se pensaba. Podría ser mejor preguntar sobre cómo prefieren estudiar o qué técnicas han probado antes. -->
             <!--
@@ -276,7 +377,11 @@
               <label for="objetivo-estudio">¿Cuál es tu objetivo principal al estudiar?</label>
               <select id="objetivo-estudio" name="objetivo-estudio" required>
                 <option value="">Mi objetivo es...</option>
-                <option value="aprobar-examen">Aprobar un examen</option>
+                <optgroup label="Aprobar un examen">
+                  <option value="aprobar-examen">Examen teorico</option>
+                  <option value="aprobar-examen">Examen practico</option>
+                </optgroup>
+                <option value="mejorar-rendimiento">Mejorar mi rendimiento académico</option>
                 <option value="aprender-nuevo-conocimiento">Aprender un nuevo conocimiento</option>
                 <option value="desarrollar-habilidad">Desarrollar una habilidad</option>
               </select>
@@ -292,7 +397,6 @@
                 <option value="relajado">Relajado (tiempo amplio para prepararme)</option>
               </select>
             </div>
-
             
             <!-- Pregunta 3: nos da info sobre el tiempo que puedes dedicar al estudio  -->
             <div class="form-group">

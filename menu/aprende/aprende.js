@@ -71,10 +71,25 @@ formulario.addEventListener('submit', (e) => {
   modal.classList.remove('mostrar');
   formulario.reset();
 });
-
-
-
 /* Fin Forms desplegable ------------------------------------- */
+
+
+/* Logica de razonamiento para arrojar un resultado de recomendación */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
