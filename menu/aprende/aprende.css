@@ -289,7 +289,8 @@ main section {
   background-color: var(--gris-claro);
 }
 
-.tecnica-emoji {
+.tecnica-emoji,
+.tecnica-icono {
   font-size: 2rem;
 }
 

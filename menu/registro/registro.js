@@ -4,8 +4,29 @@ const bloqueMiCuenta = document.getElementById('bloque-mi-cuenta');
 const registroForm = document.getElementById('registro-form');
 const btnCerrarSesion = document.getElementById('btn-cerrar-sesion');
 
-// Elemento de la barra de navegación (Ajustá el ID según tu HTML real)
-const btnNavRegistro = document.getElementById('btn-nav-registro') || document.querySelector('nav a[href*="registrate"]') || document.querySelector('.btn-registrate');
+// Elementos del navbar mobile
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+// Elemento de la barra de navegación
+const btnNavRegistro = document.getElementById('btn-nav-registro');
+
+function actualizarTextoBotonRegistro(estado) {
+  if (!btnNavRegistro) return;
+
+  const textoDefault = btnNavRegistro.dataset.defaultText || 'Registrate';
+  const textoCuenta = btnNavRegistro.dataset.accountText || 'Mi Cuenta';
+
+  if (estado === 'logueado') {
+    btnNavRegistro.textContent = textoCuenta;
+    btnNavRegistro.setAttribute('aria-label', 'Ir a mi cuenta');
+    btnNavRegistro.setAttribute('href', '../registro/registro.html#mi-cuenta');
+  } else {
+    btnNavRegistro.textContent = textoDefault;
+    btnNavRegistro.setAttribute('aria-label', 'Registrate');
+    btnNavRegistro.setAttribute('href', '../registro/registro.html');
+  }
+}
 
 /**
  * Función Principal: Revisa el LocalStorage y actualiza la interfaz completa
@@ -22,22 +43,34 @@ function actualizarInterfazUsuario() {
     document.getElementById('perfil-orientacion-vista').textContent = perfil.orientacion.toUpperCase();
 
     // 2. Intercambiar los bloques visuales
-    if(bloqueRegistro) bloqueRegistro.style.display = 'none';
-    if(bloqueMiCuenta) bloqueMiCuenta.style.display = 'block';
+    if (bloqueRegistro) bloqueRegistro.style.display = 'none';
+    if (bloqueMiCuenta) bloqueMiCuenta.style.display = 'block';
 
-    // 3. Modificar mágicamente el botón de la barra de navegación
-    if (btnNavRegistro) {
-      btnNavRegistro.textContent = `👤 Mi Cuenta (${perfil.nombre})`;
-    }
+    // 3. Actualizar el botón del navbar
+    actualizarTextoBotonRegistro('logueado');
   } else {
     // Si no hay sesión iniciada, volvemos al estado inicial
-    if(bloqueRegistro) bloqueRegistro.style.display = 'block';
-    if(bloqueMiCuenta) bloqueMiCuenta.style.display = 'none';
+    if (bloqueRegistro) bloqueRegistro.style.display = 'block';
+    if (bloqueMiCuenta) bloqueMiCuenta.style.display = 'none';
 
-    if (btnNavRegistro) {
-      btnNavRegistro.textContent = 'Registrate';
-    }
+    actualizarTextoBotonRegistro('guest');
   }
+}
+
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener('click', function () {
+    const abierto = navLinks.classList.toggle('activo');
+    menuToggle.classList.toggle('abierto', abierto);
+    menuToggle.setAttribute('aria-expanded', abierto);
+  });
+
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      navLinks.classList.remove('activo');
+      menuToggle.classList.remove('abierto');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
 }
 
 // Evento: Escuchar el envío del formulario de registro
@@ -65,10 +98,10 @@ if (btnCerrarSesion) {
   btnCerrarSesion.addEventListener('click', () => {
     // Eliminamos los datos guardados
     localStorage.removeItem('perfilEstudiante');
-    
+
     // Si tenías campos llenos en el formulario, los limpiamos
-    if(registroForm) registroForm.reset();
-    
+    if (registroForm) registroForm.reset();
+
     // Refrescamos la interfaz
     actualizarInterfazUsuario();
   });
