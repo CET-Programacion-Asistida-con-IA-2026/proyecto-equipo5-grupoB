@@ -230,7 +230,7 @@ main section {
 /* ── SECCIÓN TÉCNICAS ───────────────────────── */
 .tecnicas {
   padding: 72px 56px 80px;
-  
+
 }
 
 .tecnicas-grid {
@@ -338,6 +338,7 @@ main section {
   transform: rotateY(180deg);
   background-color: var(--blanco);
 }
+
 /* termina lo de girar */
 
 .tecnica-pasos {
@@ -499,7 +500,7 @@ main section {
 
 
 /* ── SECCIÓN TIPS DE PROFESIONALES ─────────── */
-.tips-profesionales, 
+.tips-profesionales,
 .consejos-propios {
   padding: 72px 56px 80px;
   background-color: var(--blanco);
@@ -537,7 +538,7 @@ main section {
 }
 
 /* ── GRILLA DE ARTÍCULOS ────────────────────── */
-.articulos-grid, 
+.articulos-grid,
 .consejos-grid {
   max-width: 1280px;
   margin: 0 auto;
@@ -614,7 +615,7 @@ main section {
 }
 
 /* Categorías de artículos */
-.articulo-categoria{
+.articulo-categoria {
   display: inline-block;
   border-radius: 999px;
   padding: 3px 12px;
