@@ -48,12 +48,9 @@ img {
   display: block;
 }
 
-/*NOSE DEFINIÓ AUN LA CLASS INPUT*/
-button,
-input {
+button {
   font-family: inherit;
 }
-
 
 /* ── HEADER / NAVBAR (MENÚ PRINCIPAL) ─────────────────────────────────── */
 .site-header {
@@ -91,10 +88,8 @@ input {
   display: flex;
   align-items: center;
   gap: 56px;
-
   margin: 0;
   padding: 0;
-
   font-size: 1.08rem;
   font-weight: 700;
   color: var(--negro);
@@ -154,13 +149,10 @@ input {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-
   border: none;
   cursor: pointer;
-
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -402,21 +394,17 @@ main section {
 ============================================================ */
 
 body {
-  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: var(--fondo);
-  color: var(--gris-oscuro);
 }
 
 .contenido-organizate {
   max-width: 100%;
   margin: 0px auto;
-  padding: 0 24px 32px;
+  padding: 0px 15px 0px; 
   display: grid;
   gap: 18px;
   align-items: start;
-
 }
 
 .section {
@@ -424,6 +412,7 @@ body {
   border: var(--borde-suave);
   border-radius: 22px;
   padding: 20px;
+  margin: 0px 0px 15px;
 }
 
 .section h2 {
@@ -446,15 +435,13 @@ body {
   margin-bottom: 16px;
 }
 
-
-
 /*=====================================================================================================
  BIENEVENIDA DASHBOARD
 =====================================================================================================*/
 .bienvenida-dashboard {
   margin: 0 auto;
   width: 100%;
-  max-width: 1400px;
+  max-width: 100%;
   background: white;
   border-radius: 22px;
   padding: 40px;
@@ -513,7 +500,7 @@ body {
 .menu-organizate {
   background: white;
   border-radius: 20px;
-  padding: 18px;
+  padding: 10px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
   /*grid-template-columns:250px 1fr; */
   width: 220px;
@@ -549,7 +536,7 @@ body {
 
 /* HOVER*/
 .menu-item:hover {
-  background: #f5f5f5;
+  background: var(--lila);
 }
 
 /* CONTENIDO*/
@@ -575,21 +562,23 @@ html {
   box-shadow: 0 8px 30px rgba(0, 0, 0, .05);
 }
 
-
-
 /* ===========================================================================
    DATOS ACADÉMICOS
 ============================================================================== */
 
-/* Estilos para el encabezado del horario y calendario académico */
-.encabezado-planificador {
+/* Estilos para encabezados */
+.encabezado-objetivos,
+.encabezado-planificador,
+.encabezado-estadisticas {
   justify-content: center;
   text-align: center;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
-.encabezado-planificador+p {
+.encabezado-objetivos+p,
+.encabezado-planificador+p,
+.encabezado-estadisticas+p {
   text-align: center;
   font-size: 1rem;
   margin-bottom: 20px;
@@ -599,7 +588,7 @@ html {
 
 /* Layout de dos columnas: horario semanal y calendario mensual 
 en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mensual */
-.calendario-layout {
+.layout {
   display: grid;
   grid-template-columns: 3fr 2fr;
   gap: 20px;
@@ -611,6 +600,7 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
   background: var(--blanco);
   padding: 20px;
   border-radius: 18px;
+  gap: 20px;
 }
 
 .placeholder-calendario {
@@ -632,7 +622,6 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
   margin-top: 20px;
 
 }
-
 
 /* Estilos para el formulario de edición de celdas del horario semanal */
 .editor-formulario {
@@ -756,143 +745,56 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
 
 /*------------------------------------------------------*/
 
-/* Estilos para el calendario mensual como grid*/
+/* Estilos para el calendario mensual formularios*/
 
-/* botones de registro de eventos*/
-
-.centro-organizacion {
-  margin-bottom: 30px;
-
-}
-
-.opciones-creacion {
-
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-
-  gap: 18px;
-
-  margin-top: 25px;
-
-}
-
-.tipo-card {
-  background: white;
-  border: none;
-  border-radius: 18px;
-  padding: 22px;
-  cursor: pointer;
-  transition: .25s;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
-
-}
-
-.tipo-card:hover {
-
-  transform: translateY(-5px);
-
-}
-
-
-
-.tipo-card span {
-  font-size: 2rem;
-}
-
-.tipo-card p {
-  font-size: .9;
-}
-
-.tipo-card.activo {
-
-  background: #fff;
-
-  box-shadow: 0 0 0 3px var(--lila);
-
-  transform: translateY(-5px);
-
-}
 
 /* estilos para formularios */
 .formulario-creacion {
-
   margin-top: 25px;
-
   display: flex;
-
   flex-direction: column;
-
   gap: 15px;
-
   background: white;
-
   padding: 22px;
-
   border-radius: 18px;
-
   box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
 
 }
 
 .formulario-creacion input,
 .formulario-creacion select {
-
   padding: 12px;
-
   border-radius: 10px;
-
   border: 1px solid #ddd;
-
 }
 
 .formulario-creacion button {
-
   align-self: flex-end;
 
 }
 
 /* */
 .formulario-creacion {
-
   margin-top: 25px;
-
   display: flex;
-
   flex-direction: column;
-
   gap: 15px;
-
   background: white;
-
   padding: 22px;
-
   border-radius: 18px;
-
   box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
-
 }
 
 .formulario-creacion input,
 .formulario-creacion select {
-
   padding: 12px;
-
   border-radius: 10px;
-
   border: 1px solid #ddd;
-
 }
 
 .formulario-creacion button {
-
   align-self: flex-end;
-
 }
-
-
-
-
 
 
 /* Estilos para los inputs del formulario de eventos del calendario mensual */
@@ -936,7 +838,6 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
   padding: 4px 8px;
   cursor: pointer;
 }
-
 
 /* Estilos para el encabezado del calendario mensual */
 .cabecera-calendario {
@@ -1060,6 +961,8 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
   border-radius: 6px;
   background: var(--gris-claro);
   font-size: 0.8rem;
+
+
 }
 
 /* Estilos para los puntos de evento en el calendario mensual */
@@ -1146,6 +1049,48 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
 /* ===========================================================================
     BASE DE LA ORGANIZACIÓN DE LA PÁGINA
 ============================================================================== */
+
+.form-tarea {
+  display: flex;
+  flex-direction: row; /* Alinea los elementos en fila */
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center; /* Centra verticalmente los elementos para que midan lo mismo */
+  width: 100%;
+  margin-bottom: 35px;
+}
+
+.form-tarea input,
+.form-tarea select{
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  height: 45px;       /* Forzamos a que todos tengan exactamente el mismo alto */
+  box-sizing: border-box; 
+}
+
+.form-tarea input[type=text]{
+  flex:2;
+}
+
+.form-tarea input,
+.form-tarea select{
+  flex: 1;
+}
+
+
+#listaTareas { 
+  display: grid;
+  /* Crea columnas automáticas de mínimo 260px que se colocan una al lado de la otra */
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;       /* Espacio de separación horizontal y vertical entre tarjetas */
+  width: 100%;     /* Ocupa el 100% del ancho disponible abajo */
+  margin-top: 30px; /* Separa la lista de tareas del formulario de arriba */
+}
+
+
 .tarea {
   background: var(--blanco);
   border-left: 5px solid var(--lila);
@@ -1153,13 +1098,11 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
   margin-top: 10px;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-.form-tarea {
-  display: flex;
+   /* Organiza el contenido interno de la tarjeta en vertical de forma limpia */
+  /*display: flex;*/
+  flex-direction: column;
   gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+  box-sizing: border-box;
 }
 
 #tituloTarea,
@@ -1181,8 +1124,11 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
   color: white;
   border: none;
   border-radius: 8px;
-  padding: 10px 16px;
+  height: 45px;
+  padding: 0px 25px;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
   transition: 0.2s;
 }
 
@@ -1191,13 +1137,19 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
 }
 
 .eliminar-tarea {
-  margin-top: 8px;
+  margin-top: auto; /* Empuja el botón al fondo si una tarjeta es más alta que otra */
   background: #ff6b6b;
   color: white;
   border: none;
   border-radius: 6px;
   padding: 6px 10px;
   cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.eliminar-tarea:hover {
+  background: #170202;
 }
 
 .prioridad {
@@ -1224,114 +1176,67 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
   color: #1f6b1f;
 }
 
-
-
-
-
-
 /*=========================================================
 MODAL DEL PLANIFICADOR
 =========================================================*/
-
 .modal {
-
   position: fixed;
-
   inset: 0;
-
   background: rgba(0, 0, 0, .45);
-
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
   z-index: 5000;
-
 }
 
 .oculto {
-
   display: none;
-
 }
 
 .modal-contenido {
-
   background: var(--blanco);
-
   width: min(500px, 90%);
-
   border-radius: 20px;
-
   padding: 25px;
-
   position: relative;
-
   box-shadow: 0 15px 40px rgba(0, 0, 0, .25);
-
 }
 
 .cerrar-modal {
-
   position: absolute;
-
   right: 15px;
-
   top: 15px;
-
   border: none;
-
   background: none;
-
   cursor: pointer;
-
   font-size: 1.2rem;
-
 }
 
 /* algo más*/
 .menu-modal {
-
   display: grid;
-
   gap: 15px;
-
   margin-top: 25px;
-
 }
 
 .opcion-modal {
-
   padding: 15px;
-
   border: none;
-
   border-radius: 12px;
-
   cursor: pointer;
-
   font-size: 1rem;
-
   background: var(--fondo);
-
   transition: .2s;
 
 }
 
 .opcion-modal:hover {
-
   transform: scale(1.02);
-
 }
 
 .fecha-formulario {
-
   margin: 15px 0 25px;
-
   font-weight: 600;
-
   color: var(--gris-oscuro);
 
 }
@@ -1481,7 +1386,7 @@ MODAL DEL PLANIFICADOR
   }
 
   #calendarioGrid {
-    min-width: 450px;
+    min-width: 400px;
     /* Evita que los días queden como líneas verticales */
   }
 
@@ -1579,7 +1484,7 @@ MODAL DEL PLANIFICADOR
 
 /* Tablet amplia: calendario en una columna */
 @media (max-width: 1200px) {
-  .calendario-layout {
+  .layout {
     grid-template-columns: 1fr;
   }
 }

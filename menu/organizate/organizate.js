@@ -904,7 +904,7 @@ function renderizarTareas() {
 
         listaTareas.innerHTML += `
             <div class="tarea">
-
+                
                 <div>
                     <strong>${tarea.titulo}</strong>
                 </div>
@@ -1046,10 +1046,6 @@ function mostrarFormulario(tipo) {
 /*=========================================================
 BLOQUE 5: TODOS LOS EVENTOS
 =========================================================*/
-
-
-
-
 
 cerrarModal.addEventListener("click", () => {
 
