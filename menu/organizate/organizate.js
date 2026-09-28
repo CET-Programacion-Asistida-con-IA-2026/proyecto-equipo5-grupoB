@@ -42,22 +42,13 @@ que el usuario ya escribió.
 ---------------------------------------------------------*/
 
 let estadoFormulario = {
-
     tipo: null,
-
     fecha: null,
-
     materiaId: null,
-
     titulo: "",
-
     tipoEvaluación: "Parcial"
 
 };
-
-
-
-
 
 
 /*============ 2 TODAS LAS REFERRENCIAS AL DOM =================*/
@@ -82,6 +73,7 @@ const cerrarModal = document.getElementById("cerrarModal");
 const listaFechas = document.getElementById("listaFechas");
 const btnMesAnterior = document.getElementById("mesAnterior");
 const btnMesSiguiente = document.getElementById("mesSiguiente");
+const btnCambiarVistaFechas = document.getElementById("btnCambiarVistaFechas");
 
 // Obtener el contenedor del calendario mensual y el título del mes
 const calendarioGrid = document.getElementById("calendarioGrid");
@@ -117,7 +109,7 @@ const horaFin = 23; // Hora de fin del horario (11 PM)
 let selectedCells = [];
 let fechaActual = new Date();
 let fechaSeleccionada = null;
-
+let vistaFechas = "mes";
 
 
 /*============??=================*/
@@ -849,21 +841,13 @@ function renderizarCalendario() {
     for (let dia = 1; dia <= diasMes; dia++) {
         const fechaCompleta =
             `${año}-${String(mes + 1).padStart(2, "0")}-${String(dia).padStart(2, "0")}`;
-
         //const tieneEvento = fechasGuardadas.some(item => item.fecha === fechaCompleta);
-
         const eventosDelDia = fechasGuardadas.filter(item => item.fecha === fechaCompleta);
-
         const tieneEvento = eventosDelDia.length > 0;
-
         const nombreEvento = eventosDelDia.map(item => item.evento).join(", ");
-
         const esHoy = fechaCompleta === fechaHoyStr;
-
         const seleccionado = fechaCompleta === fechaSeleccionada;
-
-        calendarioGrid.innerHTML += `
-          
+        calendarioGrid.innerHTML += `    
             <div class="dia-calendario" data-fecha="${fechaCompleta}"  title="${nombreEvento}">
                 ${dia}
                 ${eventosDelDia.length > 0
@@ -953,34 +937,19 @@ function crearFormularioExamen() {
     return `
 
         <div class="formulario-creacion">
-
             <h2>📚 Nuevo examen</h2>
-
-            <p class="fecha-formulario">
-                📅 ${fechaTexto}
-            </p>
-
+            <p class="fecha-formulario">📅 ${fechaTexto}</p>
             <label>Materia</label>
-
             <select id="materiaFormulario">
-
-                <option value="">
-                    Seleccioná una materia
-                </option>
-
+                <option value="">Seleccioná una materia</option>
             </select>
-
             <label>Título</label>
-
             <input
                 type="text"
                 id="tituloFormulario"
                 placeholder="Ej: Parcial 1">
-
             <button id="guardarFormulario">
-
                 Guardar examen
-
             </button>
 
         </div>
@@ -1055,15 +1024,6 @@ cerrarModal.addEventListener("click", () => {
 
 
 
-
-
-
-
-
-
-
-
-
 /* HORARIO*/
 
 function actualizarInputsDesdeCelda(celda) {
@@ -1101,19 +1061,12 @@ function iniciarEventosHorario() {
     console.log(celdas.length);
 
     celdas.forEach(celda => {
-
         celda.addEventListener("click", () => {
-
             actualizarSeleccion(celda);
-
             if (selectedCells.length === 1) {
-
                 actualizarInputsDesdeCelda(celda);
-
             } else {
-
                 actividadInput.value = "";
-
                 tipoInput.value = "";
 
             }
@@ -1155,20 +1108,12 @@ function iniciarEventosHorario() {
             }
 
             //Añado esto por la nueva api
-
-
             if (tipo === "1") {
-
                 registrarActividad({
-
                     materia: actividad,
-
                     titulo: actividad,
-
                     tipo: "clase",
-
                     dia: celda.dataset.dia,
-
                     hora: celda.dataset.hora
 
                 });
@@ -1199,7 +1144,6 @@ function iniciarEventosHorario() {
         alert("Actividad guardada en las celdas seleccionadas.");
     });
 
-
     eliminarActividad.addEventListener("click", () => {
         if (selectedCells.length === 0) {
             alert("Selecciona al menos una celda del horario primero.");
@@ -1215,7 +1159,6 @@ function iniciarEventosHorario() {
             if (indice !== -1) {
                 horarioGuardado.splice(indice, 1);
             }
-
             celda.textContent = "";
             celda.classList.remove("clase", "estudio", "descanso");
             celda.classList.add("libre");
@@ -1252,10 +1195,8 @@ btnMesSiguiente.addEventListener("click", () => {
 calendarioGrid.addEventListener("click", event => {
     const diaCelda = event.target.closest(".dia-calendario");
     if (!diaCelda) return;
-
     const fecha = diaCelda.dataset.fecha;
     if (!fecha) return;
-
     fechaSeleccionada = fecha;
     actualizarSeleccionMes();
     mostrarFechas(fecha);
@@ -1267,78 +1208,49 @@ calendarioGrid.addEventListener("click", event => {
 listaFechas.addEventListener("click", event => {
     const eliminarBtn = event.target.closest(".eliminar-fecha");
     if (!eliminarBtn) return;
-
     const index = Number(eliminarBtn.dataset.index);
     if (Number.isNaN(index)) return;
-
     fechasGuardadas.splice(index, 1);
     localStorage.setItem("fechas", JSON.stringify(fechasGuardadas));
     renderizarCalendario();
     mostrarFechas();
 });
 
-
-
-/*CENTRO ORGANIZACIÓN*/
-
+/*CENTRO ORGANIZACIÓN---------------------------------*/
 //permite que EL MENU cambie de color al clickear enel menú -- ACTIVO
 menuItems.forEach(item => {
-
     item.addEventListener("click", () => {
-
         menuItems.forEach(i => i.classList.remove("activo"));
-
         item.classList.add("activo");
-
     });
-
 });
 
 //permite cambiar de color DEL CENTRO DE ORGANIZACIÖN al clickear -- ACTIVO y además entiende decide si se despliega forms o no 
 tarjetasCreacion.forEach(tarjeta => {
-
     tarjeta.addEventListener("click", () => {
-
         console.log(tarjeta.dataset.tipo);
-
         tarjetasCreacion.forEach(t =>
             t.classList.remove("activo")
         );
-
         tarjeta.classList.add("activo");
-
         mostrarFormulario(tarjeta.dataset.tipo);
-
     });
-
 });
 
 
-
-
-
-
 /*PLANIFICADOR DE TAREAS*/
-
 listaTareas.addEventListener("click", event => {
-
     const boton =
         event.target.closest(".eliminar-tarea");
-
     if (!boton) return;
-
     const index =
         Number(boton.dataset.index);
-
     tareas.splice(index, 1);
-
     localStorage.setItem(
         "tareas",
         JSON.stringify(tareas)
     );
-
     renderizarTareas();
-
 });
 
 // Agregar tarea al hacer clic en el botón "Agregar"

@@ -402,7 +402,7 @@ body {
   max-width: 100%;
   margin: 0px auto;
   padding: 0px 15px 0px; 
-  display: grid;
+
   gap: 18px;
   align-items: start;
 }
@@ -412,8 +412,9 @@ body {
   border: var(--borde-suave);
   border-radius: 22px;
   padding: 20px;
-  margin: 0px 0px 15px;
+  margin: 8px;
 }
+
 
 .section h2 {
   font-size: 1.25rem;
@@ -439,11 +440,6 @@ body {
  BIENEVENIDA DASHBOARD
 =====================================================================================================*/
 .bienvenida-dashboard {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 100%;
-  background: white;
-  border-radius: 22px;
   padding: 40px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
 }
@@ -453,7 +449,6 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-top: 30px;
-
 }
 
 .mini-card {
@@ -480,22 +475,22 @@ body {
 /*===============================================================================================
 ---------------------------------- DASHBOARD---------------------------------------------------
 */
-
+/*
 .dashboard-organizate {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 2fr 1fr;
   align-items: start;
   gap: 32px;
   width: 95%;
   max-width: 1500px;
   margin: 70px auto;
-  /*border: var(--borde-suave);*/
+  border: var(--borde-suave);
   border-radius: 32px;
   box-shadow: var(--sombra-suave);
   background-color: var(--blanco);
   padding: 24px;
 }
-
+*/
 /* EL MENU*/
 .menu-organizate {
   background: white;
@@ -547,11 +542,6 @@ body {
 
 }
 
-/* SROLL SUAVE*/
-html {
-  scroll-behavior: smooth;
-}
-
 /* unificamos tarjetas*/
 .panel-dashboard {
   background: var(--blanco);
@@ -592,7 +582,6 @@ en disposicion 5 columnas. 3 las ocupa el horario semanal y 2 el calendario mens
   display: grid;
   grid-template-columns: 3fr 2fr;
   gap: 20px;
-  margin-top: 20px;
 }
 
 .horario-semanal,
@@ -1305,7 +1294,8 @@ MODAL DEL PLANIFICADOR
 
 /* Tablet horizontal: dashboard en una columna */
 @media (max-width: 1024px) {
-  .dashboard-organizate {
+  .dashboard-organizate,
+  .contenido-dashboard {
     grid-template-columns: 1fr;
     /* El menú pasa arriba y el contenido abajo */
     gap: 20px;
