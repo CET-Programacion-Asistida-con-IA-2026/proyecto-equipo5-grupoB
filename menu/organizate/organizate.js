@@ -45,9 +45,7 @@ let estadoFormulario = {
     tipo: null,
     fecha: null,
     materiaId: null,
-    titulo: "",
-    tipoEvaluación: "Parcial"
-
+    titulo: ""
 };
 
 
@@ -123,7 +121,6 @@ BLOQUE 2: MOTOR DE ORGANIZACIÓN //Toda la información importante de la aplicac
 =========================================================*/
 
 let organizacion = JSON.parse(localStorage.getItem("organizacion")) || {
-
     materias: [],
     objetivos: [],
     actividades: [],
@@ -132,11 +129,8 @@ let organizacion = JSON.parse(localStorage.getItem("organizacion")) || {
 };
 
 function guardarOrganizacion() {
-
     localStorage.setItem(
-
         "organizacion",
-
         JSON.stringify(organizacion)
 
     );
@@ -176,62 +170,41 @@ function formatearNombreMateria(nombre) {
 
 
 function crearMateria(nombre) {
-
     const materia = {
-
         id: crypto.randomUUID(),
         nombre: formatearNombreMateria(nombre),
         clave: normalizarTexto(nombre),
         estado: "activo",
-
     };
-
     organizacion.materias.push(materia);
-
     guardarOrganizacion();
-
     return materia;
-
 }
 
 function obtenerMateria(nombre) {
-
     return organizacion.materias.find(
-
         materia =>
-
             materia.clave === normalizarTexto(nombre)
-
     );
 
 }
 
 function obtenerOCrearMateria(nombre) {
-
     let materia = obtenerMateria(nombre);
-
     if (!materia) {
-
         materia = crearMateria(nombre);
-
     }
-
     return materia;
-
 }
 
 function cargarMateriasEnFormulario() {
-
     const select = document.getElementById("materiaFormulario");
-
     if (!select) return;
-
     select.innerHTML = `
         <option value="">
             Seleccioná una materia
         </option>
     `;
-
     organizacion.materias.forEach(materia => {
 
         select.innerHTML += `
@@ -239,76 +212,55 @@ function cargarMateriasEnFormulario() {
                 ${materia.nombre}
             </option>
         `;
-
     });
 
     select.innerHTML += `
-        <option value="nueva">
-            ➕ Agregar nueva materia...
-        </option>
+        <option value="nueva">➕ Agregar nueva materia...</option>
     `;
-
 }
-
-
-
-
-
-
 
 /*--------REGISTRO DE ACTIVIDADES---------*/
 function registrarActividad(datos) {
+    const nombreMateria = typeof datos.materia === "string"
+        ? datos.materia.trim()
+        : "";
 
-    const materia = obtenerOCrearMateria(datos.materia);
+    // 1. Buscamos o creamos la materia SOLO si pasaron un nombre válido
+    const materia = datos.materia
+        ? obtenerOCrearMateria(datos.materia)
+        : null;
+    const materiaId = materia ?? null;
 
     const actividad = {
-
         id: crypto.randomUUID(),
-
-        materiaId: materia.id,
-
+        materiaId,
         titulo: datos.titulo,
-
         tipo: datos.tipo || "evento",
-
         categoria: datos.categoria || null,
-
         fecha: datos.fecha || null,
-
         estado: "pendiente",
-
         origen: datos.origen || "manual",
-
         objetivoId: null
-
     };
 
     organizacion.actividades.push(actividad);
 
     if (
-        datos.tipo === "examen" ||
-        datos.tipo === "final" ||
-        datos.tipo === "entrega" ||
-        datos.tipo === "proyecto"
+        materiaId &&
+        ["examen", "final", "entrega", "proyecto"].includes(datos.tipo)
     ) {
-
-        obtenerOCrearObjetivo({
-
+        const objetivo = obtenerOCrearObjetivo({
             materiaId: materia.id,
-
             titulo: datos.titulo
-
         });
-
+        actividad.objetivoId = objetivo.id
     }
 
     guardarOrganizacion();
-
     return actividad;
 }
 
 function obtenerActividades() {
-
     return organizacion.actividades;
 
 }
@@ -320,52 +272,31 @@ function crearObjetivo(datos) {
     const objetivo = {
 
         id: crypto.randomUUID(),
-
         materiaId: datos.materiaId,
-
         titulo: datos.titulo,
-
         estado: "activo",
-
         progreso: 0,
-
         pasos: [],
-
         fechaCreacion: new Date().toISOString()
-
     };
-
     organizacion.objetivos.push(objetivo);
-
     guardarOrganizacion();
-
     return objetivo;
-
 }
 
 function obtenerObjetivoPorTitulo(titulo) {
-
     return organizacion.objetivos.find(
-
         objetivo =>
-
             normalizarTexto(objetivo.titulo) ===
             normalizarTexto(titulo)
-
     );
-
 }
 
 function obtenerOCrearObjetivo(datos) {
-
     let objetivo = obtenerObjetivoPorTitulo(datos.titulo);
-
     if (!objetivo) {
-
         objetivo = crearObjetivo(datos);
-
     }
-
     return objetivo;
 
 }
@@ -382,298 +313,237 @@ MODAL
 =========================================================*/
 
 function abrirModal() {
-
     modalOrganizador.classList.remove("oculto");
-
 }
 
 function cerrarModalFuncion() {
-
     modalOrganizador.classList.add("oculto");
-
     contenidoModal.innerHTML = "";
-
 }
+/*========= MODAL DEL CALENDARIO (ESTRUCTURA UNIFICADA) =========*/
 
-/* hacemos prueba del modal */
-/* abrirModal();
+// 1. Mapa de configuración para cada tipo de actividad
+const CONFIG_FORMULARIOS = {
+    examen: { titulo: "Nueva Examen", icono: "📚", llevaMateria: true, categoria: "Examen" },
+    final: { titulo: "Nuevo Final", icono: "🖊️", llevaMateria: true, categoria: "Final" },
+    entrega: { titulo: "Nueva Entrega", icono: "📑", llevaMateria: true, categoria: "Entrega" },
+    proyecto: { titulo: "Nuevo Proyecto", icono: "📝", llevaMateria: true, categoria: "Proyecto" },
+    evento: { titulo: "Nuevo Evento", icono: "🎉", llevaMateria: false, categoria: "Evento" },
+    seminario: { titulo: "Nuevo Seminario", icono: "🎤", llevaMateria: true, categoria: "Seminario" }
+};
 
-contenidoModal.innerHTML = `
-    <h2>Hola 😄</h2>
+// 2. Función auxiliar que genera el HTML de forma dinámica
+function crearFormularioGeneral(tipo) {
+    const config = CONFIG_FORMULARIOS[tipo];
+    if (!config) return "";
 
-    <p>
+    const fecha = new Date(fechaSeleccionada);
+    const fechaTexto = fecha.toLocaleDateString("es-AR", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    });
 
-        Este será el nuevo centro del planificador.
-
-    </p>
-`; */
-
-
-
-
-/*=========MODAL DEL CALENDARIO=========*/
-
-function crearMenuCalendario() {
+    const htmlMateria = config.llevaMateria ? `
+        <label>Materia</label>
+        <select id="materiaFormulario">
+            <option value="">Seleccioná una materia</option>
+        </select>
+    ` : "";
 
     return `
-
-        <h2>
-
-            ¿Qué querés agregar?
-
-        </h2>
-
-        <div class="menu-modal">
-
-            <button class="opcion-modal" data-tipo="examen">
-
-                📚 Examen
-
-            </button>
-
-            <button class="opcion-modal" data-tipo="entrega">
-
-                📑 Entrega
-
-            </button>
-
-            <button class="opcion-modal" data-tipo="actividad">
-
-                📝 Actividad
-
-            </button>
-
-            <button class="opcion-modal" data-tipo="evento">
-
-                🎉 Evento
-
-            </button>
-
-            <button class="opcion-modal" data-tipo="seminario">
-
-                🎤 Seminario
-
-            </button>
-
+        <div class="formulario-creacion">
+            <h2>${config.icono} ${config.titulo}</h2>
+            <p class="fecha-formulario">📅 ${fechaTexto}</p>
+            ${htmlMateria}
+            <label>Título</label>
+            <input type="text" id="tituloFormulario" placeholder="Ej: Ingresá el detalle...">
+            <button id="guardarFormulario">Guardar ${tipo} </button>
         </div>
-
     `;
+}
 
+function crearMenuCalendario() {
+    return `
+        <h2>¿Qué querés agregar?</h2>
+        <div class="menu-modal">
+            <button class="opcion-modal" data-tipo="examen">📚 Examen</button>
+            <button class="opcion-modal" data-tipo="final">🖊️ Final</button>
+            <button class="opcion-modal" data-tipo="entrega">📑 Entrega</button>
+            <button class="opcion-modal" data-tipo="proyecto">📝 Proyecto</button>
+            <button class="opcion-modal" data-tipo="evento">🎉 Evento</button>
+            <button class="opcion-modal" data-tipo="seminario">🎤 Seminario</button>
+        </div>
+    `;
 }
 
 function abrirMenuCalendario() {
-
     contenidoModal.innerHTML = crearMenuCalendario();
 
-
-    const botonesModal =
-        document.querySelectorAll(".opcion-modal");
-
+    const botonesModal = document.querySelectorAll(".opcion-modal");
     botonesModal.forEach(boton => {
-
         boton.addEventListener("click", () => {
-
-            abrirFormulario(
-
-                boton.dataset.tipo
-
-            );
-
+            abrirFormulario(boton.dataset.tipo);
         });
-
     });
-
-
     abrirModal();
-
 }
 
-
-
+// 3. NUEVA FUNCIÓN UNIFICADA (Reemplaza por completo tu switch)
 function abrirFormulario(tipo) {
+    const config = CONFIG_FORMULARIOS[tipo];
+    if (!config) return;
 
-    switch (tipo) {
+    if (estadoFormulario.tipo !== tipo) {
+        estadoFormulario = {
+            tipo,
+            fecha: fechaSeleccionada,
+            materiaId: null,
+            titulo: ""
+        };
+    }
 
-        case "examen":
+    // Renderizamos el HTML dinámico dentro del modal
+    contenidoModal.innerHTML = crearFormularioGeneral(tipo);
 
-            contenidoModal.innerHTML =
-                crearFormularioExamen();
+    const tituloInput = document.getElementById("tituloFormulario");
+    if (tituloInput) {
+        tituloInput.value = estadoFormulario.titulo;
+    }
 
-            cargarMateriasEnFormulario();
+    // Lógica específica si requiere materia (como examen o entrega)
+    if (config.llevaMateria) {
+        cargarMateriasEnFormulario();
 
-            const selectMateria =
-                document.getElementById("materiaFormulario");
+        // Si el formulario requiere materia pero el select no se seleccionó
+        const selectMateria = document.getElementById("materiaFormulario"); 
+        if (selectMateria) {
+            selectMateria.value = estadoFormulario.materiaId || "";
 
             selectMateria.addEventListener("change", () => {
-
                 if (selectMateria.value === "nueva") {
-
+                    estadoFormulario.titulo =
+                        document.getElementById("tituloFormulario").value.trim();
                     abrirFormularioNuevaMateria();
-
+                    return;
                 }
 
+            estadoFormulario.materiaId = selectMateria.value;    
             });
-
-
-            document
-                .getElementById("guardarFormulario")
-                .addEventListener("click", guardarExamen);
-
-            break;
-
-        case "entrega":
-
-            contenidoModal.innerHTML =
-                crearFormularioEntrega();
-
-            break;
-
-        case "actividad":
-
-            contenidoModal.innerHTML =
-                crearFormularioActividad();
-
-            break;
-
-        case "evento":
-
-            contenidoModal.innerHTML =
-                crearFormularioEvento();
-
-            break;
-
-        case "seminario":
-
-            contenidoModal.innerHTML =
-                crearFormularioSeminario();
-
-            break;
-
+        }
     }
 
+    // EL CAMBIO ESTÁ ACÁ: Vinculamos la nueva función inteligente pasándole el 'tipo'
+    document.getElementById("guardarFormulario")
+    ?.addEventListener("click", () => guardarFormularioGeneral(tipo));
+    
+    
 }
 
 
-function guardarExamen() {
+function guardarFormularioGeneral(tipo) {
+    const config = CONFIG_FORMULARIOS[tipo];
+    if (!config) return;
 
-    const materiaSelect =
-        document.getElementById("materiaFormulario");
+    const tituloInput = document.getElementById("tituloFormulario");
+    const titulo = tituloInput ? tituloInput.value.trim() : "";
 
-    const titulo =
-        document.getElementById("tituloFormulario")
-            .value
-            .trim();
+    // Validación básica común para todos 
 
-    if (
-        !materiaSelect.value ||
-        !titulo
-    ) {
-
-        alert("Completá todos los campos.");
-
+    if (!titulo) {
+        alert("Completá el título del elemento.");
         return;
+    } 
 
-    }
+    let nombreMateria = null;  // Por defecto no hay materia (ej: proyecto / seminario)
 
-    const materia =
-        organizacion.materias.find(
-
-            m => m.id === materiaSelect.value
-
+    // Si el tipo de formulario requiere materia, validamos y buscamos su nombre
+    if (config.llevaMateria) {
+        const selectMateria = document.getElementById("materiaFormulario");
+        const materia = organizacion.materias.find(
+            item => item.id === selectMateria?.value
         );
 
+        if (!materia) {
+            alert("Seleccioná una materia.");
+            return;
+        }
+
+        nombreMateria = materia.nombre;
+    }
+
+    const fechaActividad = estadoFormulario.fecha || fechaSeleccionada;
+
+
+    // 3. Registramos la actividad de forma dinámica usando la configuración del objeto
     registrarActividad({
-
-        materia: materia.nombre,
-
+        materia: nombreMateria,
         titulo,
-
-        tipo: "examen",
-
+        tipo, // 'examen', 'entrega', etc.
         fecha: fechaSeleccionada,
-
-        categoria: "Examen"
-
+        categoria: config.categoria // 'Examen', 'Entrega', etc.
     });
 
+    // 4. Guardamos la fecha en tu array del calendario
     fechasGuardadas.push({
-
         fecha: fechaSeleccionada,
-
         evento: titulo,
-
-        categoria: "Examen"
-
+        categoria: config.categoria
     });
 
-    localStorage.setItem(
+    // 5. Sincronizamos con el almacenamiento local (LocalStorage)
+    localStorage.setItem("fechas", JSON.stringify(fechasGuardadas));
 
-        "fechas",
+   
+    fechaSeleccionada = fechaActividad;
+    estadoFormulario = {
+        tipo: null,
+        fecha: null,
+        materiaId: null,
+        titulo: ""
+    }; 
 
-        JSON.stringify(fechasGuardadas)
-
-    );
-
+    // 6. Refrescamos tu interfaz gráfica (tus funciones existentes)
     renderizarCalendario();
-
     mostrarFechas(fechaSeleccionada);
-
     cerrarModalFuncion();
-
 }
 
 
-//mini form para introducir nueva maateria que no se tiene en el horario
+//mini form para introducir nueva materia que no se tiene en el horario
+
 function abrirFormularioNuevaMateria() {
-
     contenidoModal.innerHTML = `
-
         <div class="formulario-creacion">
-
             <h2>📚 Nueva materia</h2>
-
-            <p>
-
-                No encontramos esa materia en tu base de datos.
-
-            </p>
-
-            <input
-                id="nombreNuevaMateria"
-                type="text"
-                placeholder="Ej: Álgebra">
-
+            <p> No encontramos esa materia en tu base de datos.</p>
+            <input id="nombreNuevaMateria" type="text" placeholder="Ej: Álgebra">
             <div class="acciones-modal">
-
-                <button id="cancelarNuevaMateria">
-
-                    Cancelar
-
-                </button>
-
-                <button id="crearNuevaMateria">
-
-                    Agregar
-
-                </button>
-
+                <button id="cancelarNuevaMateria">Cancelar</button>
+                <button id="crearNuevaMateria">Agregar</button>
             </div>
-
         </div>
-
     `;
 
+    document.getElementById("cancelarNuevaMateria")
+        .addEventListener("click", () => abrirFormulario(estadoFormulario.tipo));
+
+    document.getElementById("crearNuevaMateria")
+        .addEventListener("click", () => {
+            const input = document.getElementById("nombreNuevaMateria");
+            const nombre = input.value.trim();
+
+            if (!nombre) {
+                alert("Ingresá el nombre de la materia.");
+                return;
+            }
+
+            const materia = obtenerOCrearMateria(nombre);
+            estadoFormulario.materiaId = materia.id;
+            abrirFormulario(estadoFormulario.tipo);
+        });
+
 }
-
-
-
-
-
-
-
-
-
-
 
 /* ==============HORARIO SEMANAL=====================script para generar el horario semanal dinámicamente y permitir al usuario agregar actividades a cada celda del horario============ */
 
@@ -725,8 +595,7 @@ function aplicarHorarioGuardado() {
     });
 }
 
-
-/*==============CALENDARIO MENSSUAL======================================================             script para agregar fechas importantes al calendario mensualy guardarlas en localStorage===========================================================*/
+/*==============CALENDARIO MENSUAL======================================================             script para agregar fechas importantes al calendario mensualy guardarlas en localStorage===========================================================*/
 
 function mostrarFechas(fecha = null) {
     listaFechas.innerHTML = "";
@@ -878,7 +747,6 @@ function actualizarSeleccionMes() {
 }
 
 
-
 /* ===========================PLANIFICADOR DE TAREAS============================== */
 function renderizarTareas() {
 
@@ -888,126 +756,13 @@ function renderizarTareas() {
 
         listaTareas.innerHTML += `
             <div class="tarea">
-                
-                <div>
-                    <strong>${tarea.titulo}</strong>
-                </div>
-
-                <div>
-                    <span class="prioridad ${tarea.prioridad}">
-                       ${tarea.prioridad}
-                    </span>
-                </div>
-
-                <div>
-                    Fecha límite: ${tarea.fecha || "Sin fecha"}
-                </div>
-
-                <button
-                    class="eliminar-tarea"
-                    data-index="${index}">
-                    Eliminar
-                </button>
-
+                <div><strong>${tarea.titulo}</strong> </div>
+                <div><span class="prioridad ${tarea.prioridad}"> ${tarea.prioridad} </span>                </div>
+                <div>Fecha límite: ${tarea.fecha || "Sin fecha"}</div>
+                <button class="eliminar-tarea" data-index="${index}"> Eliminar </button>
             </div>
         `;
-
     });
-
-}
-
-
-
-/*======================formulario para el examen================== */
-
-
-function crearFormularioExamen() {
-
-    const fecha = new Date(fechaSeleccionada);
-
-    const fechaTexto = fecha.toLocaleDateString(
-        "es-AR",
-        {
-            day: "numeric",
-            month: "long",
-            year: "numeric"
-        }
-    );
-
-    return `
-
-        <div class="formulario-creacion">
-            <h2>📚 Nuevo examen</h2>
-            <p class="fecha-formulario">📅 ${fechaTexto}</p>
-            <label>Materia</label>
-            <select id="materiaFormulario">
-                <option value="">Seleccioná una materia</option>
-            </select>
-            <label>Título</label>
-            <input
-                type="text"
-                id="tituloFormulario"
-                placeholder="Ej: Parcial 1">
-            <button id="guardarFormulario">
-                Guardar examen
-            </button>
-
-        </div>
-
-    `;
-
-}
-
-function guardarFormularioExamen() {
-
-    console.log("Crear examen");
-
-}
-
-function mostrarFormulario(tipo) {
-
-    const contenedor = document.getElementById("formularioDinamico");
-
-    switch (tipo) {
-
-        case "examen":
-
-            contenedor.innerHTML = crearFormularioExamen();
-
-            cargarMateriasEnFormulario();
-
-            document
-                .getElementById("guardarFormulario")
-                .addEventListener("click", guardarFormularioExamen);
-
-            break;
-
-        case "entrega":
-
-            contenedor.innerHTML = crearFormularioEntrega();
-
-            break;
-
-        case "actividad":
-
-            contenedor.innerHTML = crearFormularioActividad();
-
-            break;
-
-        case "evento":
-
-            contenedor.innerHTML = crearFormularioEvento();
-
-            break;
-
-        case "seminario":
-
-            contenedor.innerHTML = crearFormularioSeminario();
-
-            break;
-
-    }
-
 }
 
 
